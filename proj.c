@@ -1,12 +1,32 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <conio.h>
-#include <windows.h>
 #include <string.h>
 #include <math.h>
 #include "cmdFunctions.c"
+
+#ifdef _WIN32
+#include <windows.h>
+#include <conio.h>
+#include <tchar.h>
+#define DIV 1048576 
+#define WIDTH 7
+#define OsWindows 1
+#endif
+
+#ifdef linux
+#define OsWindows 0
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#define clrscr() printf("\e[1;1H\e[2J")
+#endif
+
+
+
+
 // these two variables are shared across all functions in order to reduce memory usage
-char tempFileString[4096]; //a string variable that can be used by any function when needed 
+char tempFileString[20000]; //a string variable that can be used by any function when needed 
 char userInput[128]; //a string variable that can be used by any function to read user input
 char LOGO_FILE[] = "logo.txt";
 char MENU_FILE[] = "menu.txt";
@@ -30,7 +50,14 @@ void printProduct(product prod){
 	printf("%-3d, %-11s, %-9.3f,%5d,%s",prod.id,prod.name,prod.price,prod.quantity,prod.description);
 }
 
-
+void show_logo(char nextScreen[]){
+	readFile(LOGO_FILE,tempFileString);
+	printf("%s",tempFileString);
+	printf("\n %58s","Press Enter to Continue ...");
+	getchar();
+	clearScreen();
+	strcpy(nextScreen,"main");
+}
 void show_MainMenu(char nextScreen[]){
 	// Main Menu and Navigation Screen
 	tempFileString[0] = '\0'; // clear 
@@ -133,8 +160,11 @@ int importStock(stock * st){
 int main(){
 	char nextScreen[10]; // this variable tells what screen should be shown next
 	//SetConsoleOutputCP(1252); //Set console encoding to Windows 1252
-	SetConsoleOutputCP(65001); //Set console encoding to utf8
-	system("color");clearScreen() ;//system("cls");
+	if (OsWindows){
+		SetConsoleOutputCP(65001);  //Set console encoding to utf8
+		system("color");
+	}
+	clearScreen() ;//system("cls");
 
 
 	/*______importStock Test ______*/
@@ -160,22 +190,20 @@ int main(){
 	getchar();
 	/*______ End of Test_______*/
 
-	clearScreen();
+	
 
 	/*______ Main Program ______*/
-	readFile(LOGO_FILE,tempFileString);
-	printf("%s",tempFileString);
-	printf("\n\nPress Enter to Continue ...");
 	
-	getchar();
-	clearScreen();
 
-	strcpy(nextScreen,"main"); //set current screen to main Menu
+	strcpy(nextScreen,"logo"); //set current screen to main Menu
 	while(1){
 		
 		clearScreen();
 		//strcmp(str1,str2) -> return (0 if str1 == str2 else 1)
 		//Each Screen should set tell us what screen should be displayed next
+		if (strcmp(nextScreen,"logo") == 0){
+			show_logo(nextScreen);
+		}
 		if (strcmp(nextScreen,"main") == 0){
 			show_MainMenu(nextScreen);
 		}
