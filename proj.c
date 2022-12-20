@@ -134,7 +134,7 @@ int main(){
 	char nextScreen[10]; // this variable tells what screen should be shown next
 	//SetConsoleOutputCP(1252); //Set console encoding to Windows 1252
 	SetConsoleOutputCP(65001); //Set console encoding to utf8
-	system("color");clearScreen() //;system("cls");
+	system("color");clearScreen() ;//system("cls");
 
 
 	/*______importStock Test ______*/
