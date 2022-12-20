@@ -1,0 +1,17 @@
+    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+    ┃                                                                     ┃
+    ┃                           Stock Manager                             ┃
+    ┃                                                                     ┃
+    ┃                       This is the Main Menu                         ┃
+    ┃                                                                     ┃
+    ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+    ┃                                                                     ┃
+    ┃    1 - Ajouter un produit.                                          ┃
+    ┃    2 - Afficher la description d’un produit.                        ┃
+    ┃    3 - Supprimer un produit.                                        ┃
+    ┃    4 - Modifier un produit.                                         ┃
+    ┃    5 - Recherche d’un produit dans le stock.                        ┃ 
+    ┃                                                                     ┃
+    ┃                                                                     ┃
+    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+    SELECT>
