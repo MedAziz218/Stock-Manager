@@ -106,55 +106,26 @@ void addProduct(stock * st, product p){
 
 int importStock(stock * st){
 	// This imports data from the csv file STOCK_FILE provided
-	FILE* ptr; char ch; product temp_prod; char temp_str[256]; 
-	
+	FILE* ptr; char ch; product temp_prod;
 	ptr = fopen(STOCK_FILE, "r"); //opening file
-	
-	// setting temp_str to an empty string 
-	memset(temp_str,'\0',sizeof(temp_str)); int temp_i = 0; 
-	
-	int start = 0, end = 0;
-	int i=0; 
-	// Skipping Over the the attributes line (the first line of the file)
-	while (ch != EOF && ch != '\n'){ ch = fgetc(ptr); }
-	if (ch == EOF){ printf("\n!! Invalid File Format !! "); return 1;}
-	if (ch == '\n') { start = ftell(ptr); end = ftell(ptr);}
-
-	// Reading Product data line by line and filling the stock list
-    while (ch != EOF) {
+	char temp_str1[400],temp_str2[400],temp_str3[400],temp_str4[400],temp_str5[400];
+	int i=0; int scan_result;
+	do {
+		scan_result = fscanf(ptr, "%400[^;];%400[^;];%400[^;];%400[^;];%400[^\n]", 
+					  temp_str1, temp_str2, temp_str3,temp_str4, temp_str5);
 		ch = fgetc(ptr);
-		if ((ch == ';' && i<4) || ch == '\n') {
-			memset(temp_str,'\0',sizeof(temp_str));temp_i = 0;
-			fseek( ptr, start, SEEK_SET ); //printf("\nstart:%d, end:%d  >>",start,end);
-			for (int i=start;i<end;i++){
-				ch = fgetc(ptr); 
-				temp_str[temp_i] = ch; temp_i++;
-				//printf("%c",ch);	
-			}
-			switch (i)
-			{
-				case 0: temp_prod.id = atoi(temp_str);break;
-				case 1: strcpy(temp_prod.name,temp_str);break;
-				case 2: temp_prod.price = atof(temp_str);break;
-				case 3: temp_prod.quantity = atoi(temp_str);break;
-				case 4: strcpy(temp_prod.description,temp_str);break;
-				default:break;
-			}
-			i++;//printf("%s  i = %d",temp_str,i); 
-			if (i == 5){ 
-				i = 0;
-				addProduct(st,temp_prod); //printf("\n>>");printProduct(temp_prod);printf("<<\n");
-			}
-			ch = fgetc(ptr); //printf("          curr: %c, ftell: %d",ch,ftell(ptr));	
-			if (ch == '\n') {start = end+2; end = end+1;}
-			else {start = end+1; end = end;}
-			
+		if (i>0 && scan_result == 5){
+			temp_prod.id = atoi(temp_str1);
+			strcpy(temp_prod.name,temp_str2);
+			temp_prod.price = atof(temp_str3);
+			temp_prod.quantity = atoi(temp_str4);
+			strcpy(temp_prod.description,temp_str5);
+			addProduct(st,temp_prod);
 		}
-		end ++;
-    }
-	
+		i++;
+	}while(ch != EOF);
+	fclose(ptr);
 }
-
 
 
 int main(){
