@@ -3,7 +3,7 @@
 #include <string.h>
 #include "Lib\cmdFunctions.c"
 #include "Lib\screens.c"
-#include "Lib\stoncks.c"
+#include "Lib\stonks.c"
 #ifdef _WIN32
 #include <windows.h>
 #include <conio.h>
