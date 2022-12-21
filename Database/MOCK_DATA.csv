@@ -1,0 +1,1001 @@
+id;name;price;quantity;description
+1;Rubber;233.87;40;2-370 - Erosion and Sedimentation Control
+2;Plexiglass;965.80;99;17-030 - Bond
+3;Stone;12.24;5;11-900 - Exhibit Equipment
+4;Aluminum;158.85;78;2-260 - Excavation Support and Protection
+5;Steel;69.61;59;15-900 - HVAC Instruments and Controls
+6;Steel;450.82;91;3-230 - Anchor Bolts
+7;Aluminum;433.44;44;2-780 - Clay Unit Pavers
+8;Brass;898.51;44;1-560 - Temporary Barriers and Enclosures
+9;Granite;664.15;59;11-650 - Planetarium Equipment
+10;Steel;761.25;73;11-020 - Security and Vault Equipment
+11;Wood;806.53;96;1-740 - Cleaning
+12;Vinyl;390.74;80;16-500 - Lighting
+13;Glass;970.91;5;1-010 - Project Manager
+14;Rubber;529.23;73;10 - Specialties
+15;Plexiglass;300.61;25;14-600 - Hoists and Cables
+16;Granite;126.19;17;10-290 - Pest Control
+17;Wood;718.74;72;7 - Thermal and Moisture Protection
+18;Vinyl;784.26;19;17-040 - Profit
+19;Vinyl;111.30;70;13-850 - Detection and Alarm
+20;Wood;157.33;33;1-517 - Temporary Telephone
+21;Stone;923.74;70;11-140 - Vehicle Service Equipment
+22;Stone;773.04;72;4-900 - Masonry Restoration and Cleaning
+23;Wood;98.00;44;13-190 - Site-Constructed Incinerators
+24;Plexiglass;579.88;59;2-230 - Site Clearing
+25;Stone;632.68;53;6 - Wood and Plastics
+26;Aluminum;961.68;46;2-500 - Utility Services
+27;Vinyl;337.63;65;11-140 - Vehicle Service Equipment
+28;Plexiglass;863.47;85;14-900 - Transportation
+29;Aluminum;921.12;61;1-640 - Owner Furnished Products
+30;Plastic;182.00;70;11-040 - Ecclesiastical Equipment
+31;Granite;126.11;84;3-330 - Poured Concrete Basement Walls
+32;Wood;676.36;61;2-923 - Seeding and Soil Supplements
+33;Granite;313.87;84;11-470 - Darkroom Equipment
+34;Plastic;472.38;24;4-200 - Masonry Units
+35;Rubber;16.08;46;15-800 - Air Distribution
+36;Vinyl;989.78;48;1-630 - Product Substitution Procedures
+37;Rubber;959.50;4;14-300 - Escalators and Moving Walks
+38;Vinyl;954.19;100;15-300 - Fire Protection Piping
+39;Brass;434.15;95;3-230 - Anchor Bolts
+40;Steel;301.91;99;1-523 - Sanitary Facilities
+41;Vinyl;750.88;98;2-300 - Earthwork
+42;Vinyl;98.60;27;13-185 - Kennels and Animal Shelters
+43;Rubber;759.82;33;7-900 - Joint Sealers
+44;Vinyl;195.11;63;10-100 - Visual Display Boards
+45;Plexiglass;607.18;23;5-300 - Metal Deck
+46;Wood;95.17;13;14-400 - Lifts
+47;Rubber;806.88;56;11-850 - Navigation Equipment
+48;Rubber;977.05;99;14-600 - Hoists and Cables
+49;Aluminum;563.48;37;3-100 - Concrete Reinforcement
+50;Brass;606.24;27;2-830 - Retaining Walls
+51;Aluminum;687.58;20;2-317 - Select Borrow
+52;Granite;368.50;44;1-517 - Temporary Telephone
+53;Brass;212.41;35;2-780 - Clay Unit Pavers
+54;Steel;552.59;80;2-625 - Retaining Wall Drainage Piping
+55;Wood;933.70;100;10-670 - Storage Shelving
+56;Aluminum;606.58;10;2-320 - Excavation and Fill
+57;Plexiglass;811.87;56;11-450 - Residential Equipment
+58;Granite;435.72;43;1 - General Requirements
+59;Plexiglass;87.58;63;16-050 - Basic Electrical Materials and Methods
+60;Aluminum;735.08;59;10-300 - Fireplaces and Stoves
+61;Vinyl;960.57;70;13-240 - Oxygenation Systems
+62;Plastic;187.28;60;10 - Specialties
+63;Wood;691.34;16;10-270 - Access Flooring
+64;Granite;878.53;82;7-400 - Roofing and Siding Panels
+65;Stone;784.15;50;13-120 - Pre-Engineered Structures
+66;Rubber;369.82;49;11-850 - Navigation Equipment
+67;Glass;686.12;85;11-850 - Navigation Equipment
+68;Vinyl;735.36;57;1-010 - Project Manager
+69;Plastic;928.07;30;16-400 - Low-Voltage Distribution
+70;Plexiglass;320.93;86;10-880 - Scales
+71;Wood;156.89;25;11-300 - Fluid Waste Treatment and Disposal Equipment
+72;Granite;198.26;51;2-924 - Sodding
+73;Vinyl;311.09;99;11-150 - Parking Control Equipment
+74;Rubber;383.53;38;14-600 - Hoists and Cables
+75;Plexiglass;596.63;31;11-170 - Solid Waste Handling Equipment
+76;Aluminum;929.48;90;3-210 - Cast-In-Place Concrete
+77;Aluminum;369.75;52;9-100 - Metal Support Assemblies
+78;Vinyl;889.56;21;12-300 - Manufactured Casework
+79;Aluminum;777.64;26;10-350 - Flagpoles
+80;Wood;600.48;9;13-165 - Aquatic Park Facilities
+81;Vinyl;705.64;66;4-800 - Masonry Assemblies
+82;Aluminum;772.57;79;2-936 - Fertilizer
+83;Brass;566.33;80;1-542 - Construction Scaffolding and Platforms
+84;Plexiglass;326.02;76;9-100 - Metal Support Assemblies
+85;Steel;831.04;83;14-300 - Escalators and Moving Walks
+86;Brass;763.40;59;13-030 - Special Purpose Rooms
+87;Plexiglass;567.35;58;14-400 - Lifts
+88;Plexiglass;199.96;13;2-750 - Concrete Pads and Walks
+89;Brass;631.31;2;1-518 - Temporary Water
+90;Plastic;284.48;58;6-500 - Structural Plastics
+91;Plastic;100.33;57;11-030 - Teller and Service Equipment
+92;Glass;157.21;56;9-300 - Tile
+93;Vinyl;146.65;93;13-170 - Tubs and Pools
+94;Rubber;187.47;88;11-030 - Teller and Service Equipment
+95;Glass;444.74;18;2-919 - Topsoil
+96;Granite;329.36;44;10-820 - Bathroom Accessories
+97;Aluminum;999.57;9;7-800 - Fire and Smoke Protection
+98;Rubber;531.75;95;1-542 - Construction Scaffolding and Platforms
+99;Brass;348.64;66;2-780 - Clay Unit Pavers
+100;Aluminum;805.39;51;17-040 - Profit
+101;Rubber;708.64;23;11-660 - Observatory Equipment
+102;Stone;18.91;47;2-825 - Wood Fences and Gates
+103;Brass;762.47;40;2-312 - Rough Grading
+104;Wood;637.39;42;1-640 - Owner Furnished Products
+105;Glass;388.17;30;1-002 - Instructions
+106;Plastic;88.85;51;8-700 - Hardware
+107;Glass;94.46;3;11-280 - Hydraulic Gates and Valves
+108;Glass;311.43;53;5-050 - Basic Metal Materials and Methods
+109;Plastic;776.34;66;3-400 - Precast Concrete
+110;Granite;874.08;97;14-800 - Scaffolding
+111;Stone;498.28;65;2-770 - Curb and Gutters
+112;Stone;630.96;56;2-935 - Plant Maintenance
+113;Aluminum;336.85;75;2-740 - Flexible Pavement Asphalt Pavement
+114;Aluminum;985.56;11;2-830 - Retaining Walls
+115;Brass;158.98;35;9-700 - Wall Finishes
+116;Aluminum;167.14;63;2-919 - Topsoil
+117;Glass;930.82;60;11-500 - Industrial and Process Equipment
+118;Plastic;880.02;33;11-160 - Loading Dock Equipment
+119;Stone;236.83;29;1-530 - Temporary Construction
+120;Wood;679.42;35;11 - Equipment
+121;Plexiglass;257.05;17;4-700 - Simulated Masonry
+122;Plastic;39.37;85;11 - Equipment
+123;Plexiglass;732.23;8;2-000 - General
+124;Vinyl;841.26;13;16-050 - Basic Electrical Materials and Methods
+125;Vinyl;943.86;66;1-550 - Vehicular Access and Parking
+126;Brass;340.65;20;1-550 - Vehicular Access and Parking
+127;Stone;55.95;35;14-400 - Lifts
+128;Stone;213.83;73;4-050 - Basic Masonry Materials and Methods
+129;Glass;683.99;55;1-550 - Vehicular Access and Parking
+130;Granite;793.32;15;"1-514 - Temporary Heating; Cooling and Ventilation"
+131;Granite;395.41;71;9-100 - Metal Support Assemblies
+132;Glass;688.64;44;1-712 - Local Conditions
+133;Steel;761.14;12;3-210 - Cast-In-Place Concrete
+134;Brass;133.58;96;15-050 - Basic Mechanical Materials and Methods
+135;Vinyl;208.05;50;7-400 - Roofing and Siding Panels
+136;Plexiglass;212.84;59;2-919 - Topsoil
+137;Wood;157.92;21;13-200 - Storage Tanks
+138;Wood;158.66;30;1-002 - Instructions
+139;Stone;280.10;6;12-300 - Manufactured Casework
+140;Wood;382.38;5;2-935 - Plant Maintenance
+141;Granite;537.89;55;1-518 - Temporary Water
+142;Plexiglass;2.65;72;15-050 - Basic Mechanical Materials and Methods
+143;Vinyl;622.97;26;7-500 - Membrane Roofing
+144;Plexiglass;345.99;70;10-670 - Storage Shelving
+145;Wood;175.03;38;16-700 - Communications
+146;Granite;583.39;50;16-800 - Sound and Video
+147;Plastic;564.84;63;1-500 - Temporary Facilities and Controls
+148;Brass;830.43;13;4-700 - Simulated Masonry
+149;Rubber;167.67;39;2-830 - Retaining Walls
+150;Stone;303.48;12;9-600 - Flooring
+151;Plexiglass;246.79;63;11-500 - Industrial and Process Equipment
+152;Stone;431.52;14;11-160 - Loading Dock Equipment
+153;Glass;692.78;10;5-500 - Metal Fabrications
+154;Plastic;386.47;75;3-320 - Slab Foundations
+155;Rubber;74.45;54;10-670 - Storage Shelving
+156;Granite;831.06;37;13-550 - Transportation Control Instrumentation
+157;Glass;672.98;11;2-781 - Asphalt Pavers
+158;Steel;555.31;35;4-900 - Masonry Restoration and Cleaning
+159;Granite;213.81;31;4-500 - Refractories
+160;Glass;555.52;82;4 - Masonry
+161;Stone;714.19;83;13-150 - Swimming Pools
+162;Plexiglass;626.78;10;3-050 - Concrete Subcontractor
+163;Wood;896.00;70;11-120 - Vending Equipment
+164;Brass;142.50;25;8-900 - Glazed Curtain Wall
+165;Brass;354.80;84;1-011 - Project Engineer
+166;Aluminum;178.94;41;2-750 - Concrete Pads and Walks
+167;Glass;434.50;41;13-090 - Radiation Protection
+168;Vinyl;518.56;85;11-140 - Vehicle Service Equipment
+169;Granite;17.71;37;1-510 - Temporary Utilities
+170;Brass;731.93;90;15-300 - Fire Protection Piping
+171;Brass;57.43;8;2-320 - Excavation and Fill
+172;Vinyl;886.90;90;13-100 - Lightning Protection
+173;Granite;592.71;23;2-824 - Wire Fences and Gates
+174;Rubber;444.94;70;2-917 - Soil Preparation
+175;Wood;166.13;73;2-830 - Retaining Walls
+176;Plastic;849.13;91;3-500 - Cementitious Decks and Underlayments
+177;Glass;291.04;99;3-500 - Cementitious Decks and Underlayments
+178;Glass;568.10;78;1-523 - Sanitary Facilities
+179;Stone;704.06;18;1-570 - Temporary Controls
+180;Glass;968.58;67;3-050 - Concrete Subcontractor
+181;Plastic;956.32;54;11-300 - Fluid Waste Treatment and Disposal Equipment
+182;Granite;469.44;98;1-630 - Product Substitution Procedures
+183;Stone;923.76;25;13-230 - Digester Covers and Appurtenances
+184;Plastic;964.53;59;5-700 - Ornamental Metal
+185;Stone;185.26;15;10-270 - Access Flooring
+186;Plastic;282.65;42;"1-514 - Temporary Heating; Cooling and Ventilation"
+187;Granite;721.57;73;2-782 - Brick Pavers
+188;Aluminum;147.97;32;7-100 - Damproofing and Waterproofing
+189;Wood;423.79;37;2-200 - Site Preparation
+190;Granite;619.22;27;11-060 - Theater and Stage Equipment
+191;Glass;368.03;68;4-600 - Corrosion-Resistant Masonry
+192;Plexiglass;865.17;67;3-310 - Expansion Joints
+193;Granite;163.85;28;10-530 - Protective Covers
+194;Brass;915.96;48;2-000 - General
+195;Vinyl;115.05;24;1-511 - Temporary Electricity
+196;Plastic;122.04;12;14 - Conveying Systems
+197;Granite;142.25;57;4-900 - Masonry Restoration and Cleaning
+198;Granite;933.44;67;11-460 - Unit Kitchens
+199;Plastic;843.90;18;3 - Concrete
+200;Plexiglass;854.34;22;8-700 - Hardware
+201;Aluminum;777.39;87;2-935 - Plant Maintenance
+202;Plexiglass;585.07;83;10-100 - Visual Display Boards
+203;Wood;246.14;55;6-050 - Basic Wood and Plastic Materials and Methods
+204;Stone;173.64;24;14-100 - Dumbwaiters
+205;Glass;454.04;48;11-160 - Loading Dock Equipment
+206;Plexiglass;803.46;55;10-290 - Pest Control
+207;Steel;390.46;89;11-450 - Residential Equipment
+208;Steel;659.88;96;13-160 - Aquariums
+209;Plexiglass;17.30;32;"1-514 - Temporary Heating; Cooling and Ventilation"
+210;Glass;34.12;3;6-100 - Rough Carpentry
+211;Plastic;590.68;49;2-362 - Termite Control
+212;Plastic;10.68;74;15-900 - HVAC Instruments and Controls
+213;Plastic;820.69;78;2-625 - Retaining Wall Drainage Piping
+214;Plastic;933.02;18;7-600 - Flashing and Sheet Metal
+215;Vinyl;772.92;1;6-100 - Rough Carpentry
+216;Granite;614.15;38;17-010 - Contingency
+217;Plastic;141.34;81;11-110 - Commercial Laundry and Dry Cleaning Equipment
+218;Stone;458.19;26;5-800 - Expansion Control
+219;Wood;286.08;51;2-923 - Seeding and Soil Supplements
+220;Aluminum;969.56;65;15-050 - Basic Mechanical Materials and Methods
+221;Glass;499.98;71;12-600 - Multiple Seating
+222;Rubber;675.54;5;8-050 - Basic Door and Window Materials and Methods
+223;Stone;282.22;23;5-800 - Expansion Control
+224;Rubber;125.32;86;8-400 - Entrances and Storefronts
+225;Brass;823.96;5;1-760 - Protecting Installed Construction
+226;Glass;75.45;37;1-511 - Temporary Electricity
+227;Vinyl;995.43;28;10-450 - Pedestrian Control Devices
+228;Glass;599.34;80;12-300 - Manufactured Casework
+229;Plastic;849.19;80;9-050 - Basic Finish Materials and Methods
+230;Vinyl;414.05;85;11-010 - Maintenance Equipment
+231;Stone;885.20;97;10-550 - Postal Specialties
+232;Aluminum;185.41;22;2 - Site Construction
+233;Steel;453.87;43;11-600 - Laboratory Equipment
+234;Plexiglass;616.49;93;11 - Equipment
+235;Brass;825.35;2;13-100 - Lightning Protection
+236;Granite;797.34;42;13-230 - Digester Covers and Appurtenances
+237;Plexiglass;671.49;26;8-500 - Windows
+238;Stone;332.96;73;1-002 - Instructions
+239;Wood;217.37;64;7-800 - Fire and Smoke Protection
+240;Granite;855.01;46;2-850 - Bridges/Footbridges
+241;Granite;925.89;41;2-316 - Backfilling
+242;Brass;232.89;96;"11-480 - Athletic; Recreational; and Therapeutic Equipment"
+243;Granite;454.47;51;9-700 - Wall Finishes
+244;Granite;61.29;11;3-050 - Concrete Subcontractor
+245;Rubber;256.50;34;12-100 - Art
+246;Rubber;576.35;77;11-090 - Checkroom Equipment
+247;Stone;591.04;44;1 - General Requirements
+248;Brass;832.22;46;13-110 - Cathodic Protection
+249;Granite;145.56;82;3-210 - Cast-In-Place Concrete
+250;Aluminum;12.32;85;13 - Special Construction
+251;Stone;498.70;67;11-130 - Audio-Visual Equipment
+252;Rubber;633.54;79;12-500 - Furniture
+253;Glass;782.89;65;16-300 - Transmission and Distribution
+254;Stone;823.93;90;"13-080 - Sound; Vibration; and Seismic Control"
+255;Plexiglass;455.53;84;11-460 - Unit Kitchens
+256;Vinyl;34.78;15;10 - Specialties
+257;Brass;472.80;24;11-100 - Mercantile Equipment
+258;Steel;869.54;82;7 - Thermal and Moisture Protection
+259;Vinyl;185.60;5;15-800 - Air Distribution
+260;Granite;297.59;91;13-800 - Building Automation and Control
+261;Stone;875.04;34;11-050 - Library Equipment
+262;Wood;404.64;58;4-200 - Masonry Units
+263;Plastic;313.28;21;13-110 - Cathodic Protection
+264;Rubber;768.63;26;11-870 - Agricultural Equipment
+265;Stone;451.85;96;16-400 - Low-Voltage Distribution
+266;Glass;662.66;89;4-600 - Corrosion-Resistant Masonry
+267;Plexiglass;85.43;97;16-700 - Communications
+268;Rubber;512.95;73;3-400 - Precast Concrete
+269;Vinyl;568.40;88;13 - Special Construction
+270;Rubber;622.21;44;11-130 - Audio-Visual Equipment
+271;Vinyl;820.86;42;1-517 - Temporary Telephone
+272;Wood;451.31;58;2-930 - Exterior Plants
+273;Glass;853.31;90;11-030 - Teller and Service Equipment
+274;Steel;829.91;90;12-400 - Furnishings and Accessories
+275;Plastic;993.60;100;1-000 - Purpose
+276;Rubber;702.15;81;"7-300 - Shingles; Roof Tiles; and Roof Coverings"
+277;Glass;505.31;85;12-600 - Multiple Seating
+278;Brass;584.07;47;10-520 - Fire Protection Specialties
+279;Plexiglass;264.92;92;1-011 - Project Engineer
+280;Steel;375.98;10;2-932 - PLants and Bulbs
+281;Steel;111.38;85;3-000 - General
+282;Glass;42.82;70;2-000 - General
+283;Plastic;662.21;45;13-230 - Digester Covers and Appurtenances
+284;Granite;582.12;2;1-740 - Cleaning
+285;Steel;167.82;95;13-900 - Fire Suppression
+286;Rubber;417.89;37;2-800 - Site Amenities
+287;Plastic;485.44;35;13-175 - Ice Rinks
+288;Aluminum;906.39;73;2-830 - Retaining Walls
+289;Steel;343.75;62;5-600 - Hydraulic Fabrications
+290;Steel;600.63;68;10-900 - Wardrobe and Closet Specialties
+291;Brass;861.24;59;7-200 - Thermal Protection - Insulation
+292;Granite;270.11;95;1-560 - Temporary Barriers and Enclosures
+293;Stone;132.93;50;14-300 - Escalators and Moving Walks
+294;Wood;313.82;24;11-850 - Navigation Equipment
+295;Plastic;278.19;5;15 - Mechanical
+296;Wood;639.19;66;1-640 - Owner Furnished Products
+297;Rubber;31.77;90;2-317 - Select Borrow
+298;Plastic;960.64;32;13-030 - Special Purpose Rooms
+299;Rubber;489.99;80;7-600 - Flashing and Sheet Metal
+300;Aluminum;832.11;77;11-280 - Hydraulic Gates and Valves
+301;Steel;135.59;49;11-030 - Teller and Service Equipment
+302;Plexiglass;12.93;37;13-110 - Cathodic Protection
+303;Brass;733.18;7;2-362 - Termite Control
+304;Brass;470.82;62;9 - Finishes
+305;Granite;259.30;24;17-020 - Insurance
+306;Plexiglass;626.05;23;11-700 - Medical Equipment
+307;Wood;176.54;27;7-900 - Joint Sealers
+308;Brass;991.41;54;2-870 - Sculpture/Ornamental
+309;Plexiglass;467.60;8;5-600 - Hydraulic Fabrications
+310;Granite;473.19;42;2-823 - PVC Fences and Gates
+311;Granite;650.88;30;17-010 - Contingency
+312;Plexiglass;395.37;60;9-900 - Paints and Coatings
+313;Granite;686.55;23;11-040 - Ecclesiastical Equipment
+314;Aluminum;97.22;1;16-400 - Low-Voltage Distribution
+315;Wood;786.13;19;1-520 - Construction Facilities
+316;Aluminum;779.84;95;2-935 - Plant Maintenance
+317;Plexiglass;560.91;87;3-350 - Concrete Finishing
+318;Brass;958.11;55;13 - Special Construction
+319;Brass;660.43;36;1-560 - Temporary Barriers and Enclosures
+320;Wood;330.06;40;2-770 - Curb and Gutters
+321;Vinyl;222.09;23;13-220 - Filter Underdrains and Media
+322;Plastic;820.28;84;2-230 - Site Clearing
+323;Wood;473.09;74;2-250 - Shoring and Underpinning
+324;Glass;629.03;79;13-160 - Aquariums
+325;Vinyl;445.10;86;2-362 - Termite Control
+326;Aluminum;402.28;68;5-800 - Expansion Control
+327;Aluminum;132.05;18;11-280 - Hydraulic Gates and Valves
+328;Wood;886.64;41;9-680 - Carpet
+329;Plexiglass;291.55;85;1-523 - Sanitary Facilities
+330;Wood;793.00;43;15-500 - Heat-Generation Equipment
+331;Glass;230.52;29;1-760 - Protecting Installed Construction
+332;Rubber;139.19;18;7-700 - Roof Specialties and Accessories
+333;Plexiglass;550.87;99;15-100 - Plumbing
+334;Plastic;527.87;94;3-600 - Grouts
+335;Steel;362.95;98;10-450 - Pedestrian Control Devices
+336;Glass;328.35;25;13-020 - Building Modules
+337;Stone;636.29;98;5-200 - Metal Joists
+338;Stone;753.77;1;3-310 - Expansion Joints
+339;Aluminum;390.10;32;11-280 - Hydraulic Gates and Valves
+340;Brass;365.43;72;16-050 - Basic Electrical Materials and Methods
+341;Glass;363.80;28;2-800 - Site Amenities
+342;Glass;273.35;24;2-781 - Asphalt Pavers
+343;Brass;241.74;96;3-100 - Concrete Reinforcement
+344;Wood;632.38;98;1-520 - Construction Facilities
+345;Rubber;932.88;5;6-100 - Rough Carpentry
+346;Wood;206.48;79;6-900 - Wood and Plastic Restoration and Cleaning
+347;Plexiglass;715.64;33;2-782 - Brick Pavers
+348;Brass;20.99;1;2-820 - Fences and Gates
+349;Granite;578.75;81;3-210 - Cast-In-Place Concrete
+350;Steel;66.04;26;1-518 - Temporary Water
+351;Stone;334.82;7;3-330 - Poured Concrete Basement Walls
+352;Stone;36.75;19;10 - Specialties
+353;Brass;281.68;84;10-400 - Identification Devices
+354;Vinyl;967.23;76;5-050 - Basic Metal Materials and Methods
+355;Stone;974.24;93;10-260 - Wall and Corner Guards
+356;Rubber;690.60;85;14-200 - Elevators
+357;Stone;199.01;81;10-340 - Manufactured Exterior Specialties
+358;Wood;972.05;61;1-012 - Superintendent
+359;Aluminum;278.49;76;11-780 - Mortuary Equipment
+360;Steel;644.36;44;1-540 - Construction Aids
+361;Wood;488.14;99;13-170 - Tubs and Pools
+362;Brass;479.99;71;1-010 - Project Manager
+363;Wood;225.68;86;1-530 - Temporary Construction
+364;Wood;578.54;95;13-200 - Storage Tanks
+365;Granite;793.05;58;11-600 - Laboratory Equipment
+366;Rubber;799.83;61;12-800 - Interior Plants and Planters
+367;Aluminum;405.72;13;14-200 - Elevators
+368;Stone;184.15;67;3-350 - Concrete Finishing
+369;Stone;367.80;47;2-230 - Site Clearing
+370;Vinyl;763.04;44;11-700 - Medical Equipment
+371;Plexiglass;985.18;56;1-511 - Temporary Electricity
+372;Stone;624.26;79;2-821 - Chain Link Fences
+373;Steel;638.52;55;9-600 - Flooring
+374;Aluminum;57.00;5;17 - Markup and Contingency
+375;Rubber;620.03;40;17-040 - Profit
+376;Rubber;560.93;26;3-050 - Concrete Subcontractor
+377;Wood;657.19;90;4-800 - Masonry Assemblies
+378;Granite;451.48;84;1-013 - Project Coordinator
+379;Plexiglass;498.70;29;6-100 - Rough Carpentry
+380;Rubber;344.68;24;1-712 - Local Conditions
+381;Granite;142.87;8;16-200 - Electrical Power
+382;Brass;983.61;39;9 - Finishes
+383;Wood;543.28;25;12-400 - Furnishings and Accessories
+384;Aluminum;642.89;85;10-530 - Protective Covers
+385;Plexiglass;343.58;66;8-600 - Skylights
+386;Granite;760.63;9;10-550 - Postal Specialties
+387;Granite;485.82;36;14-900 - Transportation
+388;Stone;949.83;42;3-540 - Cementitious Underlayments
+389;Plastic;897.40;63;5-500 - Metal Fabrications
+390;Granite;144.18;77;7-700 - Roof Specialties and Accessories
+391;Wood;42.56;9;5-900 - Metal Restoration and Cleaning
+392;Stone;502.98;56;6-050 - Basic Wood and Plastic Materials and Methods
+393;Plastic;338.71;67;13-120 - Pre-Engineered Structures
+394;Vinyl;134.88;68;12-100 - Art
+395;Rubber;47.28;96;11-470 - Darkroom Equipment
+396;Plexiglass;512.90;80;9 - Finishes
+397;Plexiglass;52.73;19;11-010 - Maintenance Equipment
+398;Brass;515.65;69;11-870 - Agricultural Equipment
+399;Rubber;594.44;3;4-500 - Refractories
+400;Plastic;513.38;14;5-100 - Structural Metals
+401;Vinyl;100.75;51;3-300 - Footings
+402;Granite;8.88;72;15-600 - Refrigeration Equipment
+403;Rubber;503.34;3;2-915 - Mulch
+404;Granite;269.03;63;3-330 - Poured Concrete Basement Walls
+405;Glass;752.81;51;14-100 - Dumbwaiters
+406;Plastic;199.67;28;13-800 - Building Automation and Control
+407;Plexiglass;79.95;22;9-250 - Gypsum Wallboard
+408;Rubber;880.01;33;1-630 - Product Substitution Procedures
+409;Glass;533.88;35;9-600 - Flooring
+410;Plastic;816.70;10;9-800 - Acoustical Treatment
+411;Brass;573.33;63;14-700 - Turntables
+412;Stone;642.68;68;2-311 - Final Grading
+413;Granite;663.46;40;11-400 - Food Service Equipment
+414;Plexiglass;734.85;1;9-800 - Acoustical Treatment
+415;Rubber;572.12;80;2-935 - Plant Maintenance
+416;Glass;722.97;74;11-030 - Teller and Service Equipment
+417;Plexiglass;685.61;34;11-660 - Observatory Equipment
+418;Stone;332.83;89;1-540 - Construction Aids
+419;Brass;243.19;37;17 - Markup and Contingency
+420;Stone;720.54;67;1-011 - Project Engineer
+421;Aluminum;378.82;16;2-823 - PVC Fences and Gates
+422;Vinyl;116.47;62;2-310 - Grading
+423;Wood;104.60;25;2-362 - Termite Control
+424;Rubber;902.67;70;11-050 - Library Equipment
+425;Plastic;891.50;24;10-600 - Partitions
+426;Vinyl;395.51;71;2-932 - PLants and Bulbs
+427;Vinyl;700.15;76;15-300 - Fire Protection Piping
+428;Plastic;675.42;8;8-700 - Hardware
+429;Aluminum;446.58;5;11-500 - Industrial and Process Equipment
+430;Granite;385.73;45;1-640 - Owner Furnished Products
+431;Vinyl;78.60;77;1-002 - Instructions
+432;Plastic;106.63;98;2-250 - Shoring and Underpinning
+433;Wood;8.79;39;8-200 - Wood and Plastic Doors
+434;Brass;997.43;54;2-310 - Grading
+435;Granite;750.14;80;8 - Doors and Windows
+436;Steel;273.64;42;2-200 - Site Preparation
+437;Vinyl;183.25;9;2-936 - Fertilizer
+438;Plexiglass;360.85;6;1-560 - Temporary Barriers and Enclosures
+439;Plastic;735.25;68;3-330 - Poured Concrete Basement Walls
+440;Aluminum;295.81;75;12-600 - Multiple Seating
+441;Steel;927.34;17;8-200 - Wood and Plastic Doors
+442;Vinyl;347.77;69;4-900 - Masonry Restoration and Cleaning
+443;Aluminum;982.67;67;13-550 - Transportation Control Instrumentation
+444;Granite;904.36;58;14-800 - Scaffolding
+445;Plastic;636.80;87;11-030 - Teller and Service Equipment
+446;Plastic;57.27;63;2-870 - Sculpture/Ornamental
+447;Plastic;724.12;100;13-240 - Oxygenation Systems
+448;Stone;488.09;30;8-300 - Specialty Doors
+449;Rubber;827.15;24;2-230 - Site Clearing
+450;Aluminum;995.20;95;15 - Mechanical
+451;Granite;625.11;1;9-050 - Basic Finish Materials and Methods
+452;Vinyl;900.58;39;12 - Furnishings
+453;Plexiglass;312.03;48;10-400 - Identification Devices
+454;Rubber;545.77;38;1-012 - Superintendent
+455;Plastic;740.29;13;10-240 - Grilles and Screens
+456;Aluminum;396.40;85;"10-800 - Toilet; Bath; and Laundry Specialties"
+457;Rubber;616.75;36;1-740 - Cleaning
+458;Glass;660.38;73;11-030 - Teller and Service Equipment
+459;Brass;525.25;23;"13-080 - Sound; Vibration; and Seismic Control"
+460;Glass;799.22;78;1-518 - Temporary Water
+461;Vinyl;554.44;18;11-660 - Observatory Equipment
+462;Stone;274.44;56;6-200 - Finish Carpentry
+463;Granite;510.59;48;13-280 - Hazardous Material Remediation
+464;Granite;726.64;38;1-570 - Temporary Controls
+465;Granite;854.63;30;9-500 - Ceilings
+466;Rubber;199.62;96;10-400 - Identification Devices
+467;Plexiglass;311.56;61;2-870 - Sculpture/Ornamental
+468;Plexiglass;816.79;94;"11-480 - Athletic; Recreational; and Therapeutic Equipment"
+469;Vinyl;612.00;5;11-120 - Vending Equipment
+470;Stone;502.94;2;4-700 - Simulated Masonry
+471;Plastic;769.23;84;14-800 - Scaffolding
+472;Aluminum;758.28;32;15-500 - Heat-Generation Equipment
+473;Aluminum;67.88;46;2-815 - Fountains
+474;Brass;617.03;2;11-460 - Unit Kitchens
+475;Glass;147.15;67;3-100 - Concrete Reinforcement
+476;Rubber;829.53;7;2-795 - Porous Paving
+477;Stone;373.88;60;6-100 - Rough Carpentry
+478;Wood;436.44;24;14-700 - Turntables
+479;Wood;358.76;98;2-540 - Septic Tank
+480;Plexiglass;889.50;32;2-370 - Erosion and Sedimentation Control
+481;Plexiglass;446.36;18;1-010 - Project Manager
+482;Rubber;18.13;12;13-120 - Pre-Engineered Structures
+483;Glass;279.27;77;13-100 - Lightning Protection
+484;Glass;328.89;36;3-540 - Cementitious Underlayments
+485;Plexiglass;349.35;77;15 - Mechanical
+486;Plastic;732.51;51;1-903 - Hazardous Materials Abatement
+487;Granite;855.57;91;1-542 - Construction Scaffolding and Platforms
+488;Plastic;429.23;16;2-783 - Interlocking Concrete Unit Paving
+489;Rubber;188.42;50;16-200 - Electrical Power
+490;Granite;783.60;88;3-330 - Poured Concrete Basement Walls
+491;Wood;555.04;32;10-340 - Manufactured Exterior Specialties
+492;Stone;753.36;80;6 - Wood and Plastics
+493;Steel;482.45;98;10-350 - Flagpoles
+494;Steel;215.19;41;8-600 - Skylights
+495;Wood;148.41;71;11-130 - Audio-Visual Equipment
+496;Vinyl;842.21;61;7-200 - Thermal Protection - Insulation
+497;Brass;491.12;38;3-310 - Expansion Joints
+498;Steel;317.22;92;13-700 - Security Access and Surveillance
+499;Rubber;854.23;8;5-500 - Metal Fabrications
+500;Plastic;331.24;51;5-050 - Basic Metal Materials and Methods
+501;Plexiglass;139.99;36;15-300 - Fire Protection Piping
+502;Wood;67.05;16;11-280 - Hydraulic Gates and Valves
+503;Stone;767.25;100;1-580 - Project Identification
+504;Aluminum;685.28;12;2-850 - Bridges/Footbridges
+505;Rubber;302.19;89;1-520 - Construction Facilities
+506;Plexiglass;843.09;40;11-780 - Mortuary Equipment
+507;Granite;214.18;7;1-580 - Project Identification
+508;Wood;637.51;52;11-090 - Checkroom Equipment
+509;Wood;618.38;71;12-500 - Furniture
+510;Steel;354.74;43;4-700 - Simulated Masonry
+511;Plastic;625.95;18;"1-514 - Temporary Heating; Cooling and Ventilation"
+512;Brass;616.64;67;2-317 - Select Borrow
+513;Rubber;605.70;54;10-290 - Pest Control
+514;Wood;35.28;68;13-100 - Lightning Protection
+515;Brass;513.09;52;16-700 - Communications
+516;Steel;774.06;14;11-700 - Medical Equipment
+517;Aluminum;767.46;72;4 - Masonry
+518;Wood;247.93;88;13-170 - Tubs and Pools
+519;Brass;931.45;43;11-130 - Audio-Visual Equipment
+520;Plexiglass;871.27;53;1-523 - Sanitary Facilities
+521;Steel;271.77;92;10-900 - Wardrobe and Closet Specialties
+522;Granite;158.86;12;2-822 - Ornamental Metal Fences and Gates
+523;Stone;211.62;35;1-542 - Construction Scaffolding and Platforms
+524;Granite;228.29;20;11-110 - Commercial Laundry and Dry Cleaning Equipment
+525;Aluminum;352.70;46;13-280 - Hazardous Material Remediation
+526;Aluminum;967.58;67;7 - Thermal and Moisture Protection
+527;Aluminum;523.91;21;2-825 - Wood Fences and Gates
+528;Aluminum;178.57;18;11-110 - Commercial Laundry and Dry Cleaning Equipment
+529;Rubber;867.87;56;11-680 - Office Equipment
+530;Glass;970.53;87;11-500 - Industrial and Process Equipment
+531;Stone;928.23;29;10-270 - Access Flooring
+532;Granite;331.60;59;13-280 - Hazardous Material Remediation
+533;Plexiglass;978.07;78;2-813 - Lawn Sprinkling and Irrigation
+534;Plastic;984.04;72;3 - Concrete
+535;Aluminum;495.08;69;3-600 - Grouts
+536;Glass;56.14;61;10-900 - Wardrobe and Closet Specialties
+537;Granite;23.20;54;11-170 - Solid Waste Handling Equipment
+538;Glass;148.79;100;16 - Electrical
+539;Plastic;247.51;25;9-600 - Flooring
+540;Plastic;541.35;7;8-900 - Glazed Curtain Wall
+541;Glass;709.59;29;14-200 - Elevators
+542;Glass;481.35;89;4-400 - Stone
+543;Vinyl;786.91;42;2-900 - Landscaping
+544;Vinyl;364.08;48;2-915 - Mulch
+545;Rubber;928.52;91;3-210 - Cast-In-Place Concrete
+546;Granite;917.05;80;4-200 - Masonry Units
+547;Plexiglass;736.62;83;"15-950 - Testing; Adjusting; and Balancing"
+548;Steel;384.99;89;11-700 - Medical Equipment
+549;Plexiglass;172.41;43;1-700 - Execution Requirements
+550;Plastic;853.46;10;4-400 - Stone
+551;Brass;128.98;75;14-900 - Transportation
+552;Plastic;668.58;73;3 - Concrete
+553;Rubber;450.09;82;11-080 - Registration Equipment
+554;Aluminum;387.70;92;5-900 - Metal Restoration and Cleaning
+555;Stone;480.18;32;1 - General Requirements
+556;Vinyl;643.74;70;17-010 - Contingency
+557;Plastic;893.43;11;9-700 - Wall Finishes
+558;Glass;323.33;3;5-100 - Structural Metals
+559;Granite;322.95;66;1-000 - Purpose
+560;Brass;722.12;69;11-100 - Mercantile Equipment
+561;Stone;284.94;58;10-350 - Flagpoles
+562;Aluminum;29.82;54;3-210 - Cast-In-Place Concrete
+563;Glass;326.23;34;15-050 - Basic Mechanical Materials and Methods
+564;Aluminum;54.68;23;13-010 - Air-Supported Structures
+565;Granite;415.24;90;"1-514 - Temporary Heating; Cooling and Ventilation"
+566;Rubber;246.39;25;8-700 - Hardware
+567;Granite;785.22;84;2-625 - Retaining Wall Drainage Piping
+568;Glass;993.79;99;13-100 - Lightning Protection
+569;Brass;208.01;6;11-280 - Hydraulic Gates and Valves
+570;Granite;60.76;13;11-600 - Laboratory Equipment
+571;Granite;943.72;59;13-020 - Building Modules
+572;Brass;713.69;18;14-800 - Scaffolding
+573;Rubber;55.35;59;1-510 - Temporary Utilities
+574;Plexiglass;163.61;10;6-500 - Structural Plastics
+575;Plexiglass;661.06;81;9-500 - Ceilings
+576;Glass;516.07;54;2-320 - Excavation and Fill
+577;Rubber;202.45;18;13-400 - Measurement and Control Instrumentation
+578;Aluminum;477.30;21;13-150 - Swimming Pools
+579;Steel;452.77;37;11-100 - Mercantile Equipment
+580;Rubber;773.85;27;4-400 - Stone
+581;Aluminum;581.67;63;14-400 - Lifts
+582;Granite;166.94;1;11-460 - Unit Kitchens
+583;Rubber;477.86;22;7-100 - Damproofing and Waterproofing
+584;Wood;18.32;67;2-783 - Interlocking Concrete Unit Paving
+585;Glass;645.41;48;7-600 - Flashing and Sheet Metal
+586;Aluminum;604.42;97;1-012 - Superintendent
+587;Plexiglass;391.06;80;2-790 - Athletic Surfacing
+588;Vinyl;330.45;3;3-300 - Footings
+589;Plastic;292.74;80;11-070 - Instrumental Equipment
+590;Plastic;120.70;95;15-600 - Refrigeration Equipment
+591;Plexiglass;738.44;19;2-230 - Site Clearing
+592;Plexiglass;899.33;28;11-060 - Theater and Stage Equipment
+593;Plastic;971.64;39;13-550 - Transportation Control Instrumentation
+594;Rubber;764.94;15;2-370 - Erosion and Sedimentation Control
+595;Brass;831.17;11;6-100 - Rough Carpentry
+596;Stone;239.71;92;11-150 - Parking Control Equipment
+597;Steel;465.67;64;2-621 - Foundatation Drainage Piping
+598;Steel;316.92;85;10 - Specialties
+599;Steel;106.12;63;3-100 - Concrete Reinforcement
+600;Brass;440.51;11;7 - Thermal and Moisture Protection
+601;Plexiglass;371.84;74;15 - Mechanical
+602;Aluminum;550.41;9;14-400 - Lifts
+603;Wood;128.42;68;11-150 - Parking Control Equipment
+604;Brass;480.71;71;14-900 - Transportation
+605;Rubber;383.24;29;7-600 - Flashing and Sheet Metal
+606;Vinyl;547.91;91;16 - Electrical
+607;Stone;931.27;35;14-700 - Turntables
+608;Glass;753.67;11;12-700 - Systems Furniture
+609;Granite;399.60;54;16-500 - Lighting
+610;Steel;668.31;21;13-700 - Security Access and Surveillance
+611;Plexiglass;121.75;74;8-700 - Hardware
+612;Plastic;920.14;19;"13-080 - Sound; Vibration; and Seismic Control"
+613;Plexiglass;794.46;86;5-800 - Expansion Control
+614;Steel;986.09;42;15-300 - Fire Protection Piping
+615;Wood;903.10;37;6-050 - Basic Wood and Plastic Materials and Methods
+616;Rubber;606.12;9;13-850 - Detection and Alarm
+617;Glass;844.64;40;"13-080 - Sound; Vibration; and Seismic Control"
+618;Plexiglass;57.63;46;13-280 - Hazardous Material Remediation
+619;Wood;709.25;40;4 - Masonry
+620;Steel;781.89;63;7-500 - Membrane Roofing
+621;Rubber;306.73;5;2-625 - Retaining Wall Drainage Piping
+622;Plexiglass;988.84;27;10-290 - Pest Control
+623;Plexiglass;607.08;23;1-520 - Construction Facilities
+624;Plexiglass;638.54;97;5-900 - Metal Restoration and Cleaning
+625;Vinyl;230.73;29;17-040 - Profit
+626;Plexiglass;48.79;49;2-317 - Select Borrow
+627;Wood;837.51;18;12 - Furnishings
+628;Rubber;56.54;84;1-700 - Execution Requirements
+629;Glass;32.75;91;"1-514 - Temporary Heating; Cooling and Ventilation"
+630;Plexiglass;758.79;38;2-260 - Excavation Support and Protection
+631;Brass;719.52;66;2-917 - Soil Preparation
+632;Vinyl;417.99;96;12-900 - Furnishings Restoration and Repair
+633;Glass;588.64;64;7-100 - Damproofing and Waterproofing
+634;Brass;938.24;75;11-190 - Detention Equipment
+635;Brass;929.39;39;8-300 - Specialty Doors
+636;Wood;685.71;85;1-904 - Hazardous Materials Removal and Disposal
+637;Wood;813.48;94;1-518 - Temporary Water
+638;Plastic;999.18;74;3-540 - Cementitious Underlayments
+639;Granite;889.36;62;13-800 - Building Automation and Control
+640;Wood;6.12;53;2-782 - Brick Pavers
+641;Granite;606.39;43;1-904 - Hazardous Materials Removal and Disposal
+642;Rubber;294.63;61;13-010 - Air-Supported Structures
+643;Vinyl;697.01;29;14-100 - Dumbwaiters
+644;Steel;545.11;31;11-140 - Vehicle Service Equipment
+645;Aluminum;892.85;77;13-165 - Aquatic Park Facilities
+646;Plastic;319.45;17;5-800 - Expansion Control
+647;Aluminum;260.52;36;11-170 - Solid Waste Handling Equipment
+648;Glass;513.80;58;1-700 - Execution Requirements
+649;Brass;254.78;98;9-900 - Paints and Coatings
+650;Steel;862.04;71;1 - General Requirements
+651;Stone;343.41;21;11-040 - Ecclesiastical Equipment
+652;Granite;409.09;80;17-010 - Contingency
+653;Steel;754.31;9;7-500 - Membrane Roofing
+654;Glass;732.05;14;9-500 - Ceilings
+655;Plastic;837.11;18;12-300 - Manufactured Casework
+656;Rubber;172.40;41;7 - Thermal and Moisture Protection
+657;Aluminum;741.15;100;11-160 - Loading Dock Equipment
+658;Wood;305.33;46;5-050 - Basic Metal Materials and Methods
+659;Plexiglass;685.22;40;3-330 - Poured Concrete Basement Walls
+660;Glass;618.98;32;2-795 - Porous Paving
+661;Brass;947.07;37;2-821 - Chain Link Fences
+662;Granite;611.16;36;3-350 - Concrete Finishing
+663;Plexiglass;163.33;41;2-822 - Ornamental Metal Fences and Gates
+664;Glass;416.33;72;8-300 - Specialty Doors
+665;Plastic;739.32;64;5-800 - Expansion Control
+666;Vinyl;655.44;18;7-200 - Thermal Protection - Insulation
+667;Brass;648.87;99;13-280 - Hazardous Material Remediation
+668;Wood;773.54;3;3-400 - Precast Concrete
+669;Plexiglass;783.41;40;7-800 - Fire and Smoke Protection
+670;Granite;661.57;97;6-050 - Basic Wood and Plastic Materials and Methods
+671;Vinyl;390.16;17;10-400 - Identification Devices
+672;Granite;112.05;75;17-040 - Profit
+673;Vinyl;516.63;55;2-870 - Sculpture/Ornamental
+674;Wood;697.74;99;16-100 - Electrical
+675;Vinyl;691.73;10;10-880 - Scales
+676;Granite;580.58;98;13-280 - Hazardous Material Remediation
+677;Glass;457.63;41;2-923 - Seeding and Soil Supplements
+678;Granite;793.00;16;10-550 - Postal Specialties
+679;Stone;736.59;51;11-010 - Maintenance Equipment
+680;Stone;601.27;48;11-010 - Maintenance Equipment
+681;Rubber;625.30;29;12-400 - Furnishings and Accessories
+682;Wood;450.81;29;2-250 - Shoring and Underpinning
+683;Rubber;461.78;40;2-311 - Final Grading
+684;Granite;652.78;88;1-518 - Temporary Water
+685;Stone;890.83;11;2-320 - Excavation and Fill
+686;Plastic;394.30;48;3-400 - Precast Concrete
+687;Steel;647.52;93;12 - Furnishings
+688;Glass;550.92;84;12-600 - Multiple Seating
+689;Aluminum;400.67;43;11-280 - Hydraulic Gates and Valves
+690;Plastic;283.25;22;16-400 - Low-Voltage Distribution
+691;Granite;981.18;25;10-100 - Visual Display Boards
+692;Plastic;100.79;39;12-500 - Furniture
+693;Rubber;218.30;1;1-523 - Sanitary Facilities
+694;Granite;803.36;3;15-800 - Air Distribution
+695;Plastic;550.06;96;6-100 - Rough Carpentry
+696;Plastic;663.17;53;14-900 - Transportation
+697;Rubber;191.33;96;5-300 - Metal Deck
+698;Plastic;573.27;25;8-100 - Doors
+699;Aluminum;122.78;94;11-470 - Darkroom Equipment
+700;Plastic;280.96;19;5-300 - Metal Deck
+701;Brass;774.47;76;1-520 - Construction Facilities
+702;Plexiglass;988.92;64;2 - Site Construction
+703;Brass;221.84;2;9-700 - Wall Finishes
+704;Plastic;109.11;32;2-923 - Seeding and Soil Supplements
+705;Vinyl;698.32;39;1-518 - Temporary Water
+706;Plastic;659.88;29;2-784 - Stone Unit Pavers
+707;Glass;103.44;55;4-700 - Simulated Masonry
+708;Glass;650.66;56;8-300 - Specialty Doors
+709;Vinyl;83.83;35;9-900 - Paints and Coatings
+710;Steel;198.12;43;2-830 - Retaining Walls
+711;Rubber;429.75;88;14-400 - Lifts
+712;Granite;801.14;64;2-311 - Final Grading
+713;Plexiglass;61.11;78;10-600 - Partitions
+714;Plastic;185.79;32;4 - Masonry
+715;Stone;409.67;61;2-923 - Seeding and Soil Supplements
+716;Wood;910.00;41;11-100 - Mercantile Equipment
+717;Aluminum;521.12;91;12-050 - Fabrics
+718;Vinyl;950.52;98;11-030 - Teller and Service Equipment
+719;Granite;884.52;29;9-800 - Acoustical Treatment
+720;Vinyl;307.24;29;1-000 - Purpose
+721;Stone;598.57;74;11-020 - Security and Vault Equipment
+722;Glass;630.80;13;9-900 - Paints and Coatings
+723;Rubber;15.48;46;1-560 - Temporary Barriers and Enclosures
+724;Rubber;981.45;28;12-500 - Furniture
+725;Granite;768.53;100;2-310 - Grading
+726;Plastic;574.26;61;2-822 - Ornamental Metal Fences and Gates
+727;Vinyl;245.43;32;11-140 - Vehicle Service Equipment
+728;Vinyl;571.04;13;2-200 - Site Preparation
+729;Brass;805.57;13;4-500 - Refractories
+730;Rubber;93.97;52;15-400 - Plumbing Fixtures and Equipment
+731;Vinyl;496.27;2;13-200 - Storage Tanks
+732;Steel;664.47;83;10-550 - Postal Specialties
+733;Aluminum;891.35;17;9-250 - Gypsum Wallboard
+734;Rubber;744.93;81;13-020 - Building Modules
+735;Plastic;88.68;15;1-515 - Temporary Lighting
+736;Stone;621.24;35;11-850 - Navigation Equipment
+737;Granite;672.20;38;10-880 - Scales
+738;Aluminum;793.02;48;10 - Specialties
+739;Plastic;711.11;62;8-400 - Entrances and Storefronts
+740;Plexiglass;410.43;32;13-280 - Hazardous Material Remediation
+741;Vinyl;823.80;94;2-781 - Asphalt Pavers
+742;Aluminum;184.07;29;1-712 - Local Conditions
+743;Rubber;126.88;56;"10-800 - Toilet; Bath; and Laundry Specialties"
+744;Wood;85.74;77;10 - Specialties
+745;Stone;143.89;31;13-220 - Filter Underdrains and Media
+746;Rubber;408.48;22;11-850 - Navigation Equipment
+747;Glass;129.30;91;12-500 - Furniture
+748;Granite;530.51;96;7-400 - Roofing and Siding Panels
+749;Plastic;174.64;84;2-780 - Clay Unit Pavers
+750;Rubber;430.00;99;12-050 - Fabrics
+751;Stone;356.43;41;10-270 - Access Flooring
+752;Glass;496.36;59;13-240 - Oxygenation Systems
+753;Plastic;607.39;73;13-900 - Fire Suppression
+754;Glass;551.26;77;11-900 - Exhibit Equipment
+755;Brass;787.69;87;14-400 - Lifts
+756;Wood;743.28;95;1-570 - Temporary Controls
+757;Rubber;864.71;10;11-160 - Loading Dock Equipment
+758;Granite;256.86;16;10-150 - Compartments and Cubicles
+759;Wood;473.89;16;2 - Site Construction
+760;Granite;918.66;3;2-315 - Excavation
+761;Glass;620.49;15;2-850 - Bridges/Footbridges
+762;Wood;164.95;29;15-500 - Heat-Generation Equipment
+763;Wood;889.40;72;2-870 - Sculpture/Ornamental
+764;Brass;638.16;30;11-190 - Detention Equipment
+765;Vinyl;137.80;43;"13-080 - Sound; Vibration; and Seismic Control"
+766;Wood;698.67;49;2-784 - Stone Unit Pavers
+767;Stone;244.95;37;2-924 - Sodding
+768;Rubber;361.55;80;11-060 - Theater and Stage Equipment
+769;Plexiglass;254.02;85;11-070 - Instrumental Equipment
+770;Aluminum;51.25;23;11-600 - Laboratory Equipment
+771;Plexiglass;905.72;44;2-812 - Drip Irrigation
+772;Stone;404.09;23;13-900 - Fire Suppression
+773;Stone;21.03;42;3-400 - Precast Concrete
+774;Brass;656.92;88;2-500 - Utility Services
+775;Vinyl;220.65;93;2-312 - Rough Grading
+776;Glass;27.04;55;11-200 - Water Supply and Treatment Equipment
+777;Plastic;937.24;91;2-300 - Earthwork
+778;Stone;180.36;50;13-150 - Swimming Pools
+779;Plastic;697.07;44;13-700 - Security Access and Surveillance
+780;Rubber;145.67;100;7 - Thermal and Moisture Protection
+781;Stone;751.47;98;7-500 - Membrane Roofing
+782;Vinyl;923.32;36;7-800 - Fire and Smoke Protection
+783;Glass;463.93;44;16-300 - Transmission and Distribution
+784;Stone;795.47;8;10-350 - Flagpoles
+785;Glass;49.18;77;5 - Metals
+786;Plastic;801.16;89;3-400 - Precast Concrete
+787;Vinyl;602.14;29;"11-480 - Athletic; Recreational; and Therapeutic Equipment"
+788;Vinyl;55.50;88;11-400 - Food Service Equipment
+789;Aluminum;851.69;85;11-100 - Mercantile Equipment
+790;Brass;387.21;17;7 - Thermal and Moisture Protection
+791;Granite;472.19;21;11-150 - Parking Control Equipment
+792;Vinyl;49.36;89;5-200 - Metal Joists
+793;Plastic;250.55;72;16-700 - Communications
+794;Plexiglass;229.03;42;11-500 - Industrial and Process Equipment
+795;Brass;55.87;80;11-200 - Water Supply and Treatment Equipment
+796;Glass;885.91;3;5-300 - Metal Deck
+797;Granite;825.62;17;1-580 - Project Identification
+798;Aluminum;190.77;68;"11-480 - Athletic; Recreational; and Therapeutic Equipment"
+799;Granite;951.55;5;7-400 - Roofing and Siding Panels
+800;Glass;580.76;16;7-800 - Fire and Smoke Protection
+801;Stone;489.09;15;2-783 - Interlocking Concrete Unit Paving
+802;Granite;120.07;60;10-670 - Storage Shelving
+803;Wood;432.85;65;11-400 - Food Service Equipment
+804;Granite;673.02;24;3-210 - Cast-In-Place Concrete
+805;Vinyl;591.79;47;4 - Masonry
+806;Rubber;66.55;36;10-200 - Louvers and Vents
+807;Granite;736.39;94;6-900 - Wood and Plastic Restoration and Cleaning
+808;Aluminum;185.31;48;10-100 - Visual Display Boards
+809;Vinyl;750.91;38;1-550 - Vehicular Access and Parking
+810;Plexiglass;617.29;3;10-520 - Fire Protection Specialties
+811;Plastic;865.98;58;10-200 - Louvers and Vents
+812;Stone;928.24;15;11-020 - Security and Vault Equipment
+813;Rubber;545.52;13;1-530 - Temporary Construction
+814;Glass;722.76;79;7-800 - Fire and Smoke Protection
+815;Plexiglass;929.87;40;13-010 - Air-Supported Structures
+816;Stone;175.02;65;1-570 - Temporary Controls
+817;Plastic;960.64;47;13-120 - Pre-Engineered Structures
+818;Stone;275.64;94;5-300 - Metal Deck
+819;Plexiglass;635.43;22;5-100 - Structural Metals
+820;Plastic;172.05;93;7-200 - Thermal Protection - Insulation
+821;Plexiglass;24.21;92;4-800 - Masonry Assemblies
+822;Plexiglass;676.19;50;2-783 - Interlocking Concrete Unit Paving
+823;Rubber;71.24;99;5-400 - Cold-Formed Metal Framing
+824;Granite;623.84;61;3-540 - Cementitious Underlayments
+825;Wood;506.84;55;13-150 - Swimming Pools
+826;Vinyl;978.62;58;5-400 - Cold-Formed Metal Framing
+827;Vinyl;762.49;50;9-500 - Ceilings
+828;Stone;964.64;40;5-200 - Metal Joists
+829;Wood;976.66;87;10-520 - Fire Protection Specialties
+830;Plexiglass;236.40;3;11-700 - Medical Equipment
+831;Plastic;820.70;77;11-050 - Library Equipment
+832;Plexiglass;812.05;55;4-050 - Basic Masonry Materials and Methods
+833;Wood;717.35;89;11-100 - Mercantile Equipment
+834;Wood;486.01;43;17-040 - Profit
+835;Plexiglass;357.51;87;11-110 - Commercial Laundry and Dry Cleaning Equipment
+836;Brass;809.39;73;10-250 - Service Walls
+837;Plastic;688.61;86;1-517 - Temporary Telephone
+838;Aluminum;979.36;56;2-310 - Grading
+839;Granite;771.27;96;3-230 - Anchor Bolts
+840;Granite;614.19;63;7-900 - Joint Sealers
+841;Steel;587.24;4;10-400 - Identification Devices
+842;Granite;436.52;94;13-160 - Aquariums
+843;Vinyl;770.33;35;13-500 - Recording Instrumentation
+844;Rubber;89.96;49;2-500 - Utility Services
+845;Vinyl;903.18;18;2-815 - Fountains
+846;Steel;447.28;52;14-600 - Hoists and Cables
+847;Brass;646.80;43;2-830 - Retaining Walls
+848;Granite;985.12;15;5-900 - Metal Restoration and Cleaning
+849;Vinyl;76.73;17;11-470 - Darkroom Equipment
+850;Glass;43.54;81;10-530 - Protective Covers
+851;Granite;716.83;98;9-100 - Metal Support Assemblies
+852;Aluminum;314.56;62;16-500 - Lighting
+853;Brass;131.55;39;2-220 - Site Demolition
+854;Wood;892.31;51;5-300 - Metal Deck
+855;Aluminum;790.52;97;1-523 - Sanitary Facilities
+856;Wood;755.74;62;2-000 - General
+857;Wood;209.13;3;3-210 - Cast-In-Place Concrete
+858;Glass;152.69;25;2-783 - Interlocking Concrete Unit Paving
+859;Aluminum;683.08;95;13-020 - Building Modules
+860;Steel;988.75;61;16-100 - Electrical
+861;Brass;507.54;18;7-700 - Roof Specialties and Accessories
+862;Plastic;435.40;84;3-600 - Grouts
+863;Rubber;285.69;77;12-700 - Systems Furniture
+864;Plastic;525.87;42;1-523 - Sanitary Facilities
+865;Steel;547.98;49;6-200 - Finish Carpentry
+866;Rubber;630.68;30;"15-700 - Heating; Venting and Air Conditioning"
+867;Vinyl;397.39;95;4-900 - Masonry Restoration and Cleaning
+868;Rubber;672.83;78;9-400 - Terrazzo
+869;Plastic;845.76;54;8-200 - Wood and Plastic Doors
+870;Rubber;643.99;16;10-200 - Louvers and Vents
+871;Vinyl;672.71;84;6-200 - Finish Carpentry
+872;Wood;501.72;11;10-270 - Access Flooring
+873;Plastic;284.94;15;14-400 - Lifts
+874;Plastic;515.63;54;6-900 - Wood and Plastic Restoration and Cleaning
+875;Plastic;795.32;68;2-919 - Topsoil
+876;Glass;199.34;80;11-130 - Audio-Visual Equipment
+877;Plexiglass;695.49;68;15-100 - Plumbing
+878;Glass;658.06;25;8-900 - Glazed Curtain Wall
+879;Brass;494.50;43;3-400 - Precast Concrete
+880;Aluminum;799.30;44;2-780 - Clay Unit Pavers
+881;Steel;471.83;8;2-830 - Retaining Walls
+882;Glass;231.11;100;13-260 - Sludge Conditioning Systems
+883;Brass;477.45;12;4-050 - Basic Masonry Materials and Methods
+884;Wood;282.75;89;9-800 - Acoustical Treatment
+885;Wood;585.77;48;15-200 - Process Piping
+886;Steel;663.62;15;2-790 - Athletic Surfacing
+887;Plastic;783.89;33;2-935 - Plant Maintenance
+888;Wood;635.21;44;9-700 - Wall Finishes
+889;Granite;653.02;66;10-150 - Compartments and Cubicles
+890;Steel;7.54;30;10-670 - Storage Shelving
+891;Stone;894.90;78;2-317 - Select Borrow
+892;Steel;995.55;55;2-315 - Excavation
+893;Rubber;829.18;95;13-900 - Fire Suppression
+894;Vinyl;706.14;17;1-518 - Temporary Water
+895;Plastic;241.99;78;11-600 - Laboratory Equipment
+896;Aluminum;348.18;56;11-190 - Detention Equipment
+897;Vinyl;641.05;37;13-600 - Solar and Wind Energy Equipment
+898;Plexiglass;5.08;91;2-250 - Shoring and Underpinning
+899;Glass;862.17;63;7-600 - Flashing and Sheet Metal
+900;Plastic;126.14;16;2-824 - Wire Fences and Gates
+901;Vinyl;889.45;48;15-050 - Basic Mechanical Materials and Methods
+902;Rubber;305.99;29;13-200 - Storage Tanks
+903;Stone;197.99;7;8-100 - Doors
+904;Rubber;73.14;95;14-600 - Hoists and Cables
+905;Plastic;406.69;81;10-900 - Wardrobe and Closet Specialties
+906;Rubber;947.64;92;12-100 - Art
+907;Plastic;871.77;53;5-900 - Metal Restoration and Cleaning
+908;Glass;744.38;54;9-100 - Metal Support Assemblies
+909;Glass;498.07;55;"1-514 - Temporary Heating; Cooling and Ventilation"
+910;Wood;975.96;95;2-740 - Flexible Pavement Asphalt Pavement
+911;Steel;790.43;79;8-800 - Glazing
+912;Glass;300.45;14;15-300 - Fire Protection Piping
+913;Wood;812.68;42;1-903 - Hazardous Materials Abatement
+914;Vinyl;914.67;11;1-000 - Purpose
+915;Rubber;32.34;49;2-000 - General
+916;Stone;384.57;38;7-100 - Damproofing and Waterproofing
+917;Rubber;116.49;22;5-050 - Basic Metal Materials and Methods
+918;Stone;252.28;40;9-600 - Flooring
+919;Granite;45.28;72;11-020 - Security and Vault Equipment
+920;Aluminum;428.74;91;2-850 - Bridges/Footbridges
+921;Wood;548.93;37;1-530 - Temporary Construction
+922;Aluminum;819.10;40;15-400 - Plumbing Fixtures and Equipment
+923;Granite;433.95;6;2-740 - Flexible Pavement Asphalt Pavement
+924;Stone;458.37;6;14-200 - Elevators
+925;Brass;298.11;3;2-230 - Site Clearing
+926;Granite;653.56;68;2-315 - Excavation
+927;Aluminum;438.86;31;10-250 - Service Walls
+928;Steel;596.11;42;11-500 - Industrial and Process Equipment
+929;Rubber;673.51;82;2-870 - Sculpture/Ornamental
+930;Plastic;193.18;90;2-625 - Retaining Wall Drainage Piping
+931;Wood;121.61;7;2-900 - Landscaping
+932;Wood;950.71;40;11-040 - Ecclesiastical Equipment
+933;Plexiglass;167.48;41;5-900 - Metal Restoration and Cleaning
+934;Vinyl;8.75;59;11-110 - Commercial Laundry and Dry Cleaning Equipment
+935;Brass;695.93;4;6 - Wood and Plastics
+936;Vinyl;434.26;21;2-782 - Brick Pavers
+937;Rubber;343.66;31;2-500 - Utility Services
+938;Plastic;782.05;36;3 - Concrete
+939;Rubber;927.67;62;7 - Thermal and Moisture Protection
+940;Plexiglass;762.83;13;12-900 - Furnishings Restoration and Repair
+941;Plastic;420.53;90;9-400 - Terrazzo
+942;Vinyl;201.68;10;11-870 - Agricultural Equipment
+943;Steel;102.85;63;2-312 - Rough Grading
+944;Aluminum;901.92;35;5-400 - Cold-Formed Metal Framing
+945;Glass;790.88;39;11-170 - Solid Waste Handling Equipment
+946;Steel;72.14;83;1-012 - Superintendent
+947;Steel;170.40;86;11-700 - Medical Equipment
+948;Brass;244.16;38;17-010 - Contingency
+949;Rubber;561.27;50;"1-514 - Temporary Heating; Cooling and Ventilation"
+950;Steel;213.29;93;3-000 - General
+951;Vinyl;513.55;14;13-280 - Hazardous Material Remediation
+952;Granite;650.52;71;1-542 - Construction Scaffolding and Platforms
+953;Aluminum;232.81;92;11-080 - Registration Equipment
+954;Stone;846.86;13;2-850 - Bridges/Footbridges
+955;Steel;244.21;25;2-315 - Excavation
+956;Plexiglass;645.51;68;12-700 - Systems Furniture
+957;Steel;232.36;63;2-821 - Chain Link Fences
+958;Granite;159.78;5;9-680 - Carpet
+959;Steel;514.00;29;4-800 - Masonry Assemblies
+960;Wood;355.22;56;5-300 - Metal Deck
+961;Plastic;207.85;6;13-185 - Kennels and Animal Shelters
+962;Vinyl;804.49;11;3-050 - Concrete Subcontractor
+963;Brass;301.41;69;3-330 - Poured Concrete Basement Walls
+964;Stone;653.12;55;6 - Wood and Plastics
+965;Plexiglass;104.44;95;14-100 - Dumbwaiters
+966;Aluminum;148.15;24;3-500 - Cementitious Decks and Underlayments
+967;Steel;66.50;57;3-540 - Cementitious Underlayments
+968;Wood;132.04;66;13-030 - Special Purpose Rooms
+969;Plastic;621.53;34;10-550 - Postal Specialties
+970;Plastic;739.25;26;2-250 - Shoring and Underpinning
+971;Steel;875.08;46;11-780 - Mortuary Equipment
+972;Rubber;13.42;91;13-230 - Digester Covers and Appurtenances
+973;Plexiglass;171.90;47;3-300 - Footings
+974;Granite;12.00;20;11-090 - Checkroom Equipment
+975;Plastic;403.80;19;5-500 - Metal Fabrications
+976;Stone;186.45;46;5-500 - Metal Fabrications
+977;Rubber;227.16;68;2-824 - Wire Fences and Gates
+978;Steel;851.05;100;13-100 - Lightning Protection
+979;Brass;657.49;89;1-000 - Purpose
+980;Brass;711.41;29;10-820 - Bathroom Accessories
+981;Plexiglass;57.49;100;1-010 - Project Manager
+982;Rubber;57.50;2;11-450 - Residential Equipment
+983;Granite;421.20;18;15 - Mechanical
+984;Vinyl;540.96;36;11-120 - Vending Equipment
+985;Plexiglass;78.01;77;7-200 - Thermal Protection - Insulation
+986;Wood;409.52;57;"15-700 - Heating; Venting and Air Conditioning"
+987;Plastic;931.37;17;13-230 - Digester Covers and Appurtenances
+988;Plexiglass;514.65;33;13-100 - Lightning Protection
+989;Plexiglass;171.95;74;3-210 - Cast-In-Place Concrete
+990;Granite;853.62;70;1-540 - Construction Aids
+991;Aluminum;270.11;85;2-822 - Ornamental Metal Fences and Gates
+992;Plexiglass;705.96;50;8-400 - Entrances and Storefronts
+993;Steel;297.38;98;2-370 - Erosion and Sedimentation Control
+994;Brass;45.28;10;6-900 - Wood and Plastic Restoration and Cleaning
+995;Stone;178.01;30;2-800 - Site Amenities
+996;Stone;16.58;40;"10-800 - Toilet; Bath; and Laundry Specialties"
+997;Brass;211.20;5;17 - Markup and Contingency
+998;Steel;952.50;5;5-600 - Hydraulic Fabrications
+999;Wood;851.52;56;9-900 - Paints and Coatings
+1000;Brass;514.98;23;16-700 - Communications
