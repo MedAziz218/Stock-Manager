@@ -37,8 +37,8 @@ int main(){
 	stock *head,*current;
 	head = (stock*)malloc(sizeof(stock));
 	// Making the stock list so that id=-1 means that the stock is empty
-	// head->value.id = -1;
-	// head->next = NULL;
+	head->value.id = -1;
+	head->next = NULL;
 	// Importing stock data from STOCK_FILE
 	importStock(head);
 	/*
