@@ -5,6 +5,7 @@ typedef struct record {
 						//(convention: -1 means empty history record)
 	char date[32]; //A string with this format: DDD MMM DD HH:MM:SS YYYY
 	int product_id; //self explanatory
+	char product_name[64]; //Product's name
 	int quantity; //self explanatory
 	float unit_price; //self explanatory
 	float operation_price; //total positive/negative per unit
