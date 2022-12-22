@@ -1,6 +1,7 @@
 
 #include<time.h> //Needed to get the current time of operation aka ctime().
 
+//Adds a new record to history.
 void addRecord(history * ht, record p){
 	// Adds a new record to history.
 	stock * ptr,*aux;	
@@ -19,7 +20,8 @@ void addRecord(history * ht, record p){
 	}	
 }
 
-void exportHistory(history * ht){
+//Import the History of records from HISTORY_FILE
+void importHistory(history * ht){
     FILE* ptr; char ch; record tempRecord;
 	ptr = fopen(HISTORY_FILE, "r"); //opening file
 	char t1[2],t2[32],t3[8],t4[64],t5[32],t6[32],t7[32];
@@ -46,11 +48,13 @@ void exportHistory(history * ht){
 
 
 //USE: 
-//Returns a record type object from relevant input.
+// Returns a record type object from relevant input.
 // NewRecord() is to be used whenever a product is added/removed from the stock.
 // It registers the date of the operation (all you need to do is just call it).
-//optype: 0 is [-] and 1 is [+]
-//Just provide the product ID, name, quantity and price.
+// optype: 0 is [-] and 1 is [+]
+// Just provide the product ID, name, quantity and price.
+// Example:
+// record foo = newRecord(1,139,"bar",20,4.5)
 record newRecord(int opType,int ID,char name[],int quantity,float price){
 	record result;
 	time_t current_date; //Date of creation of the object.
@@ -64,3 +68,4 @@ record newRecord(int opType,int ID,char name[],int quantity,float price){
 	result.operation_price=price*quantity;
 	return result;
 }
+
