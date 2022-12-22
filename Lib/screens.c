@@ -62,7 +62,8 @@ void show_MainMenu(char nextScreen[]){
 	gets(userInput);
 	if (strcmp(userInput,"1")==0) strcpy(nextScreen,"1");
 	else if (strcmp(userInput,"6")== 0) strcpy(nextScreen,"logo");
-	else if (strcmp(userInput,"7")== 0) strcpy(nextScreen,"exit");
+	else if (strcmp(userInput,"7")== 0) strcpy(nextScreen,"STONKS");
+	else if (strcmp(userInput,"8")== 0) strcpy(nextScreen,"exit");
 }
 
 
