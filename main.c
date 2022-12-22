@@ -4,6 +4,8 @@
 #include "Lib\cmdFunctions.c"
 #include "Lib\screens.c"
 #include "Lib\stonks.c"
+#include "Lib\history.c"
+
 #ifdef _WIN32
 #include <windows.h>
 #include <conio.h>
@@ -15,10 +17,6 @@
 #include <unistd.h>
 #define clrscr() printf("\e[1;1H\e[2J")
 #endif
-
-
-//TODO: last modified date
-
 
 
 
