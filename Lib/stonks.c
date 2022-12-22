@@ -29,6 +29,7 @@ void addProduct(stock * st, product p){
 int importStock(stock * st){
 	FILE* ptr; char ch; product temp_prod;
 	ptr = fopen(STOCK_FILE, "r"); //opening file
+	printf("here");
 	char temp_str1[400],temp_str2[400],temp_str3[400],temp_str4[400],temp_str5[400];
 	int i=0; int scan_result;
 	do {

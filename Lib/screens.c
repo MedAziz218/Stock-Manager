@@ -3,12 +3,13 @@
 #include <string.h>
 #include "structures.c"
 // these two variables are shared across all functions in order to reduce memory usage
-char tempFileString[999999999]; //a string variable that can be used by any function when needed 
+char tempFileString[99999999999999]; //a string variable that can be used by any function when needed 
 char userInput[128]; //a string variable that can be used by any function to read user input
 char LOGO_FILE[] = "Database\\logo.txt";
 char MENU_FILE[] = "Database\\menu.txt";
 char STOCK_FILE[] = "Database\\stock.csv";
 char STONKS_FILE[] = "Database\\stonks.txt";
+
 //#______ Table Priter _______#//
 void _printTableTopLine(int width,int cols,int n) {
 	printf("┏");
@@ -45,6 +46,14 @@ void printProduct(product prod){
 void show_historique(char nextScreen[]){
 
 	
+}
+void show_STONKS(char nextScreen[]){
+	readFile(STONKS_FILE,tempFileString);
+	printf("%s",tempFileString);
+	printf("\n %58s","Press Enter to Continue ...");
+	getchar();
+	clearScreen();
+	strcpy(nextScreen,"main");
 }
 void show_logo(char nextScreen[]){
 	readFile(LOGO_FILE,tempFileString);

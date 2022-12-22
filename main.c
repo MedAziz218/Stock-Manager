@@ -53,7 +53,7 @@ int main(){
 	printf("------------ %s ----------\n",STOCK_FILE);
 	current = head;
 	int i = 0;
-	while(current != NULL){
+	while(current != NULL ){
 		printf("product %-3d:  ",i);
 		printProduct(current->value);printf("\n");
 		current = current->next;
@@ -86,6 +86,9 @@ int main(){
 		}
 		else if ( strcmp(nextScreen,"1") == 0){
 			show_Screen1(nextScreen);
+		}
+		else if (strcmp(nextScreen,"STONKS") == 0){
+			show_STONKS(nextScreen);
 		}
 		else if ( strcmp(nextScreen,"exit")== 0) break;
 	}
