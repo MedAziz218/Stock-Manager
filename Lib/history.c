@@ -47,6 +47,8 @@ void exportHistory(history * ht){
 
 //USE: 
 //Returns a record type object from relevant input.
+// NewRecord() is to be used whenever a product is added/removed from the stock.
+// It registers the date of the operation (all you need to do is just call it).
 //optype: 0 is [-] and 1 is [+]
 //Just provide the product ID, name, quantity and price.
 record newRecord(int opType,int ID,char name[],int quantity,float price){
