@@ -26,7 +26,9 @@ void addProduct(stock * st, product p){
 		aux->next = ptr; //printProduct((st->next->value));printf("\n");
 	}	
 }
-int importStock(stock * st){
+
+//Imports stock from STOCK_FILE.
+void importStock(stock * st){
 	FILE* ptr; char ch; product temp_prod;
 	ptr = fopen(STOCK_FILE, "r"); //opening file
 	printf("here");
@@ -46,5 +48,18 @@ int importStock(stock * st){
 		}
 		i++;
 	}while(ch != EOF);
+	fclose(ptr);
+}
+
+//Exports the stock to STOCK_FILE. (write_mode: w)
+void exportStock(stock * st){
+	FILE* ptr;
+	fopen(STOCK_FILE,"w");
+	stock *temp = st;
+	while(temp != NULL) {
+	fprintf(ptr,"%i;%c;%d;%i;%c",temp->value.id,temp->value.name,
+	temp->value.price,temp->value.quantity,temp->value.description);
+	temp = temp->next;
+	}
 	fclose(ptr);
 }

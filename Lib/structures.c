@@ -26,7 +26,6 @@ typedef struct product{
 	double price;
 	int quantity;
 	char description[256];
-	
 }  product;
 
 //Stock: A stock of products (Linked List)

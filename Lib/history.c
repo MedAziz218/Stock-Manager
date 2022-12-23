@@ -69,3 +69,32 @@ record newRecord(int opType,int ID,char name[],int quantity,float price){
 	return result;
 }
 
+//Writes to HISTORY_FILE. (mode: w)
+void exportHistory(history * ht){
+	FILE* ptr;
+	fopen(HISTORY_FILE,"w");
+	history *temp = ht;
+	while(temp != NULL) {
+	fprintf(ptr,"%i;%c;%i;%c;%i;%f;%f",temp->value.operation_type,temp->value.date,
+	temp->value.product_id,temp->value.product_name,temp->value.quantity,
+	temp->value.unit_price,temp->value.operation_price);
+	temp = temp->next;
+	}
+	fclose(ptr);
+}
+
+//Same as exportHistory() but appends to file instead
+//of rewriting it. (mode: a)
+void appendHistory(history * ht){
+	FILE* ptr;
+	fopen(HISTORY_FILE,"a");
+	history *temp = ht;
+	while(temp != NULL) {
+	fprintf(ptr,"%i;%c;%i;%c;%i;%f;%f",temp->value.operation_type,temp->value.date,
+	temp->value.product_id,temp->value.product_name,temp->value.quantity,
+	temp->value.unit_price,temp->value.operation_price);
+	temp = temp->next;
+	}
+	fclose(ptr);
+}
+
