@@ -1,18 +1,30 @@
 
 #include<time.h> //Needed to get the current time of operation aka ctime().
 
+
+void copyRecord(record *rec1,record *rec2){
+	// Convinience function to copy product variables
+	rec1->operation_type = rec2->operation_type;
+	strcpy(rec1->date,rec2->date);
+	rec1->product_id = rec2->product_id;
+	strcpy(rec1->product_name,rec2->product_name);
+	rec1->quantity = rec2->quantity;
+	rec1->operation_price = rec2->operation_price;
+	rec1->unit_price = rec2->unit_price;
+}
+
 //Adds a new record to history.
 void addRecord(history * ht, record p){
 	// Adds a new record to history.
-	stock * ptr,*aux;	
+	history * ptr,*aux;	
 	if (ht->value.operation_type == -1){
 		// If the history of records is empty then just set the value of the first element 
-		copyProduct(&(ht->value),&p); 
+		copyRecord(&(ht->value),&p); 
 	} else {
-		ptr = (stock*)malloc(sizeof(stock));	
+		ptr = (history*)malloc(sizeof(history));	
 		ptr->next = NULL;
 		aux = ht;
-		copyProduct(&(ptr->value),&p);
+		copyRecord(&(ptr->value),&p);
 		while(aux->next != NULL){
 			aux = aux->next;
 		}
@@ -24,7 +36,7 @@ void addRecord(history * ht, record p){
 void importHistory(history * ht){
     FILE* ptr; char ch; record tempRecord;
 	ptr = fopen(HISTORY_FILE, "r"); //opening file
-	char t1[2],t2[32],t3[8],t4[64],t5[32],t6[32],t7[32];
+	char t1[32],t2[32],t3[32],t4[64],t5[32],t6[32],t7[32];
 	int i=0; int scan_result;
 	do {
 		scan_result = fscanf(ptr, "%400[^;];%400[^;];%400[^;];%400[^;];%400[^;];%400[^;];%400[^\n]", 
@@ -55,17 +67,17 @@ void importHistory(history * ht){
 // Just provide the product ID, name, quantity and price.
 // Example:
 // record foo = newRecord(1,139,"bar",20,4.5)
-record newRecord(int opType,int ID,char name[],int quantity,float price){
+record newRecord(int opType,product prod,int quantity){
 	record result;
 	time_t current_date; //Date of creation of the object.
 	time(&current_date);
 	strcpy(result.date,ctime(&current_date));
 	result.operation_type=opType;
-	result.product_id=ID;
-	strcpy(result.product_name,name);
-	result.unit_price=price;
+	result.product_id=prod.id;
+	strcpy(result.product_name,prod.name);
+	result.unit_price=prod.price;
 	result.quantity=quantity;
-	result.operation_price=price*quantity;
+	result.operation_price=prod.price*quantity;
 	return result;
 }
 
