@@ -87,6 +87,7 @@ int inputId(stock * st){
 		}
 	return temp_id;
 }
+//hello
 /*
 // Deletes an existing product from the stock
 void deleteProduct(stock * st, int id){
