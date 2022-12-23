@@ -3,7 +3,7 @@
 #include <string.h>
 #include "structures.c"
 // these two variables are shared across all functions in order to reduce memory usage
-char tempFileString[99999999999999]; //a string variable that can be used by any function when needed 
+char tempFileString[65536]; //a string variable that can be used by any function when needed 
 char userInput[128]; //a string variable that can be used by any function to read user input
 char LOGO_FILE[] = "Database\\logo.txt";
 char MENU_FILE[] = "Database\\menu.txt";
