@@ -87,7 +87,7 @@ int inputId(stock * st){
 		}
 	return temp_id;
 }
-
+/*
 // Deletes an existing product from the stock
 void deleteProduct(stock * st, int id){
 	stock *ptr, *aux;
@@ -116,8 +116,8 @@ void deleteProduct(stock * st, int id){
 		printf("The item with the Id %d was deleted successfully", id);
 	}
 }
-
-
+*/
+/*
 void search(stock* st, int choice, char key[]){
 	// function that searches for specific items from the stock based on an input provided by the user
 	stock *aux, *temp_st;
@@ -194,3 +194,4 @@ void search(stock* st, int choice, char key[]){
 	else{
 
 	}
+*/
