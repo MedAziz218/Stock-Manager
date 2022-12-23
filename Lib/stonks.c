@@ -63,3 +63,134 @@ void exportStock(stock * st){
 	}
 	fclose(ptr);
 }
+
+int checkIfItemExists(stock * st, int id){
+	// Checks if an item exists in the stock (0 if it exists, 1 if it doesn't)
+	stock *aux = st;
+	while(aux != NULL){
+		if(aux->value.id == id){
+			return 0;
+		}
+		aux = aux->next;
+	}
+	return 1;
+}
+
+int inputId(stock * st){
+	//function to input the Id of an item to either update or delete
+	int temp_id;
+	while(1){
+			printf("Input the id of the item you want to delete from the stock: ");
+			scanf("%d", &temp_id);
+			if(checkIfItemExists(st, temp_id) == 0) break;
+			else printf("There are no items with the id %d, please try again\n");
+		}
+	return temp_id;
+}
+
+// Deletes an existing product from the stock
+void deleteProduct(stock * st, int id){
+	stock *ptr, *aux;
+	aux = st;
+	ptr = (stock*)malloc(sizeof(stock));
+	if (st->value.id == -1){
+		// If the stock is empty then there's nothing to delete
+		printf("The stock is already empty");
+	}
+	else{
+		if (st->value.id == id){
+			// If the item to delete is in the first node
+			ptr = st;
+			st = st->next;
+			free(ptr);
+		}
+		else{
+			// else iterate through the list to find the item and delete it
+			while(aux->next->value.id != id){
+				aux = aux->next;
+			}
+			ptr = aux->next;
+			aux->next = ptr->next;
+			free(ptr);
+		}
+		printf("The item with the Id %d was deleted successfully", id);
+	}
+}
+
+
+void search(stock* st, int choice, char key[]){
+	// function that searches for specific items from the stock based on an input provided by the user
+	stock *aux, *temp_st;
+	temp_st = (stock*)malloc(sizeof(stock)); // temporary linked list o show the resulting items after the search
+	temp_st->value.id = -1;
+	int choice;	// choice of the product attribute that will be used for the search
+	char key[64]; // variable to store the key that will be used for the search
+	aux = st;
+	// while(1){
+	// 	printf("Would you like to search by: \n"
+	// 	   "1- id \n"
+	// 	   "2- name \n"
+	// 	   "3- price \n"
+	// 	   "4- quantity \n"
+	// 	   "5- description \n"
+	// 	   );
+	// 		scanf("%d", &choice);
+	// 	if (choice >=1 && choice <=5){
+	// 		break;
+	// 	}
+	// 	else{
+	// 		scanf("The input you've provided is not valid, please try again\n");
+	// 	}
+	// }
+	// printf("search for: ");
+	// scanf("%s", &key);
+	//strstr(s1, s2) returns true if s1 contains s2
+	//strlwr(s) return the string s in lowercase
+	switch (choice){
+		case 1: 
+			while(aux->next != NULL){
+				if(aux->value.id == atoi(key)){
+					addProduct(temp_st, aux->value);
+				}
+				aux = aux->next;
+			}
+			break;
+		case 2:
+			while(aux != NULL){
+				if(strstr(strlwr(aux->value.name), strlwr(key))){
+					addProduct(temp_st, aux->value);
+				}
+				aux = aux->next;
+			}
+			break;
+		case 3: 
+			while(aux != NULL){
+				if(atof(key) <= aux->value.price + 50 && atof(key) >= aux->value.price - 50){
+					addProduct(temp_st, aux->value);
+				}
+				aux = aux->next;
+			}
+			break;
+		case 4: 
+			while(aux != NULL){
+				if(aux->value.quantity == atoi(key)){
+					addProduct(temp_st, aux->value);
+				}
+				aux = aux->next;
+			}
+			break;
+		case 5:
+			while(aux != NULL){
+				if(strstr(strlwr(aux->value.description), strlwr(key))){
+					addProduct(temp_st, aux->value);
+				}
+				aux = aux->next;
+			}
+			break;
+	}
+	if(temp_st->value.id == -1){
+		printf("Your search for '%s' did not match any product.\nMake sure that your input is spelled correctly");
+	}
+	else{
+
+	}
