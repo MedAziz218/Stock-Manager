@@ -39,7 +39,19 @@ int main(){
 	head->next = NULL;
 	// Importing stock data from STOCK_FILE
 	importStock(head);
-	/*
+	stock* result = search(head,1,"1");
+	printStock(result);
+	printf("--------\n");
+	deleteProduct(head,200);
+	deleteProduct(head,199);
+	deleteProduct(head,1);
+	deleteProduct(head,2);
+	result = search(head,1,"1");
+	printStock(result);free(result);
+	printf("--------\n");
+	
+	//printf("------------ %s ----------\n",STOCK_FILE);printStock(head);
+	/* // Adding product manually (example)
 		product test;
 		test.id = 27;
 		strcpy(test.name,"hola");
@@ -48,15 +60,6 @@ int main(){
 		strcpy(test.description,"nyes");
 		addProduct(head,test);
 	*/
-	printf("------------ %s ----------\n",STOCK_FILE);
-	current = head;
-	int i = 0;
-	while(current != NULL ){
-		printf("product %-3d:  ",i);
-		printProduct(current->value);printf("\n");
-		current = current->next;
-		i++;
-	}
 	printf("\n--importing data from STOCK_FILE done\n");
 	printf("--Test Completed\n");
 	printf( "--press Enter to proceed to main program ... ");

@@ -31,7 +31,7 @@ void addProduct(stock * st, product p){
 void deleteProduct(stock * st, int id){
 	stock *ptr, *aux;
 	aux = st;
-	ptr = (stock*)malloc(sizeof(stock));
+	//ptr = (stock*)malloc(sizeof(stock));
 	if (st->value.id == -1){
 		// If the stock is empty then there's nothing to delete
 		printf("The stock is already empty");
@@ -39,9 +39,17 @@ void deleteProduct(stock * st, int id){
 	else{
 		if (st->value.id == id){
 			// If the item to delete is in the first node
-			ptr = st;
-			st = st->next;
-			free(ptr);
+			//ptr = st;
+			//st = st->next;
+			//free(ptr);
+			if (st->next == NULL) st->value.id = -1;
+			else {
+				st->value = st->next->value;
+				ptr = st->next;
+				st->next = st->next->next;
+				free(ptr);
+			}
+			
 		}
 		else{
 			// else iterate through the list to find the item and delete it
@@ -52,7 +60,7 @@ void deleteProduct(stock * st, int id){
 			aux->next = ptr->next;
 			free(ptr);
 		}
-		printf("The item with the Id %d was deleted successfully", id);
+		printf("The item with the Id %d was deleted successfully\n", id);
 	}
 }
 
@@ -61,7 +69,7 @@ void deleteProduct(stock * st, int id){
 void importStock(stock * st){
 	FILE* ptr; char ch; product temp_prod;
 	ptr = fopen(STOCK_FILE, "r"); //opening file
-	printf("here");
+	
 	char temp_str1[400],temp_str2[400],temp_str3[400],temp_str4[400],temp_str5[400];
 	int i=0; int scan_result;
 	do {
@@ -94,80 +102,85 @@ void exportStock(stock * st){
 	fclose(ptr);
 }
 
-void search(stock* st, int choice, char key[]){
-	// function that searches for specific items from the stock based on an input provided by the user
-	stock *aux, *temp_st;
-	temp_st = (stock*)malloc(sizeof(stock)); // temporary linked list o show the resulting items after the search
-	temp_st->value.id = -1;
-	//int choice;	// choice of the product attribute that will be used for the search
-	//char key[64]; // variable to store the key that will be used for the search
-	aux = st;
-	// while(1){
-	// 	printf("Would you like to search by: \n"
+// function that searches for specific items from the stock based on an input provided as parameter
+// "choice" designates the search type (1 for id , 2 for name, 3 for price, 4 for quantity, 5 for description)
+// "key" designates the key words or values we re searching for 
+stock* search(stock* st, int choice, char key[]){
+	
+	int range = 14; // range for searching by price.
+	stock *aux, *temp_stock;
+	char *temp_key;
+	
+	temp_key = (char*)malloc(sizeof(char)*strlen(key));
+	strcpy(temp_key,key); strlwr(temp_key);
+
+	temp_stock = (stock*)malloc(sizeof(stock)); // temporary linked list to show the resulting items after the search
+	temp_stock->value.id = -1;
+	// 	Would you like to search by:
 	// 	   "1- id \n"
 	// 	   "2- name \n"
 	// 	   "3- price \n"
 	// 	   "4- quantity \n"
 	// 	   "5- description \n"
-	// 	   );
-	// 		scanf("%d", &choice);
-	// 	if (choice >=1 && choice <=5){
-	// 		break;
-	// 	}
-	// 	else{
-	// 		scanf("The input you've provided is not valid, please try again\n");
-	// 	}
-	// }
-	// printf("search for: ");
-	// scanf("%s", &key);
 	//strstr(s1, s2) returns true if s1 contains s2
-	//strlwr(s) return the string s in lowercase
+	//strlwr(s) turn the string s to all lowercase caracters
+	
+	aux = st;
 	switch (choice){
 		case 1: 
+			//by id (will always return one value since each id is unique )
 			while(aux->next != NULL){
 				if(aux->value.id == atoi(key)){
-					addProduct(temp_st, aux->value);
+					addProduct(temp_stock, aux->value);
 				}
 				aux = aux->next;
 			}
 			break;
 		case 2:
+			//by name (will return all product with name containing the given key)
 			while(aux != NULL){
-				if(strstr(strlwr(aux->value.name), strlwr(key))){
-					addProduct(temp_st, aux->value);
+				char temp_str[64];
+				strcpy(temp_str,aux->value.name);
+				
+				if(strstr(strlwr(temp_str), temp_key)){
+					addProduct(temp_stock, aux->value);
 				}
 				aux = aux->next;
 			}
 			break;
 		case 3: 
+			//by price (will return all product with  key-range<= price <=  key+range )
+			
 			while(aux != NULL){
-				if(atof(key) <= aux->value.price + 50 && atof(key) >= aux->value.price - 50){
-					addProduct(temp_st, aux->value);
+				if(atof(key) <= aux->value.price + range && atof(key) >= aux->value.price - range){
+					addProduct(temp_stock, aux->value);
 				}
 				aux = aux->next;
 			}
 			break;
 		case 4: 
+			//by quantity (will return all products with quantity == key)
 			while(aux != NULL){
 				if(aux->value.quantity == atoi(key)){
-					addProduct(temp_st, aux->value);
+					addProduct(temp_stock, aux->value);
 				}
 				aux = aux->next;
 			}
 			break;
 		case 5:
+			//by description (same as searching by name ....)
 			while(aux != NULL){
-				if(strstr(strlwr(aux->value.description), strlwr(key))){
-					addProduct(temp_st, aux->value);
+				char temp_str[256];
+				strcpy(temp_str,aux->value.description);
+
+				if(strstr(strlwr(temp_str), temp_key)){
+					addProduct(temp_stock, aux->value);
 				}
 				aux = aux->next;
 			}
 			break;
 	}
-	if(temp_st->value.id == -1){
-		printf("Your search for '%s' did not match any product.\nMake sure that your input is spelled correctly");
-	}
-	else{
-
-	}
+	//printStock(temp_stock);
+	free(temp_key);
+	return temp_stock;
 }

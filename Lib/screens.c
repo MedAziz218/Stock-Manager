@@ -57,6 +57,7 @@ void printStock(stock * st){
 			printf("\n");
 		}while (aux!= NULL);	
 	}
+	else printf("it s empty\n");
 }
 void show_historique(char nextScreen[]){
 
