@@ -27,6 +27,36 @@ void addProduct(stock * st, product p){
 	}	
 }
 
+// Deletes an existing product from the stock
+void deleteProduct(stock * st, int id){
+	stock *ptr, *aux;
+	aux = st;
+	ptr = (stock*)malloc(sizeof(stock));
+	if (st->value.id == -1){
+		// If the stock is empty then there's nothing to delete
+		printf("The stock is already empty");
+	}
+	else{
+		if (st->value.id == id){
+			// If the item to delete is in the first node
+			ptr = st;
+			st = st->next;
+			free(ptr);
+		}
+		else{
+			// else iterate through the list to find the item and delete it
+			while(aux->next->value.id != id){
+				aux = aux->next;
+			}
+			ptr = aux->next;
+			aux->next = ptr->next;
+			free(ptr);
+		}
+		printf("The item with the Id %d was deleted successfully", id);
+	}
+}
+
+
 //Imports stock from STOCK_FILE.
 void importStock(stock * st){
 	FILE* ptr; char ch; product temp_prod;
