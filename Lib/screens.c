@@ -44,6 +44,20 @@ void printProduct(product prod){
 	//convinience method to print a product variable
 	printf("%-3d, %-11s, %-9.3f,%5d,%s",prod.id,prod.name,prod.price,prod.quantity,prod.description);
 }
+
+void printStock(stock * st){
+	//convinience method to print the stock 
+	stock * aux;
+	if (st->value.id != -1){
+		aux = st;
+		do
+		{
+			printProduct(aux->value);
+			aux = aux->next;
+			printf("\n");
+		}while (aux!= NULL);	
+	}
+}
 void show_historique(char nextScreen[]){
 
 	
