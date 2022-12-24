@@ -69,8 +69,8 @@ void search(stock* st, int choice, char key[]){
 	stock *aux, *temp_st;
 	temp_st = (stock*)malloc(sizeof(stock)); // temporary linked list o show the resulting items after the search
 	temp_st->value.id = -1;
-	int choice;	// choice of the product attribute that will be used for the search
-	char key[64]; // variable to store the key that will be used for the search
+	//int choice;	// choice of the product attribute that will be used for the search
+	//char key[64]; // variable to store the key that will be used for the search
 	aux = st;
 	// while(1){
 	// 	printf("Would you like to search by: \n"
