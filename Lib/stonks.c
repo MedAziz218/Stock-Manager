@@ -1,4 +1,16 @@
 
+product* getProduct(stock*st,int id){
+	stock * aux; //product* temp_prod; 
+	aux = st;
+	while (aux != NULL){
+		if (aux->value.id == id){
+			return &(aux->value);
+		}
+		aux = aux->next;
+	}
+	return NULL;
+}
+
 void copyProduct(product *prod1,product *prod2){
 	// Convinience function to copy product variables
 	prod1->id = prod2->id; strcpy(prod1->name,prod2->name);
@@ -30,37 +42,55 @@ void addProduct(stock * st, product p){
 // Deletes an existing product from the stock
 void deleteProduct(stock * st, int id){
 	stock *ptr, *aux;
-	aux = st;
+	int cond = 0;
 	//ptr = (stock*)malloc(sizeof(stock));
+
+	// If the stock is empty then there's nothing to delete
 	if (st->value.id == -1){
-		// If the stock is empty then there's nothing to delete
-		printf("The stock is already empty");
+		printf("The stock is already empty\n");
+		return;
 	}
-	else{
-		if (st->value.id == id){
-			// If the item to delete is in the first node
-			//ptr = st;
-			//st = st->next;
-			//free(ptr);
-			if (st->next == NULL) st->value.id = -1;
-			else {
-				st->value = st->next->value;
-				ptr = st->next;
-				st->next = st->next->next;
-				free(ptr);
-			}
+
+	// If the stock isn' t empty
+	// If the item to delete is in the first node
+	if (st->value.id == id){
+		cond = 1;
+		// If the stock has one item
+		if (st->next == NULL) {
+			st->value.id = -1;
 			
-		}
-		else{
-			// else iterate through the list to find the item and delete it
-			while(aux->next->value.id != id){
-				aux = aux->next;
-			}
-			ptr = aux->next;
-			aux->next = ptr->next;
+		// If the stock has more than one item
+		} else {
+			st->value = st->next->value;
+			ptr = st->next;
+			st->next = st->next->next;
 			free(ptr);
 		}
-		printf("The item with the Id %d was deleted successfully\n", id);
+		
+	}
+	else{
+		// else iterate through the list to find the item and delete it
+		aux = st;
+		while (aux->next != NULL)
+		{	
+			if (aux->next->value.id == id) {
+				ptr = aux->next;
+				aux->next = aux->next->next;
+				cond = 1;
+				break;	
+			}
+			aux = aux->next;
+		}
+	}
+
+	//TODO: remove this block when project is finished.
+	if (cond) {
+		printf("The item with the Id %d ",id);
+		setTextColorBright(GREEN_TXT);printf("was deleted successfully");resetColor();printf(".\n");
+	}
+	else {
+		printf("The item with the Id %d ",id);
+		setTextColor(RED_TXT);printf("was not found");resetColor();printf(".\n");
 	}
 }
 
@@ -92,13 +122,20 @@ void importStock(stock * st){
 //Exports the stock to STOCK_FILE. (write_mode: w)
 void exportStock(stock * st){
 	FILE* ptr;
-	fopen(STOCK_FILE,"w");
+	ptr = fopen(STOCK_FILE,"w");
 	stock *temp = st;
-	while(temp != NULL) {
-	fprintf(ptr,"%i;%c;%d;%i;%c",temp->value.id,temp->value.name,
-	temp->value.price,temp->value.quantity,temp->value.description);
-	temp = temp->next;
+	fprintf(ptr,"id;name;price;quantity;description\n");
+	if (ptr == NULL){
+		setTextColor(RED_TXT);printf("Error");resetColor();
+		printf(": File Access denied.\n");
+		return;
 	}
+	while(temp != NULL) {
+		fprintf(ptr,"%i;%s;%.3f;%i;%s\n",temp->value.id,temp->value.name,
+				temp->value.price,temp->value.quantity,temp->value.description);
+		temp = temp->next;
+	}
+	setTextColorBright(GREEN_TXT);printf("Exported successfully");resetColor();printf(".\n");
 	fclose(ptr);
 }
 
@@ -113,7 +150,7 @@ stock* search(stock* st, int choice, char key[]){
 	
 	temp_key = (char*)malloc(sizeof(char)*strlen(key));
 	strcpy(temp_key,key); strlwr(temp_key);
-
+	
 	temp_stock = (stock*)malloc(sizeof(stock)); // temporary linked list to show the resulting items after the search
 	temp_stock->value.id = -1;
 	// 	Would you like to search by:
@@ -129,8 +166,9 @@ stock* search(stock* st, int choice, char key[]){
 	switch (choice){
 		case 1: 
 			//by id (will always return one value since each id is unique )
-			while(aux->next != NULL){
-				if(aux->value.id == atoi(key)){
+			while(aux != NULL){
+				
+				if(aux->value.id == atoi(temp_key)){
 					addProduct(temp_stock, aux->value);
 				}
 				aux = aux->next;

@@ -1,6 +1,11 @@
 {
   "files.associations": {
-    "time.h": "c"
+    "time.h": "c",
+    "typeinfo": "c",
+    "type_traits": "c",
+    "cmath": "c",
+    "conio.h": "c",
+    "ctype.h": "c"
   },
   "C_Cpp_Runner.msvcBatchPath": "",
   "C_Cpp_Runner.cCompilerPath": "gcc",

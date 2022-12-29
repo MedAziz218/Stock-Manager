@@ -39,18 +39,28 @@ int main(){
 	head->next = NULL;
 	// Importing stock data from STOCK_FILE
 	importStock(head);
+	/*
 	stock* result = search(head,1,"1");
-	printStock(result);
-	printf("--------\n");
-	deleteProduct(head,200);
-	deleteProduct(head,199);
+	result = search(head,2,"Alu");
+	printStock(result);//free(result);
+	exportStock(result);
+	printf("-------- end of search test ---------\n\n");*/
+	/*
 	deleteProduct(head,1);
-	deleteProduct(head,2);
-	result = search(head,1,"1");
-	printStock(result);free(result);
-	printf("--------\n");
+	deleteProduct(head,10);
+	deleteProduct(head,17);
+	deleteProduct(head,5);
+	deleteProduct(head,5);
+	deleteProduct(head,500);
+	exportStock(head)
+	//show_update(nextScreen,head);
+	printf("-------- end of deleteProduct test ---------\n\n");;*/
+
+
+	
 	
 	//printf("------------ %s ----------\n",STOCK_FILE);printStock(head);
+	//return 0;
 	/* // Adding product manually (example)
 		product test;
 		test.id = 27;
@@ -59,13 +69,14 @@ int main(){
 		test.quantity = 1;
 		strcpy(test.description,"nyes");
 		addProduct(head,test);
-	*/
+	
+	printStock(head);
 	printf("\n--importing data from STOCK_FILE done\n");
 	printf("--Test Completed\n");
 	printf( "--press Enter to proceed to main program ... ");
-	printf("\n");
-	
-	getchar();
+	printf("\n");*/
+
+	//getchar();
 	/*______ End of Test_______*/
 
 	
@@ -73,7 +84,7 @@ int main(){
 	/*______ Main Program ______*/
 	
 
-	strcpy(nextScreen,"logo"); //set current screen to main Menu
+	strcpy(nextScreen,"main"); //set current screen to main Menu
 	while(1){
 		
 		clearScreen();
@@ -82,11 +93,14 @@ int main(){
 		if (strcmp(nextScreen,"logo") == 0){
 			show_logo(nextScreen);
 		}
-		if (strcmp(nextScreen,"main") == 0){
+		else if (strcmp(nextScreen, "update") == 0) {
+			show_update(nextScreen,head);
+		}
+		else if (strcmp(nextScreen,"main") == 0){
 			show_MainMenu(nextScreen);
 		}
-		else if ( strcmp(nextScreen,"1") == 0){
-			show_Screen1(nextScreen);
+		else if ( strcmp(nextScreen,"add") == 0){
+			show_addProduct(nextScreen,head);
 		}
 		else if (strcmp(nextScreen,"STONKS") == 0){
 			show_STONKS(nextScreen);

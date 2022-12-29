@@ -1,3 +1,15 @@
+#ifdef _WIN32
+#include <windows.h>
+#include <conio.h>
+#define OsWindows 1
+#define clrscr() system("cls")
+#endif
+
+#ifdef linux
+#define OsWindows 0
+#include <unistd.h>
+#define clrscr() printf("\e[1;1H\e[2J")
+#endif
 enum Colors {
     RESET_COLOR, 
     BLACK_TXT = 30, RED_TXT,GREEN_TXT,YELLOW_TXT,BLUE_TXT,MAGENTA_TXT,CYAN_TXT,WHITE_TXT,
@@ -9,7 +21,18 @@ enum ClearCodes {
     CLEAR_FROM_CURSOR_TO_BEGIN,
     CLEAR_ALL
 };
+struct {
+    int col,row;
+    int lower_border,upper_border;
+    int left_border,right_border;
+}CURSOR = {0,0,0,10,0,10};
 
+static inline void hideCursor() {
+    printf("\033[?25l");
+}
+static inline void showCursor() {
+    printf("\033[?25h");
+}
 static inline void setTextColorBright(int code) {
     printf("\x1b[%d;1m", code);
 }
@@ -34,11 +57,21 @@ static inline void moveDown(int positions) {
 static inline void moveUp(int positions) {
     printf("\x1b[%dA", positions);
 }
+static inline void moveLeft(int positions) {
+    printf("\x1b[%dD", positions);
+}
+static inline void moveRight(int positions) {
+    printf("\x1b[%dC", positions);
+}
 static inline void moveTo(int row, int col) {
     printf("\x1b[%d;%df", row, col);
+    
 }
+
 static inline void clearScreen(void) {
-    printf("\x1b[%dJ", CLEAR_ALL);moveTo(0,0);
+    //printf("\x1b[%dJ", CLEAR_ALL);
+    clrscr();//moveTo(0,0);
+   
 }
 static inline void saveCursorPosition(void) {
     printf("\x1b%d", 7);
