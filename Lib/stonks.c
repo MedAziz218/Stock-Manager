@@ -107,7 +107,7 @@ void importStock(stock * st){
 	int i=0; int scan_result;
 	do {
 		memset(temp_str5,'\0',sizeof(char)*50);
-		scan_result = fscanf(ptr, "%400[^;];%400[^;];%400[^;];%400[^;];%400[^\n]", 
+		scan_result = fscanf(ptr,"%400[^;];%400[^;];%400[^;];%400[^;];%400[^\n]", 
 								temp_str1, temp_str2, temp_str3,temp_str4, temp_str5);
 		ch = fgetc(ptr);
 		if (i>0 && scan_result >= 4){
@@ -117,7 +117,6 @@ void importStock(stock * st){
 			temp_prod.quantity = atoi(temp_str4);
 			strcpy(temp_prod.description,temp_str5);
 			addProduct(st,temp_prod);
-
 		}
 		i++;
 	}while(ch != EOF);
