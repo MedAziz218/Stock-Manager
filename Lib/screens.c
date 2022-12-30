@@ -188,7 +188,7 @@ void show_addProduct(char nextScreen[],stock*st){
 	// Error Message settings
 	_MessageFormat error_msg;
 	char* error1="This ID already exist please try another one.";
-	char* error2="Please Specifi an ID";
+	char* error2="Please Specify an ID";
 	error_msg.text = error1;
 	error_msg.row = 14;
 	error_msg.pre_tab = 42;
@@ -244,7 +244,7 @@ void show_updateProduct(char nextScreen[],stock*st){
 	
 	
 	// Error Message settings
-	char* error1="This ID is already in use please try another one.";
+	char* error1="This ID does not exist please try another one.";
 	char* error2="Please Specify an ID";
 	_MessageFormat error_msg;
 	error_msg.text = error1;//"This ID does exist please try another one.";
@@ -310,12 +310,13 @@ void show_updateProduct(char nextScreen[],stock*st){
 		if (inp == -1) return;
 		product_to_edit = getProduct(st,inp);
 		if (product_to_edit->id != -1) break;
-		else {
+		else  {
 			printMessage(error_msg);
 			printMessage(input_int);	
 		}
 	}
-	
+	wipeMessage(input_int);
+	wipeMessage(input_msg);
 	copyProduct(&temp_stock->value,product_to_edit);
 	
 	while (1)

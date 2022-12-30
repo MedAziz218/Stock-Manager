@@ -132,7 +132,7 @@ void exportStock(stock * st){
 	fprintf(ptr,"id;name;price;quantity;description\n");
 	if (ptr == NULL){
 		setTextColor(RED_TXT);printf("Error");resetColor();
-		printf(": File Access denied.\n");
+		//printf(": File Access denied.\n");
 		return;
 	}
 	while(temp != NULL) {
@@ -142,7 +142,7 @@ void exportStock(stock * st){
 		temp = temp->next;
 		//if (strlen(temp->value.name)) strcpy(temp->value.name," ");
 	}
-	setTextColorBright(GREEN_TXT);printf("Exported successfully");resetColor();printf(".\n");
+	//setTextColorBright(GREEN_TXT);printf("Exported successfully");resetColor();printf(".\n");
 	fclose(ptr);
 }
 
