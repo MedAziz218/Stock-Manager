@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html data-wf-domain="template-method.webflow.io" data-wf-page="560eb94ab52962bd77dfcf15" data-wf-site="560eb94ab52962bd77dfcf14" data-darkreader-mode="dynamic" data-darkreader-scheme="dark" class="w-mod-js w-mod-no-touch w-mod-video w-mod-no-ios wf-roboto-n3-active wf-roboto-n4-active wf-roboto-n5-active wf-robotoslab-n4-active wf-active" style=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style class="darkreader darkreader--fallback" media="screen"></style><style class="darkreader darkreader--text" media="screen"></style><style class="darkreader darkreader--invert" media="screen">.jfk-bubble.gtx-bubble, .captcheck_answer_label > input + img, span#closed_text > img[src^="https://www.gstatic.com/images/branding/googlelogo"], span[data-href^="https://www.hcaptcha.com/"] > #icon, #bit-notification-bar-iframe, ::-webkit-calendar-picker-indicator {
+    filter: invert(100%) hue-rotate(180deg) brightness(105%) contrast(90%) !important;
+}</style><style class="darkreader darkreader--inline" media="screen">[data-darkreader-inline-bgcolor] {
+  background-color: var(--darkreader-inline-bgcolor) !important;
+}
+[data-darkreader-inline-bgimage] {
+  background-image: var(--darkreader-inline-bgimage) !important;
+}
+[data-darkreader-inline-border] {
+  border-color: var(--darkreader-inline-border) !important;
+}
+[data-darkreader-inline-border-bottom] {
+  border-bottom-color: var(--darkreader-inline-border-bottom) !important;
+}
+[data-darkreader-inline-border-left] {
+  border-left-color: var(--darkreader-inline-border-left) !important;
+}
+[data-darkreader-inline-border-right] {
+  border-right-color: var(--darkreader-inline-border-right) !important;
+}
+[data-darkreader-inline-border-top] {
+  border-top-color: var(--darkreader-inline-border-top) !important;
+}
+[data-darkreader-inline-boxshadow] {
+  box-shadow: var(--darkreader-inline-boxshadow) !important;
+}
+[data-darkreader-inline-color] {
+  color: var(--darkreader-inline-color) !important;
+}
+[data-darkreader-inline-fill] {
+  fill: var(--darkreader-inline-fill) !important;
+}
+[data-darkreader-inline-stroke] {
+  stroke: var(--darkreader-inline-stroke) !important;
+}
+[data-darkreader-inline-outline] {
+  outline-color: var(--darkreader-inline-outline) !important;
+}
+[data-darkreader-inline-stopcolor] {
+  stop-color: var(--darkreader-inline-stopcolor) !important;
+}</style><style class="darkreader darkreader--variables" media="screen">:root {
+   --darkreader-neutral-background: #141617;
+   --darkreader-neutral-text: #e3dfd9;
+   --darkreader-selection-background: #0051b3;
+   --darkreader-selection-text: #f4f2ee;
+}</style><style class="darkreader darkreader--root-vars" media="screen"></style><style class="darkreader darkreader--user-agent" media="screen">html {
+    background-color: #071e29 !important;
+}
+html {
+    color-scheme: dark !important;
+}
+html, body {
+    background-color: #191b1c;
+}
+html, body {
+    border-color: #797063;
+    color: #f4f2ee;
+}
+a {
+    color: #3698ff;
+}
+table {
+    border-color: #586063;
+}
+::placeholder {
+    color: #bbb4a9;
+}
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    background-color: #434700 !important;
+    color: #f4f2ee !important;
+}
+::-webkit-scrollbar {
+    background-color: #222526;
+    color: #b4aca1;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #484e51;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #5b6367;
+}
+::-webkit-scrollbar-thumb:active {
+    background-color: #4c5255;
+}
+::-webkit-scrollbar-corner {
+    background-color: #191b1c;
+}
+::selection {
+    background-color: #0051b3 !important;
+    color: #f4f2ee !important;
+}
+::-moz-selection {
+    background-color: #0051b3 !important;
+    color: #f4f2ee !important;
+}</style><title>Stock-Manager</title><meta content="width=device-width, initial-scale=1" name="viewport"><meta content="Webflow" name="generator"><link href="./Method Template_files/template-method.webflow.cd9516ad2.css" rel="stylesheet" type="text/css"><style class="darkreader darkreader--cors" media="screen">html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type="button"],input[type="reset"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto}input[type="search"]{-webkit-appearance:textfield;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}textarea{overflow:auto}optgroup{font-weight:bold}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}
+
+
+
+
+body {
+  font-family: Roboto, sans-serif;
+  color: #fff;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+h1 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 38px;
+  line-height: 44px;
+  font-weight: 500;
+}
+
+h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 32px;
+  line-height: 36px;
+  font-weight: 500;
+}
+
+h3 {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 500;
+}
+
+h4 {
+  margin-top: 0px;
+  margin-bottom: 5px;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+h6 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+p {
+  margin-bottom: 10px;
+  line-height: 24px;
+  font-weight: 300;
+}
+
+.nav-menu {
+  text-align: center;
+}
+
+.nav-link {
+  padding: 26px 13px;
+  color: hsla(0, 0%, 100%, .62);
+  font-size: 13px;
+  line-height: 18px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.nav-link:hover {
+  color: #fff;
+}
+
+.nav-link.w--current {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* FONT */
+@font-face {
+  font-family: xirod;
+  src: url(xirod.ttf);
+}
+
+.cursed {
+  font-family: xirod;
+}
+
+
+.nav-link.logo {
+  padding-top: 23px;
+  padding-bottom: 23px;
+  font-family: 'Roboto Slab', sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.nav-bar {
+  background-color: transparent;
+}
+
+.hero {
+  height: 100vh;
+  background-image: -webkit-radial-gradient(circle farthest-corner at 50% 100%, rgba(0, 0, 0, .46) 1%, rgba(0, 0, 0, .82) 91%), url('Intro_slide_-_digital_stock_chart_going_up_-_source_getty.webp');
+  background-image: radial-gradient(circle farthest-corner at 50% 100%, rgba(0, 0, 0, .46) 1%, rgba(0, 0, 0, .82) 91%), url('Intro_slide_-_digital_stock_chart_going_up_-_source_getty.webp');
+  background-position: 0px 0px, 50% 50%;
+  background-size: auto, cover;
+  background-repeat: repeat, no-repeat;
+  background-attachment: fixed;
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  -webkit-transform: translate(0%, -50%);
+  -ms-transform: translate(0%, -50%);
+  transform: translate(0%, -50%);
+  color: #fff;
+  text-align: center;
+}
+
+.hero-heading {
+  margin-top: 0px;
+  color: #fff;
+  font-size: 80px;
+  line-height: 85px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.hero-subtitle {
+  color: hsla(0, 0%, 100%, .7);
+  font-size: 22px;
+  line-height: 22px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.subpage-background {
+  background-image: -webkit-linear-gradient(270deg, rgba(0, 0, 0, .6) 2%, rgba(0, 0, 0, .6) 98%), url('http://uploads.webflow.com/560eb94ab52962bd77dfcf14/5615157771f48cd56ccb117b_photo-1442975433132-cb9580b88538.jpg');
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, .6) 2%, rgba(0, 0, 0, .6) 98%), url('http://uploads.webflow.com/560eb94ab52962bd77dfcf14/5615157771f48cd56ccb117b_photo-1442975433132-cb9580b88538.jpg');
+  background-position: 0px 0px, 50% 50%;
+  background-size: auto, cover;
+  background-repeat: repeat, no-repeat;
+  background-attachment: scroll, fixed;
+  font-weight: 300;
+}
+
+.section-title {
+  padding: 85px 2.5%;
+  color: #fff;
+  text-align: center;
+}
+
+.page-title {
+  margin-top: 0px;
+  margin-bottom: 86px;
+  font-size: 45px;
+  line-height: 51px;
+  font-weight: 300;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.section {
+  padding-right: 2.5%;
+  padding-bottom: 50px;
+  padding-left: 2.5%;
+}
+
+.bio-photo {
+  margin-bottom: 45px;
+}
+
+.content {
+  color: #fff;
+}
+
+.footer {
+  padding-top: 43px;
+  padding-bottom: 43px;
+  background-color: transparent;
+  color: #222;
+  text-align: center;
+}
+
+.footer.homepage {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+}
+
+.footer-link {
+  margin-right: 6px;
+  margin-left: 6px;
+  opacity: 0.82;
+  -webkit-transition: opacity 200ms ease;
+  transition: opacity 200ms ease;
+  color: #222;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  opacity: 0.76;
+  color: #fff;
+}
+
+.social-link {
+  width: 25px;
+  margin-right: 5px;
+  margin-left: 5px;
+  opacity: 0.5;
+  -webkit-transition: opacity 200ms ease;
+  transition: opacity 200ms ease;
+}
+
+.social-link:hover {
+  opacity: 1;
+}
+
+.social-wrapper {
+  margin-top: 5px;
+}
+
+.play-music {
+  position: relative;
+  width: 100%;
+}
+
+.circle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, .85);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.play-arrow {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  width: auto;
+  height: auto;
+  margin-left: 7px;
+  border-top: 25px solid transparent;
+  border-bottom: 25px solid transparent;
+  border-left: 45px solid #fff;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.track-listing-row {
+  margin-bottom: 45px;
+  padding-top: 20px;
+  border-top: 1px solid hsla(0, 0%, 60%, .35);
+}
+
+.featured-track {
+  margin-bottom: 75px;
+  padding-bottom: 38px;
+}
+
+.track-listing-time {
+  text-align: right;
+}
+
+.track-link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.small-grey-text {
+  display: block;
+  margin-bottom: 5px;
+  color: #999;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.small-grey-text.album {
+  color: #efe866;
+  font-size: 15px;
+}
+
+.tour-title {
+  margin-bottom: 100px;
+  text-align: center;
+}
+
+.rsvp-button {
+  padding: 5px 15px;
+  border: 1px solid #69e7f7;
+  background-color: transparent;
+  -webkit-transition: color 200ms ease, border-color 200ms ease;
+  transition: color 200ms ease, border-color 200ms ease;
+  color: #69f7f7;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 1px;
+}
+
+.rsvp-button:hover {
+  border-color: #fff;
+  color: #fff;
+}
+
+.tour-date-row {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.photo-block {
+  height: 250px;
+  margin: 20px 10px;
+}
+
+.contact-h3 {
+  margin-top: 0px;
+  margin-bottom: 20px;
+  font-size: 27px;
+  line-height: 28px;
+  font-weight: 300;
+}
+
+.contact-row {
+  padding-top: 58px;
+  padding-bottom: 58px;
+  border-top: 1px solid hsla(0, 0%, 60%, .35);
+  text-align: center;
+}
+
+.contact-link {
+  display: inline-block;
+  margin-top: 5px;
+  color: #999;
+  text-decoration: none;
+}
+
+.contact-link:hover {
+  color: #fff;
+}
+
+.form {
+  display: block;
+  max-width: 550px;
+  margin-top: 54px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: left;
+}
+
+.submit-button {
+  display: block;
+  margin-top: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 30px;
+  padding-left: 30px;
+  border: 2px solid #fff;
+  background-color: transparent;
+  -webkit-transition: background-color 200ms ease, color 200ms ease;
+  transition: background-color 200ms ease, color 200ms ease;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.submit-button:hover {
+  background-color: #fff;
+  color: #333;
+}
+
+.submit-button.sign-up {
+  position: relative;
+  top: -5px;
+  display: inline-block;
+  margin-top: 0px;
+}
+
+.input-inline {
+  display: inline-block;
+  max-width: 414px;
+  margin-right: 20px;
+}
+
+.album-art {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.logo {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-family: 'Roboto Slab', sans-serif;
+  color: #fdfdfd;
+  font-size: 19px;
+  line-height: 23px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.brand-link {
+  z-index: 1;
+  padding-top: 23px;
+  padding-bottom: 23px;
+}
+
+.hero-container {
+  margin-top: 29vh;
+  text-align: center;
+}
+
+.button {
+  padding: 11px 19px;
+  border: 1px solid rgba(0, 255, 217, 0.7);
+  background-color: transparent;
+  color: rgba(78, 234, 255, 0.7);
+  font-size: 14px;
+}
+
+.button.big {
+  margin-right: 9px;
+  margin-left: 9px;
+  padding: 11px 26px;
+  border-color: #1fcfff;
+  -webkit-transition: border 200ms ease, color 200ms ease;
+  transition: border 200ms ease, color 200ms ease;
+  color: #6de2ff;
+  font-size: 16px;
+  /* THIS */
+}
+
+.button.big:hover {
+  border-color: #fff;
+  color: #fff;
+}
+
+.button.contact {
+  padding-right: 29px;
+  padding-left: 29px;
+  background-color: rgba(248, 199, 41, .7);
+}
+
+.content-wrapper {
+  margin-top: 78px;
+}
+
+.footer-text {
+  margin-top: 13px;
+  color: hsla(0, 0%, 100%, .43);
+}
+
+.song-list-item {
+  padding-top: 19px;
+  padding-bottom: 19px;
+  border-top: 1px solid hsla(0, 0%, 100%, .28);
+  text-align: center;
+}
+
+.album-heading {
+  margin-top: 0px;
+  margin-bottom: 40px;
+  font-size: 23px;
+  line-height: 27px;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.album-columns {
+  text-align: center;
+}
+
+.song-title {
+  color: #11c2b0;
+}
+
+.venue {
+  font-weight: 500;
+}
+
+.venue-list-item {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-top: 1px solid hsla(0, 0%, 100%, .3);
+}
+
+.photo-list {
+  display: block;
+  width: 80%;
+  margin-right: auto;
+  margin-bottom: 69px;
+  margin-left: auto;
+  text-align: center;
+}
+
+.photo {
+  margin-bottom: 18px;
+  border-radius: 5px;
+  box-shadow: 0 1px 50px 0 rgba(0, 0, 0, .51);
+}
+
+.field {
+  font-weight: 300;
+}
+
+.input {
+  margin-bottom: 20px;
+  border-style: none;
+  background-color: hsla(0, 0%, 40%, .64);
+  color: #fff;
+}
+
+.input:focus {
+  box-shadow: 0 0 0 1px hsla(0, 0%, 100%, .77);
+}
+
+.input.textarea {
+  min-height: 110px;
+}
+
+.success {
+  padding-top: 29px;
+  background-color: rgba(30, 187, 0, .35);
+}
+
+@media (max-width: 991px) {
+  .nav-menu {
+    padding-top: 18px;
+    padding-bottom: 18px;
+    border-top: 1px solid #000;
+    background-color: rgba(0, 0, 0, .85);
+  }
+  .nav-link {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    font-size: 21px;
+    line-height: 27px;
+    text-align: center;
+  }
+  .menu-button {
+    padding: 20px 0px 20px 20px;
+    color: hsla(0, 0%, 100%, .62);
+    font-size: 25px;
+    line-height: 22px;
+  }
+  .menu-button:hover {
+    color: #fff;
+  }
+  .menu-button.w--open {
+    background-color: transparent;
+    color: #fff;
+  }
+  .menu-text {
+    margin-right: 3px;
+    padding: 2px;
+    float: left;
+    font-size: 12px;
+    line-height: 19px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .menu-text:hover {
+    color: #fff;
+  }
+  .menu-icon {
+    float: left;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-heading {
+    font-size: 61px;
+  }
+  .footer {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+  .rsvp-button {
+    margin-top: 15px;
+  }
+  .tour-date-row {
+    text-align: center;
+  }
+  .contact-link {
+    margin-bottom: 30px;
+  }
+  .submit-button.sign-up {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .input-inline {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+  .menu-button {
+    margin-right: 7px;
+  }
+  .album-list {
+    margin-bottom: 60px;
+  }
+  .venue {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 15px;
+  }
+  .venue-list-item {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+}
+
+@media (max-width: 479px) {
+  .hero-heading {
+    font-size: 39px;
+    line-height: 52px;
+  }
+  .contact-row {
+    padding-bottom: 16px;
+  }
+  .hero-container {
+    padding-right: 13px;
+    padding-left: 13px;
+  }
+  .button.big {
+    width: 100%;
+    margin-right: 0px;
+    margin-bottom: 12px;
+    margin-left: 0px;
+  }
+}</style><style class="darkreader darkreader--sync" media="screen"></style><script src="./Method Template_files/webfont.js.download"></script><meta name="darkreader" content="ec2acf4843a5d53111ccb421550c811c"><style class="darkreader darkreader--override" media="screen">.vimvixen-hint {
+    background-color: #815700 !important;
+    border-color: #148de3 !important;
+    color: #fff4d2 !important;
+}
+::placeholder {
+    opacity: 0.5 !important;
+}
+#edge-translate-panel-body,
+.MuiTypography-body1,
+.nfe-quote-text {
+    color: var(--darkreader-neutral-text) !important;
+}
+gr-main-header {
+    background-color: #103d4c !important;
+}
+.tou-z65h9k,
+.tou-mignzq,
+.tou-1b6i2ox,
+.tou-lnqlqk {
+    background-color: var(--darkreader-neutral-background) !important;
+}
+.tou-75mvi {
+    background-color: #03222b !important;
+}
+.tou-ta9e87,
+.tou-1w3fhi0,
+.tou-1b8t2us,
+.tou-py7lfi,
+.tou-1lpmd9d,
+.tou-1frrtv8,
+.tou-17ezmgn {
+    background-color: #0a0a0a !important;
+}
+.tou-uknfeu {
+    background-color: #251703 !important;
+}
+.tou-6i3zyv {
+    background-color: #1a5c72 !important;
+}
+embed[type="application/pdf"][src="about:blank"] { filter: invert(100%) contrast(90%); }</style><link rel="stylesheet" href="./Method Template_files/css"><script type="text/javascript">WebFont.load({
+  google: {
+    families: ["Roboto:300,regular,500","Roboto Slab:regular"]
+  }
+});</script>
+
+<script src="timeline/js/timeline.min.js"></script>
+<link href="timeline/css/timeline.min.css" rel="stylesheet" />
+
+<script>
+  timeline(document.querySelectorAll('.timeline'), {
+  verticalStartPosition: 'right',
+  verticalTrigger: '150px'
+});
+</script>
+
+
+<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/flexslider.css">
+<link rel="stylesheet" href="css/owl.carousel.css">
+<link rel="stylesheet" href="css/prettyPhoto.css">
+<link rel="stylesheet" href="css/style.css">
+
+
+
+
+
+
+
+<!-- BODY -->
+
+<body>
+  <div class="hero">
+    <div class="nav-bar w-nav" data-animation="default" data-collapse="medium" data-contain="1" data-duration="400">
+      <div class="w-container">
+        <a class="brand-link w-nav-brand w--current" href="./index.html">
+          <h1 class="logo cursed">Stock_MANAGER</h1>
+        </a>
+        <nav class="nav-menu w-nav-menu" role="navigation">
+          <a class="nav-link w-nav-link" href="#devs" style="max-width: 940px;">DEVS</a>
+          <a class="nav-link w-nav-link" href="#motives" style="max-width: 940px;">MOTIVES</a>
+          <a class="nav-link w-nav-link" href="#DevLog" style="max-width: 940px;">DEV_LOG</a>
+          <a class="nav-link w-nav-link" href="#" style="max-width: 940px;">Gallery</a>
+          <a class="nav-link w-nav-link" href="#" style="max-width: 940px;">Contact</a>
+        </nav>
+        <div class="menu-button w-clearfix w-nav-button">
+          <div class="menu-text">MENU</div>
+          <div class="menu-icon w-icon-nav-menu"></div>
+        </div>
+      </div>
+    <div class="w-nav-overlay" data-wf-ignore="">
+      
+    </div>
+  </div>
+    <div class="hero-container w-container">
+      <div class="hero-subtitle">We just released our new Open-Source CLI stock-manager application</div>
+      <h1 class="hero-heading cursed">STOCK MANAGER</h1>
+      <a class="big button w-button" href="https://github.com/MedAziz218/Stock-Manager">SOURCE_CODE</a>
+      <a class="big button w-button" href="https://github.com/MedAziz218/Stock-Manager/releases">DOWNLOAD</a>
+    </div>
+ 
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+  <div class="row" id="devs">
+    <div class="col-md-12">
+    <h2 class="bounceIn animated cursed" data-wow-offset="50" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: bounceIn;
+    color: #83bcb65d;"><span>AWESOME</span> TEAM</h2>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn animated" data-wow-offset="50" data-wow-delay="1.3s" style="visibility: visible; animation-delay: 1.3s; animation-name: fadeIn;">
+    <div class="team-wrapper">
+    <img src="Aziz.jpg" class="img-responsive" alt="team img 1">
+    <div class="team-des">
+    <h4 style="color: #fff;" style="font-size: 20px;">MED AZIZ LAHDHERI</h4>
+    <span style="color: #fff;" style="font-size: 20px;">Developer</span>
+    <p style="color: #fff;" style="font-size: 20px;">mohamedaziz.lahdheri@ensi-uma.tn</p>
+    </div>
+    </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn animated" data-wow-offset="50" data-wow-delay="1.6s" style="visibility: visible; animation-delay: 1.6s; animation-name: fadeIn;">
+    <div class="team-wrapper">
+    <img src="Firas.jpg" class="img-responsive" alt="team img 2">
+    <div class="team-des">
+    <h4 style="color: #fff;" style="font-size: 20px;">Firas Riahi</h4>
+    <span style="color: #fff;" style="font-size: 20px;">Developer</span>
+    <p style="color: #fff;" style="font-size: 20px;">firas.riahi@ensi-uma.tn</p>
+    </div>
+    </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn animated" data-wow-offset="50" data-wow-delay="1.3s" style="visibility: visible; animation-delay: 1.3s; animation-name: fadeIn;">
+    <div class="team-wrapper">
+    <img src="maryem.jpg" class="img-responsive" alt="team img 3">
+    <div class="team-des">
+     <h4 style="color: #fff;" style="font-size: 20px;">Maryem Lahmer</h4>
+    <span style="color: #fff;" style="font-size: 20px;">Developer</span>
+    <p style="color: #fff;" style="font-size: 20px;">maryem.lahmer@ensi-uma.tn</p>
+    </div>
+    </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn animated" data-wow-offset="50" data-wow-delay="1.6s" style="visibility: visible; animation-delay: 1.6s; animation-name: fadeIn;">
+    <div class="team-wrapper">
+    <img src="saif.jpg" class="img-responsive" alt="team img 4">
+    <div class="team-des">
+    <h4 style="color: #fff;" style="font-size: 20px;">Saif Sebai</h4>
+    <span style="color: #fff;" style="font-size: 20px;">Developer</span>
+    <p style="color: #fff;" style="font-size: 20px;">saif.sebai@ensi-uma.tn</p>
+    </div>
+    </div>
+    </div>
+    </div>
+
+
+
+<div class="" id="motives">
+<center>
+  <h2 class="cursed" style="color: #83bcb665;">
+  "If you want to go fast, go alone.<br>If you want to go further, go together"
+</h2>
+</center>
+
+<br><br><br>
+<center>
+  <h2 style="color: rgb(255, 255, 255);" class="cursed">
+    Our Motivation:
+  </h2>
+<h3 style="color: #83bcb6;">
+  <br>
+  Due to the rising demand for technology in our industries, it became harder and harder for employees
+  and business managers to keep track of the numbers; especially those who trade in stocks by the hundreds and thousands.
+  That is why we made this application.<br>To make their lives easier and answer to the rising demands of logistics.
+</h3>
+</center>
+</div>
+
+<center>
+<h2 style="color: rgb(255, 255, 255);" class="cursed">
+  DEV_LOG:
+</h2>
+</center>
+
+<div class="timeline">
+  <div class="timeline__wrap">
+    <div class="timeline__items">
+      
+      <div class="timeline__item">
+        <div class="timeline__content" style="font-size: 22px;">
+        <center>
+          20_DEC_2022 - INITIAL COMMIT
+        </center>
+        </div>
+      </div>
+      
+      <div class="timeline__item">
+        <div class="timeline__content" style="font-size: 22px;">
+        <center>
+          21_DEC_2022 - Added Stocks and History manipulation data 
+          structures and their methods
+        </center>
+        </div>
+      </div>
+
+      <div class="timeline__item">
+        <div class="timeline__content" style="font-size: 22px;">
+        <center>
+          22_DEC_2022 - Added the ability to Import and Export to external drive
+          via .csv files
+        </center>
+        </div>
+      </div>
+
+      <div class="timeline__item">
+        <div class="timeline__content" style="font-size: 22px;">
+        <center>
+          23_DEC_2022 - BUG FIXES
+        </center>
+        </div>
+      </div>
+      <div class="timeline__item">
+        <div class="timeline__content" style="font-size: 22px;">
+        <center>
+          24_DEC_2022 - Added Release Binaries (.exe)
+        </center>
+        </div>
+     
+    </div>
+  </div>
+</div>
+
+
+<br><br><br><br>
+
+
+
+
+
+
+  </div>
+
+<!--[if lte IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
+
+
+
+</body></html>
