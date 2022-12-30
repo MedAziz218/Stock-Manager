@@ -2,11 +2,13 @@
 #include <stdio.h>
 #include <string.h>
 #include <conio.h>
-#include "structures.c"
+#include <ctype.h>
 
+#include "structures.c"
 #include "tablePrinter.c"
 #include "selectionMenuPrinter.c"
-#include <ctype.h>
+
+/*
 #ifdef WIN32
 #include <windows.h>
 #elif _POSIX_C_SOURCE >= 199309L
@@ -29,12 +31,18 @@ void sleep_ms(int milliseconds){ // cross-platform sleep function
     usleep((milliseconds % 1000) * 1000);
 #endif
 }
+*/
+
+void sleep_ms(int milliseconds){Sleep(milliseconds);};
 void printStock(stock *st);
 product* getProduct(stock*st,int id);
 void exportStock(stock*st);
 stock* search(stock* st, int choice, char key[]);
 void addProduct(stock * st, product p);
-
+void copyProduct(product* prod1, product* prod2);
+void deleteProduct(stock*st,int id);
+int input_product(stock*temp_stock,_MessageFormat*msg);
+int input_id(_MessageFormat*msg,_MessageFormat*error_msg);
 // these two variables are shared across all functions in order to reduce memory usage
 char tempFileString[65536]; //a string variable that can be used by any function when needed 
 char userInput[128]; //a string variable that can be used by any function to read user input
@@ -44,69 +52,88 @@ char STOCK_FILE[] = "Database\\stock.csv";
 char HISTORY_FILE[] = "Database\\history.csv";
 char STONKS_FILE[] = "Database\\stonks.txt";
 char FRAME_FILE[] = "Database\\frame.txt";
-
+void resetSelectionMenuFormat(){
+	for (int i = SelectionMenuFormat.current_selection;i>=1;i-- ){
+		SelectionMenuFormat.current_selection --;
+		printSelectionMenu(SelectionMenuFormat);
+		Sleep(50);
+			}
+}
 void show_historique(char nextScreen[]){
 	
 }
 
-//TODO: controle saisie 
-//TODO: 
-void show_update(char nextScreen[], stock * st){
-	printf("\n2. Update Name of the product? ");
-    printf("\n3. Update Price of the product?");
-    printf("\n4. Update Quantitiy of the product?");
-    printf("\n5. Update Discription of the product?");
-    printf("\nEnter your choice:");
-	int choice ;
-    scanf("%d", &choice);
-	
-	printf("Input the id of the item you want to update from the stock: ");
-	int temp_id;
-	scanf("%d", &temp_id);
-	char new_name[64];
-	double new_price;
-	int new_quantity;
-	char new_description[256];
 
-	product* temp_prod = getProduct(st,temp_id);
-	if (temp_prod == NULL) return;
-	switch (choice) {
-		case 2:
-			printf("Enter new Name: ");
-			gets(new_name);gets(new_name);
-			strcpy(temp_prod->name,new_name);
-			//updateProductName(st,temp_id,new_name);
-			break;
-		case 3:
-			printf("Enter the new price: ");
-			scanf("%lf",&new_price);
-			printf(">>>>>>>>>>>< new zebi zebi %f",new_price);
-			getchar();getchar();
-			temp_prod->price = new_price;
-			
-			//updateProductPrice(st,temp_id,new_price);
-			break;
-		case 4:
-			printf("Enter the new quantity: ");
-			scanf("%d",&new_quantity);
-			printf(">>>>>>>>>>>< new zebi %d",new_quantity);
-			temp_prod->quantity = new_quantity;
-			//updateProductQuantity(st,temp_id,new_quantity);
-			break;
-		case 5:
-			printf("Enter new Description: ");
-			gets(new_description);gets(new_description);
-			strcpy(temp_prod->description,new_description);
-			//updateProductDescription(st,temp_id,new_description);
-			break;			
-	}
-	clearScreen();
-	exportStock(st);
-	printf("------------ %s ----------\n",STOCK_FILE);printStock(st);
-	getchar();
-	
+void show_Search(char nextScreen[],stock*st){
+	tempFileString[0] = '\0';
+	readFile(FRAME_FILE,tempFileString);
+	printf("%s",tempFileString);
 	strcpy(nextScreen,"main");
+}
+
+void show_deleteProduct(char nextScreen[],stock*st ){
+	// print the screen border
+	tempFileString[0] = '\0';
+	readFile(FRAME_FILE,tempFileString);
+	printf("%s",tempFileString);
+	// Title Message 
+	moveTo(4,28);setTextColorBright(GREEN_TXT);printf("SUPPRIMER UN PRODUIT");resetColor();
 	
+	
+	// Error Message settings
+	_MessageFormat error_msg;
+	error_msg.text = "This ID does not exist please try another one.";
+	error_msg.row = 14;
+	error_msg.pre_tab = 42;
+	error_msg.color = RED_TXT*10;
+
+	// Success message 
+	_MessageFormat success_msg;
+	success_msg.text = " Product Deleted Successfully.\nPress ENTER to continue ...";
+	success_msg.row = 14;
+	success_msg.pre_tab = 42;
+	success_msg.color = GREEN_TXT*10;
+
+	_MessageFormat input_msg;
+	input_msg.text = "Entrer l'id du produit a supprimer: ";
+	input_msg.row = 10;
+	input_msg.pre_tab = 6;
+	input_msg.color = WHITE_TXT*10;
+
+	_MessageFormat input_int;
+	input_int.text = (char*)malloc(sizeof(char)*MAX_ID_DIGITS+2);
+	input_int.row = input_msg.row ;
+	input_int.pre_tab = input_msg.pre_tab + strlen(input_msg.text);
+	input_int.color = WHITE_TXT*10;
+
+	strcpy(nextScreen,"main");
+	int inp = 0; 
+	product*product_to_edit;
+	printMessage(input_msg);
+	memset(input_int.text,'\0',MAX_ID_DIGITS+2);
+	while(1){
+		inp = input_id(&input_int,&error_msg);
+		if (inp == -1) return;
+		product_to_edit = getProduct(st,inp);
+		if (product_to_edit->id != -1) break;
+		else {
+			printMessage(error_msg);
+			printMessage(input_int);	
+		}
+	}
+	deleteProduct(st,inp);
+	exportStock(st);
+	printMessage(success_msg);
+	getchar();
+}
+
+void show_printStock(char nextScreen[],stock*st){
+	StockTableFormat.pre_tab = 4;StockTableFormat.row = 4;
+	StockTableFormat.post_tab = 1;
+	printStock(st);
+	strcpy(nextScreen,"main");
+	printf("\n %58s","Press Enter to Continue ...");
+	getchar();
 }
 
 void show_STONKS(char nextScreen[]){
@@ -125,15 +152,6 @@ void show_logo(char nextScreen[]){
 	clearScreen();
 	strcpy(nextScreen,"main");
 }
-int NumberOfaddProductOptions = 7;
-char *addProductOptions[]={
-						 "1 - Identifiant\n",
-					     "2 - Nom\n",
-						 "3 - Prix\n",
-						 "4 - Quantite\n",
-						 "5 - Description du produit  \n\n",
-						 "**-CONFIRMER.   ", "**-ANNULER.  "
-						 };
 
 void show_addProduct(char nextScreen[],stock*st){
 	// print the screen border
@@ -142,27 +160,26 @@ void show_addProduct(char nextScreen[],stock*st){
 	printf("%s",tempFileString);
 
 	// temp product and stock variables
-	product * prod;
 	stock * temp_stock;
 	temp_stock = (stock*)malloc(sizeof(stock));
 	temp_stock->next = NULL;
-	prod = &(temp_stock->value);prod->id = 0;prod->price = 0.0;prod->quantity = 0;
+	product * prod = &(temp_stock->value);
+	prod->id = 0;prod->price = 0.0;prod->quantity = 0;
 	strcpy(prod->name,"");strcpy(prod->description,"");
 
 	// stock table settings
 	StockTableFormat.pre_tab = 6;StockTableFormat.row = 9;
 	StockTableFormat.post_tab = 1;
-	printStock(temp_stock);
-
+	
 	// selection menu settings
-	int current_selection = 1;
+	
 	SelectionMenuFormat.row = 13;
 	SelectionMenuFormat.pre_tab = 8;
 	SelectionMenuFormat.post_tab = 4;
 	strcpy(SelectionMenuFormat.selected_prefix , "> ");
 	SelectionMenuFormat.selected_color = YELLOW_TXT;
 	SelectionMenuFormat.normal_color = WHITE_TXT * 10;
-	SelectionMenuFormat.current_selection = current_selection -1;
+	SelectionMenuFormat.current_selection = 0;
 	SelectionMenuFormat.numberOfOptions = NumberOfaddProductOptions;
 	for(int i=0;i<SelectionMenuFormat.numberOfOptions;i++)
 		SelectionMenuFormat.optionsText[i] = addProductOptions[i];
@@ -170,7 +187,9 @@ void show_addProduct(char nextScreen[],stock*st){
 	
 	// Error Message settings
 	_MessageFormat error_msg;
-	error_msg.text = "This ID already exist please try another one.";
+	char* error1="This ID already exist please try another one.";
+	char* error2="Please Specifi an ID";
+	error_msg.text = error1;
 	error_msg.row = 14;
 	error_msg.pre_tab = 42;
 	error_msg.color = RED_TXT*10;
@@ -178,119 +197,156 @@ void show_addProduct(char nextScreen[],stock*st){
 	// Success message 
 	_MessageFormat success_msg;
 	success_msg.text = " Product Added Successfully.\nPress ENTER to continue ...";
+	
 	success_msg.row = 14;
 	success_msg.pre_tab = 42;
 	success_msg.color = GREEN_TXT*10;
 	// Title Message 
 	moveTo(4,28);setTextColorBright(GREEN_TXT);printf("AJOUTER UN PRODUIT");resetColor();
 	// temp str variables
-	int temp_str_len;
-	char* temp_str[NumberOfaddProductOptions] ;
-	
-	for (int i=0;i<NumberOfaddProductOptions;i++) {
-		temp_str[i] = (char*)malloc(sizeof(char)*100);
-		memset(temp_str[i],'\0',sizeof(char)*100);
+	strcpy(nextScreen,"main");
+
+	while (1)
+	{
+		int res = input_product(temp_stock,&error_msg);
+		if (res == -1) return;
+		else if (res == 0){
+			wipeMessage(error_msg);
+			error_msg.text = error2;
+			printMessage(error_msg);
+			resetSelectionMenuFormat();	
+		}
+		else if (getProduct(st,temp_stock->value.id)->id != -1) {
+			wipeMessage(error_msg);
+			error_msg.text = error1;
+			printMessage(error_msg);
+			resetSelectionMenuFormat();	
+		}
+		else {
+			printMessage(success_msg);break;
+		}
+		    
+		
 	}
+
+	addProduct(st,temp_stock->value);
+	exportStock(st);
+	getchar();
+}
+void show_updateProduct(char nextScreen[],stock*st){
 	
+	// print the screen border
+	tempFileString[0] = '\0';
+	readFile(FRAME_FILE,tempFileString);
+	printf("%s",tempFileString);
+	// Title Message 
+	moveTo(4,28);setTextColorBright(GREEN_TXT);printf("MODIFIER UN PRODUIT");resetColor();
+	
+	
+	// Error Message settings
+	char* error1="This ID is already in use please try another one.";
+	char* error2="Please Specify an ID";
+	_MessageFormat error_msg;
+	error_msg.text = error1;//"This ID does exist please try another one.";
+	error_msg.row = 14;
+	error_msg.pre_tab = 42;
+	error_msg.color = RED_TXT*10;
+
+	// Success message 
+	_MessageFormat success_msg;
+	
+	success_msg.text = " Product Modified Successfully.\nPress ENTER to continue ...";
+	success_msg.row = 14;
+	success_msg.pre_tab = 42;
+	success_msg.color = GREEN_TXT*10;
+
+	_MessageFormat input_msg;
+	input_msg.text = "Entrer l'id du produit a modifier: ";
+	input_msg.row = 10;
+	input_msg.pre_tab = 6;
+	input_msg.color = WHITE_TXT*10;
+
+	_MessageFormat input_int;
+	input_int.text = (char*)malloc(sizeof(char)*MAX_ID_DIGITS+2);
+	input_int.row = input_msg.row ;
+	input_int.pre_tab = input_msg.pre_tab + strlen(input_msg.text);
+	input_int.color = WHITE_TXT*10;
+		
+	// temp product and stock variables
+	
+	stock * temp_stock;
+	temp_stock = (stock*)malloc(sizeof(stock));
+	//product * temp_prod = &(temp_stock->value);
+	temp_stock->next = NULL;
+	product * prod = &(temp_stock->value);
+	prod->id = 0;prod->price = 0.0;prod->quantity = 0;
+	strcpy(prod->name,"");strcpy(prod->description,"");
+	
+	// stock table settings
+	StockTableFormat.pre_tab = 6;StockTableFormat.row = 9;
+	StockTableFormat.post_tab = 1;
+	
+	// selection menu settings
+	
+	SelectionMenuFormat.row = 13;
+	SelectionMenuFormat.pre_tab = 8;
+	SelectionMenuFormat.post_tab = 4;
+	strcpy(SelectionMenuFormat.selected_prefix , "> ");
+	SelectionMenuFormat.selected_color = YELLOW_TXT;
+	SelectionMenuFormat.normal_color = WHITE_TXT * 10;
+	SelectionMenuFormat.current_selection = 0;
+	SelectionMenuFormat.numberOfOptions = NumberOfaddProductOptions;
+	for(int i=0;i<SelectionMenuFormat.numberOfOptions;i++)
+		SelectionMenuFormat.optionsText[i] = addProductOptions[i];
+
+	// temp str variables
+	strcpy(nextScreen,"main");
+	int inp = 0; 
+	product*product_to_edit;
+	printMessage(input_msg);
+	memset(input_int.text,'\0',MAX_ID_DIGITS+2);
 	while(1){
-
-	hideCursor();
-	sleep_ms(16);//60 fps;
-	char ch = '\0';
-	if(_kbhit() )ch = getch(); 	
-	if (ch == 13){
-		if (current_selection == 7){
-			strcpy(nextScreen,"main");
-			break;
-		}
-		if (current_selection == 6){
-			char num[50];
-			itoa(prod->id,num,10);
-			
-			stock * res = search(st,1,num);
-			moveRight(8);
-			//moveTo(CURSOR.upper_border+NumberOfaddProductOptions+2,CURSOR.col);
-			if (res->value.id == -1){
-				addProduct(st,*prod);
-				printMessage(success_msg);
-				getchar();
-				strcpy(nextScreen,"main");
-				break;
-
-				
-			}else {
-				printMessage(error_msg);
-				for (int i = current_selection;i>=1;i-- ){
-					current_selection = i;
-					SelectionMenuFormat.current_selection = current_selection-1;
-					printSelectionMenu(SelectionMenuFormat);
-					Sleep(50);
-				}
-			}	
+		inp = input_id(&input_int,&error_msg);
+		if (inp == -1) return;
+		product_to_edit = getProduct(st,inp);
+		if (product_to_edit->id != -1) break;
+		else {
+			printMessage(error_msg);
+			printMessage(input_int);	
 		}
 	}
-	else if (ch == -32){
-		ch = getch();
-		wipeMessage(error_msg);
-		if (ch == 77 && current_selection>=6){//moveleft
-			current_selection --;
-			if (current_selection <6) current_selection = 7;
+	
+	copyProduct(&temp_stock->value,product_to_edit);
+	
+	while (1)
+	{
+		int res = input_product(temp_stock,&error_msg);
+		int search_res = getProduct(st,temp_stock->value.id)->id ;
+		if (res == -1) return;
+		else if (res == 0){
+			wipeMessage(error_msg);
+			error_msg.text = error2;
+			printMessage(error_msg);
+			resetSelectionMenuFormat();	
 		}
-		if (ch == 75 && current_selection>=6){//moveright
-			current_selection ++;
-			if (current_selection > 7) current_selection =6;
+		else if (search_res != -1 && search_res != product_to_edit->id ){
+			wipeMessage(error_msg);
+			error_msg.text = error1;
+			printMessage(error_msg);
+			resetSelectionMenuFormat();	
 		}
-		if (ch == 72 && current_selection>=1){//moveUp
-			current_selection --;
-			if (current_selection == 0) current_selection = NumberOfaddProductOptions-1;
-		}
-		if (ch == 80 && (current_selection <= NumberOfaddProductOptions)){//moveDown
-			current_selection ++;
-			if (current_selection == NumberOfaddProductOptions) current_selection = 1;
-		}
-		int svc = SelectionMenuFormat.selected_color;
-		if (current_selection == 6) SelectionMenuFormat.selected_color = GREEN_TXT*10;
-		else if (current_selection == 7) SelectionMenuFormat.selected_color = RED_TXT;
-		SelectionMenuFormat.current_selection = current_selection-1;
-		printSelectionMenu(SelectionMenuFormat);
-		SelectionMenuFormat.selected_color = svc;
-
-	} else if (ch){
-		wipeMessage(error_msg);
-		temp_str_len = strlen(temp_str[current_selection-1]);
-		if (  (current_selection == 1 && (isdigit(ch) && temp_str_len < 8 ))
-		   || (current_selection == 2 && (isalnum(ch)|| ch == ' ') && temp_str_len < 20 )
-		   || (current_selection == 3 && (isdigit(ch)|| (ch == '.' && !strstr(temp_str[current_selection-1], "."))) && temp_str_len < 8 )
-		   || (current_selection == 4 && (isdigit(ch) && temp_str_len < 8 ) )
-		   || (current_selection == 5 && (ch != 8 || ch == ' ')&& temp_str_len < 60) )
-		{
-			temp_str[current_selection-1][temp_str_len] = ch;
-		}
-		if (ch ==8 && temp_str_len >0){
-			temp_str[current_selection-1][temp_str_len-1] = '\0';
-		}
-		prod->id=atoi(temp_str[0]);
-		strcpy(prod->name,temp_str[1]); //prod->name
-		prod->price=atof(temp_str[2]);
-		prod->quantity=atoi(temp_str[3]);
-		strcpy(prod->description,temp_str[4]); //prod->description
-		printStock(temp_stock);
-		}
+		else {
+			printMessage(success_msg);break;
+		}	
 	}
+	strcpy(nextScreen,"main");
+	copyProduct(product_to_edit,&temp_stock->value);
+	exportStock(st);
+	getchar();
+
 }
 
 //#-#-# Main Menu #-#-#//
-int NumberOfMainMenuOptions = 8;
-char *MainMenuOptions[]={
-						 "1 - Ajouter un produit.\n",
-					     "2 - Afficher la description d’un produit.\n",
-						 "3 - Supprimer un produit.\n",
-						 "4 - Modifier un produit.\n",
-						 "5 - Recherche d’un produit dans le stock.\n",
-						 "6 - Show Logo.\n",  
-						 "7 - STONKS ? \n",
-						 "8 - Exit.\n"
-						 };
 
 void show_MainMenu(char nextScreen[]){
 	// Main Menu and Navigation Screen
@@ -319,18 +375,18 @@ void show_MainMenu(char nextScreen[]){
 		char ch = '\0';
 		if(_kbhit() )ch = getch(); 
 		if (ch){
-			if (ch == 13){
+			if (ch == ENTER_KEY){//13
 				break;
 			}
-			else if (ch == -32){
+			else if (ch == ARROW_START){
 				ch = getch();
-				if (ch == 72 && current_selection>=1){//moveUp
+				if (ch == ARROW_UP && current_selection>=1){//moveUp
 					current_selection --; if (current_selection == 0) current_selection = NumberOfMainMenuOptions;
 					//showMainMenuSelection(current_selection);	
 					SelectionMenuFormat.current_selection = current_selection-1;
 					printSelectionMenu(SelectionMenuFormat);
 				}
-				if (ch == 80 && (current_selection <= NumberOfMainMenuOptions)){//moveDown
+				if (ch == ARROW_DOWN && (current_selection <= NumberOfMainMenuOptions)){//moveDown
 					current_selection ++;if (current_selection == NumberOfMainMenuOptions+1) current_selection = 1;
 					SelectionMenuFormat.current_selection = current_selection-1;
 					printSelectionMenu(SelectionMenuFormat);
@@ -345,17 +401,145 @@ void show_MainMenu(char nextScreen[]){
 	{
 		case 0: strcpy(nextScreen,"main");break;
 		case 1: strcpy(nextScreen,"add");break;
-		case 2: strcpy(nextScreen,"main");break;
-		case 3: strcpy(nextScreen,"main");break;
-		case 4: strcpy(nextScreen,"update");break;
-		case 5: strcpy(nextScreen,"main");break;
-		case 6: strcpy(nextScreen,"logo");break;
-		case 7: strcpy(nextScreen,"STONKS");break;
-		case 8: strcpy(nextScreen,"exit");break;
+		case 2: strcpy(nextScreen,"update");break;
+		case 3: strcpy(nextScreen,"delete");break;
+		case 4: strcpy(nextScreen,"printstock");break;
+		case 5: strcpy(nextScreen,"search");break;
+		case 6: strcpy(nextScreen,"printhistory");break;
+		case 7: strcpy(nextScreen,"logo");break;
+		case 8: strcpy(nextScreen,"STONKS");break;
+		case 9: strcpy(nextScreen,"exit");break;
 	}
-	
-	
 }
+
+// -1 cancel
+// else return id
+int input_id(_MessageFormat*input_int_msg,_MessageFormat*error_msg){
+	char* temp_ch = input_int_msg->text;
+	strcpy(temp_ch,input_int_msg->text);
+	product* prod ;
+	int inp;
+	while(1){
+		char ch = '\0';
+		sleep_ms(16);
+		if(_kbhit() )ch = getch(); 
+		if (ch) wipeMessage(*error_msg);
+		if (ch == ESCAPE_KEY) return -1;//cancel
+		if(isdigit(ch) && strlen(temp_ch)<MAX_ID_DIGITS) {
+			temp_ch[strlen(temp_ch)] = ch;			
+		}else if (ch ==DELETE_KEY && strlen(temp_ch)){ 
+			wipeMessage(*input_int_msg);
+			temp_ch[strlen(temp_ch)-1] = '\0';
+		}else if (ch == ENTER_KEY && strlen(temp_ch)){
+			//wipeMessage(*input_int_msg);
+			inp = atoi(temp_ch);
+			return inp;
+		}
+		if (ch) printMessage(*input_int_msg);
+	}	
+}
+// -2 product already exists
+// -1 cancel
+// 0 id == 0
+// 1 confirm
+int input_product(stock*temp_stock,_MessageFormat*msg){
+	
+	product* prod = &(temp_stock->value);
+	
+	int current_selection = SelectionMenuFormat.current_selection+1;
+	int temp_str_len;
+	char* temp_str[NumberOfaddProductOptions] ;
+	
+	for (int i=0;i<NumberOfaddProductOptions;i++) {
+		temp_str[i] = (char*)malloc(sizeof(char)*100);
+		memset(temp_str[i],'\0',sizeof(char)*100);
+	}
+
+	itoa(prod->id,temp_str[0],10);
+	strcpy(temp_str[1],prod->name);
+	itoa(prod->price,temp_str[2],10); 
+	itoa(prod->quantity,temp_str[3],10);
+	strcpy(temp_str[4],prod->description);
+	printStock(temp_stock);
+	printSelectionMenu(SelectionMenuFormat);
+	while(1){
+
+	hideCursor();
+	sleep_ms(16);//60 fps;
+	char ch = '\0';
+	if(_kbhit() )ch = getch(); 
+	if (ch){
+		wipeMessage(*msg);
+	}
+	if (ch == ESCAPE_KEY) return -1;//cancel
+	if (ch == ENTER_KEY){
+		if (current_selection == 7){
+			return -1; // cancel
+		}
+		if (current_selection == 6){
+			if (temp_stock->value.id == 0)
+				return 0; // confirm
+			//if (getProduct(st,temp_stock->value.id)->id == -1)
+			//	return -2;
+			return 1;
+		}
+	}
+	else if (ch == ARROW_START){
+		ch = getch();
+		if (ch == ARROW_LEFT && current_selection>=6){//moveleft
+			current_selection --;
+			if (current_selection <6) current_selection = 7;
+		}
+		if (ch == ARROW_RIGHT && current_selection>=6){//moveright
+			current_selection ++;
+			if (current_selection > 7) current_selection =6;
+		}
+		if (ch == ARROW_UP && current_selection>=1){//moveUp
+			current_selection --;
+			if (current_selection == 7) current_selection = 5;
+			if (current_selection == 0) current_selection = 6;
+			
+		}
+		if (ch == ARROW_DOWN && (current_selection <= NumberOfaddProductOptions)){//moveDown
+			current_selection ++;
+			
+			if (current_selection >= 7) current_selection = 1;
+		}
+		int svc = SelectionMenuFormat.selected_color;
+		if (current_selection == 6) SelectionMenuFormat.selected_color = GREEN_TXT*10;
+		else if (current_selection == 7) SelectionMenuFormat.selected_color = RED_TXT;
+		SelectionMenuFormat.current_selection = current_selection-1;
+		printSelectionMenu(SelectionMenuFormat);
+		SelectionMenuFormat.selected_color = svc;
+
+	} else if (ch){
+		temp_str_len = strlen(temp_str[current_selection-1]);
+		if (  (current_selection == 1 && (isdigit(ch) && temp_str_len < MAX_ID_DIGITS ))
+		   || (current_selection == 2 && (isalnum(ch)|| ch == ' ') && temp_str_len < MAX_NAME_LENGTH )
+		   || (current_selection == 3 
+		   	  && (  (isdigit(ch)&& temp_str_len < MAX_PRICE_DIGITS && !strstr(temp_str[current_selection-1], "."))
+			  	 || (isdigit(ch)&& strstr(temp_str[current_selection-1], ".") && temp_str_len < MAX_PRICE_DIGITS+1+PRICE_DECIMAL_DIGITS)
+				 || (ch == '.' && !strstr(temp_str[current_selection-1], "."))
+				 ) 
+			  )
+		   || (current_selection == 4 && (isdigit(ch) && temp_str_len < MAX_QUANTITY_DIGITS ) )
+		   || (current_selection == 5 && (ch != DELETE_KEY || ch == ' ')&& temp_str_len < MAX_DESCRIPTION_LENGTH) )
+		{
+			temp_str[current_selection-1][temp_str_len] = ch;
+		}
+		if (ch ==DELETE_KEY && temp_str_len >0){
+			temp_str[current_selection-1][temp_str_len-1] = '\0';
+		}
+		prod->id=atoi(temp_str[0]);
+		strcpy(prod->name,temp_str[1]); //prod->name
+		prod->price=atof(temp_str[2]);
+		prod->quantity=atoi(temp_str[3]);
+		strcpy(prod->description,temp_str[4]); //prod->description
+		printStock(temp_stock);
+		}
+	}
+}
+
 
 
 

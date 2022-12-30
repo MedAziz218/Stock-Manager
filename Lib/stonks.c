@@ -8,7 +8,10 @@ product* getProduct(stock*st,int id){
 		}
 		aux = aux->next;
 	}
-	return NULL;
+	product*prod;
+	prod = (product*)malloc(sizeof(product));
+	prod->id = -1;
+	return prod;
 }
 
 void copyProduct(product *prod1,product *prod2){
@@ -47,7 +50,7 @@ void deleteProduct(stock * st, int id){
 
 	// If the stock is empty then there's nothing to delete
 	if (st->value.id == -1){
-		printf("The stock is already empty\n");
+		//printf("The stock is already empty\n");
 		return;
 	}
 
@@ -85,12 +88,12 @@ void deleteProduct(stock * st, int id){
 
 	//TODO: remove this block when project is finished.
 	if (cond) {
-		printf("The item with the Id %d ",id);
-		setTextColorBright(GREEN_TXT);printf("was deleted successfully");resetColor();printf(".\n");
+		//printf("The item with the Id %d ",id);
+		//setTextColorBright(GREEN_TXT);printf("was deleted successfully");resetColor();printf(".\n");
 	}
 	else {
-		printf("The item with the Id %d ",id);
-		setTextColor(RED_TXT);printf("was not found");resetColor();printf(".\n");
+		//printf("The item with the Id %d ",id);
+		//setTextColor(RED_TXT);printf("was not found");resetColor();printf(".\n");
 	}
 }
 
@@ -103,16 +106,18 @@ void importStock(stock * st){
 	char temp_str1[400],temp_str2[400],temp_str3[400],temp_str4[400],temp_str5[400];
 	int i=0; int scan_result;
 	do {
+		memset(temp_str5,'\0',sizeof(char)*50);
 		scan_result = fscanf(ptr, "%400[^;];%400[^;];%400[^;];%400[^;];%400[^\n]", 
 								temp_str1, temp_str2, temp_str3,temp_str4, temp_str5);
 		ch = fgetc(ptr);
-		if (i>0 && scan_result == 5){
+		if (i>0 && scan_result >= 4){
 			temp_prod.id = atoi(temp_str1);
 			strcpy(temp_prod.name,temp_str2);
 			temp_prod.price = atof(temp_str3);
 			temp_prod.quantity = atoi(temp_str4);
 			strcpy(temp_prod.description,temp_str5);
 			addProduct(st,temp_prod);
+
 		}
 		i++;
 	}while(ch != EOF);
@@ -131,9 +136,11 @@ void exportStock(stock * st){
 		return;
 	}
 	while(temp != NULL) {
+		if (strlen(temp->value.name)==0) strcpy(temp->value.name," ");
 		fprintf(ptr,"%i;%s;%.3f;%i;%s\n",temp->value.id,temp->value.name,
 				temp->value.price,temp->value.quantity,temp->value.description);
 		temp = temp->next;
+		//if (strlen(temp->value.name)) strcpy(temp->value.name," ");
 	}
 	setTextColorBright(GREEN_TXT);printf("Exported successfully");resetColor();printf(".\n");
 	fclose(ptr);

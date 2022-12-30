@@ -21,7 +21,7 @@
 
 
 int main(){
-	char nextScreen[10]; // this variable tells what screen should be shown next
+	char nextScreen[20]; // this variable tells what screen should be shown next
 	//SetConsoleOutputCP(1252); //Set console encoding to Windows 1252
 	if (OsWindows){
 		SetConsoleOutputCP(65001);  //Set console encoding to utf8
@@ -39,6 +39,7 @@ int main(){
 	head->next = NULL;
 	// Importing stock data from STOCK_FILE
 	importStock(head);
+	
 	/*
 	stock* result = search(head,1,"1");
 	result = search(head,2,"Alu");
@@ -93,15 +94,25 @@ int main(){
 		if (strcmp(nextScreen,"logo") == 0){
 			show_logo(nextScreen);
 		}
+		else if ( strcmp(nextScreen,"add") == 0){
+			show_addProduct(nextScreen,head);
+		}
 		else if (strcmp(nextScreen, "update") == 0) {
-			show_update(nextScreen,head);
+			show_updateProduct(nextScreen,head);
+		}
+		else if (strcmp(nextScreen,"delete") == 0){
+			show_deleteProduct(nextScreen,head);
+		}
+		else if (strcmp(nextScreen,"printstock") == 0){
+			show_printStock(nextScreen,head);
+		}
+		else if (strcmp(nextScreen,"search") == 0){
+			show_Search(nextScreen,head);
 		}
 		else if (strcmp(nextScreen,"main") == 0){
 			show_MainMenu(nextScreen);
 		}
-		else if ( strcmp(nextScreen,"add") == 0){
-			show_addProduct(nextScreen,head);
-		}
+		
 		else if (strcmp(nextScreen,"STONKS") == 0){
 			show_STONKS(nextScreen);
 		}

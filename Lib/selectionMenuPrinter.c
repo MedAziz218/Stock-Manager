@@ -23,9 +23,9 @@ void wipeSelectionMenu(_SelectionMenuFormat menu){
 }
 void printSelectionMenu(_SelectionMenuFormat menu){
     moveTo(menu.row,0);
-    char temp[100];int last_index,temp_int;
+    char temp[SCREEN_WIDTH];int last_index,temp_int;
     int horizontal = 0;
-    memset(temp,'\0',100);
+    memset(temp,'\0',SCREEN_WIDTH);
     
     for (int i=0; i< menu.numberOfOptions;i++){
         last_index = strlen(menu.optionsText[i])-1;
@@ -82,5 +82,8 @@ void printMessage(_MessageFormat msg){
 }
 void wipeMessage(_MessageFormat msg){
     moveTo(msg.row,0); moveRight(msg.pre_tab);
-    printf("%*s",strlen(msg.text),"");
+    for (int i=0; i< strlen(msg.text);i++){
+        printf(" ");
+        if (msg.text[i] == '\n') moveRight(msg.pre_tab);
+    }
 }

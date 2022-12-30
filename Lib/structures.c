@@ -1,4 +1,37 @@
 
+int NumberOfMainMenuOptions = 9;
+char *MainMenuOptions[]={
+						 "1 - Ajouter un produit.\n",
+						 "2 - Modifier un produit.\n",
+						 "3 - Supprimer un produit.\n",
+						 "4 - Afficher tout le Stock.\n",
+						 "5 - Recherche d’un produit dans le stock.\n",
+						 "6 - Afficher l'historique\n",
+						 "7 - Show Logo.\n",  
+						 "8 - STONKS ? \n",
+						 "9 - Exit.\n"
+						 };
+
+int NumberOfaddProductOptions = 7;
+char *addProductOptions[]={
+						 "1 - Identifiant\n",
+					     "2 - Nom\n",
+						 "3 - Prix\n",
+						 "4 - Quantite\n",
+						 "5 - Description du produit  \n\n",
+						 "**-CONFIRMER.   ", "**-ANNULER.  "
+						 };
+
+enum key_codes{
+	ENTER_KEY= 13, ARROW_START = -32, ARROW_UP = 72, ARROW_RIGHT = 75,ARROW_LEFT=77 ,
+	ARROW_DOWN = 80,
+	DELETE_KEY = 8, ESCAPE_KEY = 27,
+};
+enum program_constants{
+	SCREEN_WIDTH = 84,
+	MAX_ID_DIGITS = 6, MAX_NAME_LENGTH = 20,MAX_PRICE_DIGITS = 6,PRICE_DECIMAL_DIGITS = 3,
+	MAX_QUANTITY_DIGITS = 6, MAX_DESCRIPTION_LENGTH = 40,
+};
 //Record: A record concerning a certain operation.
 typedef struct record {
 	int operation_type; // 1 means [+]positive and 0 means [-]negative 

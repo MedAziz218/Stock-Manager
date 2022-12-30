@@ -1,4 +1,5 @@
 #include <math.h>
+
 //#______ Table Printer _______#//
 const struct {
     char upper_left[4] ;
@@ -111,9 +112,11 @@ void printTableProduct(product prod,_TableFormat tab ){
 	//printf("%*s",pre_tab,"");
 	printBeforeTableItems(tab);
 	// id
-	
 	setBackgroundColorBright(RED_BKG);setTextColorBright(WHITE_TXT);
-	printf(" %-*d ",id_space-2,prod.id);resetColor();printf(TABLE.vertical);
+	if (prod.id == -2)
+		 printf(" %-*s ",id_space-2,"");
+	else printf(" %-*d ",id_space-2,prod.id);
+	resetColor();printf(TABLE.vertical);
 	
 	
 	// name
@@ -171,8 +174,8 @@ void calibrate_StockTableFormat(stock *st, int sizes[5]){
 		aux = aux->next;
 	} while( aux != NULL);
 	
-	cur_name_space = fmin(cur_name_space,20);
-	cur_description_space = fmin(cur_description_space,80);
+	cur_name_space = fmin(cur_name_space,MAX_NAME_LENGTH);
+	cur_description_space = fmin(cur_description_space,MAX_DESCRIPTION_LENGTH);
 	
 	//StockTableFormat.sizeOfAttributes[]
 	StockTableFormat.sizeOfAttributes[0] = fmax(StockTableFormat.sizeOfAttributes[0],cur_id_space+2);
@@ -189,15 +192,15 @@ void printStock(stock * st){
 	stock * aux; product prod;
 	// If table is empty stop
 	if (st->value.id == -1){
-		setTextColor(YELLOW_TXT); printf("it s empty"); resetColor();printf("\n");
-		
+		//setTextColor(YELLOW_TXT); printf("it s empty"); resetColor();printf("\n");
+		return;
 	}
 	memset(StockTableFormat.sizeOfAttributes,0,sizeof(int)*5);
 	calibrate_StockTableFormat(st,StockTableFormat.sizeOfAttributes);
 	__init_table__(&StockTableFormat);
 	if (StockTableFormat.width >=84)
 		{
-			StockTableFormat.sizeOfAttributes[4] -= StockTableFormat.width -84;
+			StockTableFormat.sizeOfAttributes[4] -= StockTableFormat.width -SCREEN_WIDTH;
 			__init_table__(&StockTableFormat);
 			//cur_description_space = cur_description_space - (StockTableFormat.width -70);
 		}

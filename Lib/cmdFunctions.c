@@ -21,6 +21,7 @@ enum ClearCodes {
     CLEAR_FROM_CURSOR_TO_BEGIN,
     CLEAR_ALL
 };
+
 struct {
     int col,row;
     int lower_border,upper_border;
