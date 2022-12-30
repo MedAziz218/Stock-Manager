@@ -125,6 +125,15 @@ void show_deleteProduct(char nextScreen[],stock*st ){
 	exportStock(st);
 	printMessage(success_msg);
 	getchar();
+
+	//HERE
+
+	//Add operation to history.
+	record temp_record = newRecord(0,*product_to_edit,product_to_edit->quantity); 
+	history * temp_history;
+	temp_history = (history*)malloc(sizeof(temp_record));
+	temp_history->next = NULL;
+	appendHistory(temp_history);
 }
 
 void show_printStock(char nextScreen[],stock*st){
@@ -232,6 +241,13 @@ void show_addProduct(char nextScreen[],stock*st){
 	addProduct(st,temp_stock->value);
 	exportStock(st);
 	getchar();
+	//Add operation to history.
+	record temp_record = newRecord(1,temp_stock->value,temp_stock->value.quantity); 
+	history * temp_history;
+	temp_history = (history*)malloc(sizeof(temp_record));
+	temp_history->next = NULL;
+	appendHistory(temp_history);
+
 }
 void show_updateProduct(char nextScreen[],stock*st){
 	
@@ -319,6 +335,8 @@ void show_updateProduct(char nextScreen[],stock*st){
 	wipeMessage(input_msg);
 	copyProduct(&temp_stock->value,product_to_edit);
 	
+	record edited_record = newRecord(0,*product_to_edit, product_to_edit->quantity); 
+
 	while (1)
 	{
 		int res = input_product(temp_stock,&error_msg);
@@ -344,6 +362,19 @@ void show_updateProduct(char nextScreen[],stock*st){
 	copyProduct(product_to_edit,&temp_stock->value);
 	exportStock(st);
 	getchar();
+
+	//Add operation to history.
+	record temp_record = newRecord(1,temp_stock->value,temp_stock->value.quantity); 
+	history * temp_history, * next_history;
+
+	temp_history = (history*)malloc(sizeof(edited_record));
+	next_history = (history*)malloc(sizeof(temp_record));
+	temp_history->value = edited_record;
+	temp_history->next = next_history;
+	next_history->value = temp_record;
+	next_history->next = NULL;
+	appendHistory(temp_history);
+	appendHistory(next_history);
 
 }
 
