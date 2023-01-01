@@ -1,21 +1,24 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include "Lib\cmdFunctions.c"
-#include "Lib\screens.c"
-#include "Lib\stonks.c"
-#include "Lib\history.c"
 
 #ifdef _WIN32
 #include <windows.h>
 #include <conio.h>
+#include "Lib\cmdFunctions.c"
+#include "Lib\screens.c"
+#include "Lib\stonks.c"
+#include "Lib\history.c"
 #define OsWindows 1
 #endif
 
 #ifdef linux
 #define OsWindows 0
 #include <unistd.h>
-#define clrscr() printf("\e[1;1H\e[2J")
+#include "Lib/cmdFunctions.c"
+#include "Lib/screens.c"
+#include "Lib/stonks.c"
+#include "Lib/history.c"
 #endif
 
 
