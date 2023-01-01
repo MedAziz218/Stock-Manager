@@ -42,7 +42,7 @@ int main(){
 	/*______ Main Program ______*/
 	
 
-	strcpy(nextScreen,"main"); //set current screen to main Menu
+	strcpy(nextScreen,"logo"); //set current screen to main Menu
 	while(1){
 		
 		clearScreen();
