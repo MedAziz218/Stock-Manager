@@ -24,7 +24,7 @@
 
 
 int main(){
-	char nextScreen[20]; // this variable tells what screen should be shown next
+	char nextScreen[20]; // this variable tells what screen should be shown next;
 	//SetConsoleOutputCP(1252); //Set console encoding to Windows 1252
 	if (OsWindows){
 		SetConsoleOutputCP(65001);  //Set console encoding to utf8
