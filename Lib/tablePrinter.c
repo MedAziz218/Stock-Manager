@@ -13,16 +13,11 @@ const struct {
 	char lower_right[4] ;
 	char horizontal[4] ;
 	char vertical[4] ;
-//} TABLE = {"╭","┳","╮","┣","╋","┫","╰","┻","╯","▒","┃"};	
+//} TABLE = {"╭","┳","╮","┣","▒","┫","╰","┻","╯","▒","┃"};	
 //}TABLE = {"╔","╦","╗","╠","╬","╣","╚","╩","╝","═","║"};
 } TABLE = {"┏","┳","┓","┣","╋","┫","┗","┻","┛","━","┃"};
-
-
-//convinience method to print a product variable
-void printProduct(product prod){
-	printf("%-3d, %-11s, %-9.3f, %-5d, %s",prod.id,prod.name,prod.price,prod.quantity,prod.description);
-}
-typedef struct  {
+void calibrate_HistoryTableFormat(history *st, int sizes[7]);
+typedef struct _TableFormat {
     //char* attributes[10];
     //char* typesOfAttributes[10]; //str,int or float
     int sizeOfAttributes[10];
@@ -33,7 +28,23 @@ typedef struct  {
     int crosses[10];
 
 } _TableFormat;
+_TableFormat StockTableFormat = {{4,20,0,16,20},5,8,6,4};
+_TableFormat HistoryTableFormat = {{1,24,MAX_QUANTITY_DIGITS,MAX_NAME_LENGTH
+						,4,4,4},7,8,6,4};
 
+int digit_count(int n){
+	int count = 0;
+	do {
+    n /= 10;
+    ++count;
+ 	} while (n != 0);
+ 	return count;
+}
+
+//convinience method to print a product variable
+void printProduct(product prod){
+	printf("%-3d, %-11s, %-9.3f, %-5d, %s",prod.id,prod.name,prod.price,prod.quantity,prod.description);
+}
 int appartient(int x, int list[],int n){
 	for (int i = 0; i<n;i++)
 		if (list[i] == x) return 1;
@@ -98,9 +109,117 @@ void printAfterTableItems(_TableFormat tab){
 
 //#____ End of Table Printer _____#//
 
+//#______ History Printer _______#//
+//TODO:
 
-//{4,20,0,16,0,0,0}
-_TableFormat StockTableFormat = {{4,20,0,16,20},5,8,6,4};
+void printTableRecord(record rec,_TableFormat tab ){
+	printBeforeTableItems(tab);
+	int color1,color2;
+	if (rec.operation_type == 1){
+		color1 = GREEN_TXT;
+		color2 = GREEN_BKG;
+	}else if(rec.operation_type == 0){
+		color1 = RED_TXT;
+		color2 = RED_BKG;
+	}else {
+		color1 = YELLOW_TXT;
+		color2 = YELLOW_BKG;
+	}
+	setTextColorBright(color1);
+	char c ;
+	switch (rec.operation_type){
+		case 0: c='-';break;
+		case 1: c='+';break;
+		case 3: c='M';break;
+	}
+	printf(" %c ",c);
+	resetColor();printf(TABLE.vertical);
+
+	setTextColorBright(color2);
+	printf(" %*s ",tab.sizeOfAttributes[1]-2,rec.date);
+	resetColor();printf(TABLE.vertical);
+
+	setBackgroundColor(color1);
+	printf(" %*d ",tab.sizeOfAttributes[2]-2,rec.product_id);
+	resetColor();printf(TABLE.vertical);
+
+    printf(" %*s ",tab.sizeOfAttributes[3]-2,rec.product_name);
+	resetColor();printf(TABLE.vertical);
+
+	
+	setTextColorBright(color2);
+    
+	printf(" %*d ",tab.sizeOfAttributes[4]-2,rec.quantity);
+	resetColor();printf(TABLE.vertical);
+
+	setTextColorBright(color1);
+	printf(" %*.3f $ ",tab.sizeOfAttributes[5]-4,rec.unit_price);
+	resetColor();printf(TABLE.vertical);
+	setTextColor(color1);
+	if (rec.operation_type == 0)
+		printf(" %*.3f $ ",tab.sizeOfAttributes[6]-4,rec.operation_price*-1);
+	else if(rec.operation_type == 1) 
+		printf(" %-*s+%.3f $ ",tab.sizeOfAttributes[6]-4-5-digit_count(rec.operation_price/1),"",rec.operation_price*1);
+	else 
+		printf(" %*.3f $ ",tab.sizeOfAttributes[6]-4,rec.operation_price);
+	resetColor();
+	printBetweenTableItems(tab);
+	printAfterTableItems(tab);
+}
+void printHistory(history * hist){
+	//convinience method to print the stock 
+	history * aux; record rec;
+	// If table is empty stop
+	if (hist->value.operation_type == -1){
+		//setTextColor(YELLOW_TXT); printf("it s empty"); resetColor();printf("\n");
+		return;
+	}
+	memset(HistoryTableFormat.sizeOfAttributes,0,sizeof(int)*7);
+	calibrate_HistoryTableFormat(hist,HistoryTableFormat.sizeOfAttributes);
+	__init_table__(&HistoryTableFormat);
+	
+	
+	int x = HistoryTableFormat.row -1;
+	int p = HistoryTableFormat.pre_tab+3;
+	moveTo(x,HistoryTableFormat.crosses[0]+p);
+	printf("  DATE");
+	moveTo(x,HistoryTableFormat.crosses[1]+p);
+	printf(" ID");
+	moveTo(x,HistoryTableFormat.crosses[2]+p);
+	printf(" NOM");
+	moveTo(x,HistoryTableFormat.crosses[3]+p);
+	printf(" QUANTITE");
+	moveTo(x,HistoryTableFormat.crosses[4]+p);
+	printf(" PRIX UNITAIRE");
+	moveTo(x,HistoryTableFormat.crosses[5]+p);
+	printf("  TOTALE ");
+	
+	//header 
+	printTableHeader(HistoryTableFormat);
+
+	//printTableTitles(pre_tab,width,crosses);
+	//printTableLine(pre_tab,width,crosses);
+	int is_modify = 0;
+	aux = hist;
+	do
+	{	
+		// -----------------------------------------
+		rec = aux->value;
+		printTableRecord(rec,HistoryTableFormat);
+		if (rec.operation_type == 3 && is_modify == 0){
+			is_modify = 1;
+		} else if (rec.operation_type == 3) is_modify = 0;
+		if (aux->next != NULL && is_modify == 0){
+			printTableLine(HistoryTableFormat);
+		}
+		// -----------------------------------------
+		aux = aux->next;
+	}while (aux!= NULL);	
+	printTableColser(HistoryTableFormat);
+	
+	
+}
+//#____ End of History Printer _____#//
 
 void printTableProduct(product prod,_TableFormat tab ){
 	int pre_tab = tab.pre_tab, post_tab = tab.post_tab;
@@ -143,18 +262,50 @@ void printTableProduct(product prod,_TableFormat tab ){
 	printf(" %-*s ",description_space-2,temp_char);
 	printBetweenTableItems(tab);
 	printAfterTableItems(tab);
-	//printf("%*s",post_tab,"");
-	//printf("\n");
+
 }
 
-int digit_count(int n){
-	int count = 0;
-	do {
-    n /= 10;
-    ++count;
- 	} while (n != 0);
- 	return count;
+
+
+
+void calibrate_HistoryTableFormat(history *st, int sizes[7]){
+	history* aux;
+	int cur_optype_space = 0;
+	int cur_date_space = 0;
+	int cur_id_space = 0;
+	int cur_name_space = 0;
+	int cur_quantity_space = 0;
+	int cur_unitPrice_space = 0;
+	int cur_totalPrice_space = 0;
+	
+	aux = st;
+	do {  
+		record rec = aux->value;
+		cur_optype_space = 1;
+		cur_date_space = fmax(cur_date_space,strlen(rec.date));
+		cur_id_space = fmax(cur_id_space,digit_count(rec.product_id));
+		cur_name_space = fmax(cur_name_space,strlen(rec.product_name));
+		cur_quantity_space = fmax(cur_quantity_space,digit_count(rec.quantity));
+		cur_unitPrice_space = fmax(cur_unitPrice_space,digit_count(rec.unit_price));
+		cur_totalPrice_space = fmax(cur_totalPrice_space,digit_count(rec.operation_price));
+		
+		aux = aux->next;
+	} while( aux != NULL);
+	
+	cur_name_space = fmin(cur_name_space,MAX_NAME_LENGTH);
+	cur_quantity_space = fmax(cur_quantity_space,9);
+	cur_unitPrice_space = fmax(cur_unitPrice_space,7);
+
+	HistoryTableFormat.sizeOfAttributes[0] = fmax(HistoryTableFormat.sizeOfAttributes[0],cur_optype_space+2);
+	HistoryTableFormat.sizeOfAttributes[1] = fmax(HistoryTableFormat.sizeOfAttributes[1],cur_date_space+2);
+	HistoryTableFormat.sizeOfAttributes[2] = fmax(HistoryTableFormat.sizeOfAttributes[2],cur_id_space+2);
+	HistoryTableFormat.sizeOfAttributes[3] = fmax(HistoryTableFormat.sizeOfAttributes[3],cur_name_space+2);
+	HistoryTableFormat.sizeOfAttributes[4] = fmax(HistoryTableFormat.sizeOfAttributes[4],cur_quantity_space+2);
+	HistoryTableFormat.sizeOfAttributes[5] = fmax(HistoryTableFormat.sizeOfAttributes[5],cur_unitPrice_space+1+PRICE_DECIMAL_DIGITS+4);
+	HistoryTableFormat.sizeOfAttributes[6] = fmax(HistoryTableFormat.sizeOfAttributes[6],cur_totalPrice_space+1+PRICE_DECIMAL_DIGITS+5);
+	
 }
+
 void calibrate_StockTableFormat(stock *st, int sizes[5]){
 	stock* aux;
 	int cur_id_space = 0;
@@ -177,7 +328,12 @@ void calibrate_StockTableFormat(stock *st, int sizes[5]){
 	cur_name_space = fmin(cur_name_space,MAX_NAME_LENGTH);
 	cur_description_space = fmin(cur_description_space,MAX_DESCRIPTION_LENGTH);
 	
-	//StockTableFormat.sizeOfAttributes[]
+	cur_id_space = fmax(cur_id_space,1);
+	cur_name_space = fmax(cur_name_space,4);
+	cur_price_space = fmax(cur_price_space,1);
+	cur_quantity_space = fmax(cur_quantity_space,8);
+	cur_description_space = fmax(cur_description_space,11);
+	
 	StockTableFormat.sizeOfAttributes[0] = fmax(StockTableFormat.sizeOfAttributes[0],cur_id_space+2);
 	StockTableFormat.sizeOfAttributes[1] = fmax(StockTableFormat.sizeOfAttributes[1],cur_name_space+2);
 	StockTableFormat.sizeOfAttributes[2] = fmax(StockTableFormat.sizeOfAttributes[2],cur_price_space+4+4);
@@ -202,13 +358,24 @@ void printStock(stock * st){
 		{
 			StockTableFormat.sizeOfAttributes[4] -= StockTableFormat.width -SCREEN_WIDTH;
 			__init_table__(&StockTableFormat);
-			//cur_description_space = cur_description_space - (StockTableFormat.width -70);
 		}
+	int x = StockTableFormat.row -1;
+	int p = StockTableFormat.pre_tab+3;
+	moveTo(x,p);
+	printf("%*s",StockTableFormat.width,"");
+	moveTo(x,p);
+	printf("ID");
+	moveTo(x,StockTableFormat.crosses[0]+p);
+	printf(" NOM");
+	moveTo(x,StockTableFormat.crosses[1]+p);
+	printf(" PRIX");
+	moveTo(x,StockTableFormat.crosses[2]+p);
+	printf("QUANTITE");
+	moveTo(x,StockTableFormat.crosses[3]+p);
+	printf(" DESCRIPTION");
+
 	//header 
 	printTableHeader(StockTableFormat);
-	//printTableTitles(pre_tab,width,crosses);
-	//printTableLine(pre_tab,width,crosses);
-
 	aux = st;
 	do
 	{	
@@ -228,8 +395,3 @@ void printStock(stock * st){
 //#____ End of Stock Printer _____#//
 
 
-//#______ History Printer _______#//
-//TODO:
-void printTableHistory(){}
-void printHistory(){}
-//#____ End of History Printer _____#//

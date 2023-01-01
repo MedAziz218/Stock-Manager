@@ -35,6 +35,7 @@ enum program_constants{
 //Record: A record concerning a certain operation.
 typedef struct record {
 	int operation_type; // 1 means [+]positive and 0 means [-]negative 
+						// 3 means modified (always comes in two lines)
 						//(convention: -1 means empty history record)
 	char date[32]; //A string with this format: DDD MMM DD HH:MM:SS YYYY
 	int product_id; //self explanatory

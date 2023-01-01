@@ -8,6 +8,7 @@
 #include "tablePrinter.c"
 #include "selectionMenuPrinter.c"
 
+
 /*
 #ifdef WIN32
 #include <windows.h>
@@ -43,6 +44,11 @@ void copyProduct(product* prod1, product* prod2);
 void deleteProduct(stock*st,int id);
 int input_product(stock*temp_stock,_MessageFormat*msg);
 int input_id(_MessageFormat*msg,_MessageFormat*error_msg);
+record newRecord(int opType,product*prod,int quantity);
+void appendHistory(history * ht);
+void importHistory(history * ht);
+void addRecord(history * ht, record p);
+
 // these two variables are shared across all functions in order to reduce memory usage
 char tempFileString[65536]; //a string variable that can be used by any function when needed 
 char userInput[128]; //a string variable that can be used by any function to read user input
@@ -59,16 +65,131 @@ void resetSelectionMenuFormat(){
 		Sleep(50);
 			}
 }
-void show_historique(char nextScreen[]){
+
+void show_printHistory(char nextScreen[],history*hs){
+	
+	HistoryTableFormat.pre_tab = 4;HistoryTableFormat.row = 4;
+	HistoryTableFormat.post_tab = 1;
+	printHistory(hs);
+	printf("\n %58s","Appuyer sur ENTRE pour Continuer ...");
+	getchar();
+	strcpy(nextScreen,"main");
+
 	
 }
 
 
 void show_Search(char nextScreen[],stock*st){
+	
+	strcpy(nextScreen,"main");
+	// temp product and stock variables
+	stock * temp_stock;
+	temp_stock = (stock*)malloc(sizeof(stock));
+	temp_stock->next = NULL;
+	product * prod = &(temp_stock->value);
+	prod->id = 0;prod->price = 0.0;prod->quantity = 0;
+	strcpy(prod->name,"");strcpy(prod->description,"");
+
+	// stock table settings
+	StockTableFormat.pre_tab = 6;StockTableFormat.row = 9;
+	StockTableFormat.post_tab = 1;
+	
+	// selection menu settings
+	
+	SelectionMenuFormat.row = 13;
+	SelectionMenuFormat.pre_tab = 8;
+	SelectionMenuFormat.post_tab = 4;
+	strcpy(SelectionMenuFormat.selected_prefix , "> ");
+	SelectionMenuFormat.selected_color = YELLOW_TXT;
+	SelectionMenuFormat.normal_color = WHITE_TXT * 10;
+	SelectionMenuFormat.current_selection = 0;
+	SelectionMenuFormat.numberOfOptions = NumberOfaddProductOptions;
+	for(int i=0;i<SelectionMenuFormat.numberOfOptions;i++)
+		SelectionMenuFormat.optionsText[i] = addProductOptions[i];
+	// Error Message settings
+	_MessageFormat error_msg;
+	char* error1="This ID already exist please try another one.";
+	char* error2="Please Specify an ID";
+	error_msg.text = error1;
+	error_msg.row = 14;
+	error_msg.pre_tab = 42;
+	error_msg.color = RED_TXT*10;
+
+	// Success message 
+	_MessageFormat success_msg;
+	//success_msg.text  = " Product Added Successfully.\nPress ENTER to continue ...";
+	success_msg.text = " Produit Ajoute avec succes.\nAppuyez sur ENTER pour continuer...";
+	
+	success_msg.row = 14;
+	success_msg.pre_tab = 42;
+	success_msg.color = GREEN_TXT*10;
+	// Title Message 
+	// temp str variables
+	strcpy(nextScreen,"main");
 	tempFileString[0] = '\0';
 	readFile(FRAME_FILE,tempFileString);
-	printf("%s",tempFileString);
-	strcpy(nextScreen,"main");
+	
+	char num[MAX_PRICE_DIGITS*10];
+	while (1)
+	{	
+		stock*search_res =(stock*)malloc(sizeof(stock));
+		search_res->value.id = -1;
+		search_res->next = NULL;
+		stock*search_inp = st;
+		product*filter = &temp_stock->value;
+		clearScreen();
+		printf("%s",tempFileString);
+		moveTo(4,28);setTextColorBright(GREEN_TXT);printf("CHERCHER UN PRODUIT");resetColor();
+		printSelectionMenu(SelectionMenuFormat);
+
+		int res = input_product(temp_stock,&error_msg);
+		if (res == -1) return;
+		//itoa(filter->id,num,10);
+		if (filter->id >0){
+			memset(num,'\0',MAX_PRICE_DIGITS*10);
+			itoa(prod->id,num,10);
+			search_res=search(search_inp,1,num);
+			search_inp = search_res;
+		}
+		if (strlen(filter->name) != 0){
+			
+			search_res=search(search_inp,2,(char*)filter->name);
+			search_inp = search_res;
+		}
+		if (strlen(filter->description) != 0){
+			search_res=search(search_inp,5,(char*)filter->description);
+			search_inp = search_res;
+		}
+		if (filter->price >0){
+			memset(num,'\0',MAX_PRICE_DIGITS*10);
+			itoa(prod->price,num,10);
+			search_res=search(search_inp,3,num);
+			search_inp = search_res;
+		}
+		if (filter->quantity >0){
+			memset(num,'\0',MAX_PRICE_DIGITS*10);
+			itoa(prod->quantity,num,10);
+			search_res=search(search_inp,4,num);
+			search_inp = search_res;
+		}
+		
+		
+		clearScreen();
+		printStock(search_res);
+		if (search_res->value.id == -1){
+			printf(" %58s","Aucun valeur trouve");
+		}
+		printf("\n %58s","Appuyer sur ENTRE pour Continuer ...");
+		getchar();
+		
+		
+			
+		
+		    
+		
+	}
+	
+	
 }
 
 void show_deleteProduct(char nextScreen[],stock*st ){
@@ -89,7 +210,8 @@ void show_deleteProduct(char nextScreen[],stock*st ){
 
 	// Success message 
 	_MessageFormat success_msg;
-	success_msg.text = " Product Deleted Successfully.\nPress ENTER to continue ...";
+	success_msg.text = " Produit Supprime avec succes.\nAppuyez sur ENTER pour continuer...";
+	//success_msg.text  = " Product Deleted Successfully.\nPress ENTER to continue ...";
 	success_msg.row = 14;
 	success_msg.pre_tab = 42;
 	success_msg.color = GREEN_TXT*10;
@@ -129,26 +251,29 @@ void show_deleteProduct(char nextScreen[],stock*st ){
 	//HERE
 
 	//Add operation to history.
-	record temp_record = newRecord(0,*product_to_edit,product_to_edit->quantity); 
+	record temp_record = newRecord(0,product_to_edit,product_to_edit->quantity); 
 	history * temp_history;
-	temp_history = (history*)malloc(sizeof(temp_record));
+	temp_history = (history*)malloc(sizeof(history));
 	temp_history->next = NULL;
+	temp_history->value.operation_type = -1;
+	addRecord(temp_history,temp_record);
 	appendHistory(temp_history);
 }
 
 void show_printStock(char nextScreen[],stock*st){
 	StockTableFormat.pre_tab = 4;StockTableFormat.row = 4;
 	StockTableFormat.post_tab = 1;
+	
 	printStock(st);
 	strcpy(nextScreen,"main");
-	printf("\n %58s","Press Enter to Continue ...");
+	printf("\n %58s","Appuyer sur ENTRE pour Continuer ...");
 	getchar();
 }
 
 void show_STONKS(char nextScreen[]){
 	readFile(STONKS_FILE,tempFileString);
 	printf("%s",tempFileString);
-	printf("\n %58s","Press Enter to Continue ...");
+	printf("\n %58s","Appuyer sur ENTRE pour Continuer ...");
 	getchar();
 	clearScreen();
 	strcpy(nextScreen,"main");
@@ -156,7 +281,7 @@ void show_STONKS(char nextScreen[]){
 void show_logo(char nextScreen[]){
 	readFile(LOGO_FILE,tempFileString);
 	printf("%s",tempFileString);
-	printf("\n %58s","Press Enter to Continue ...");
+	printf("\n %58s","Appuyer sur ENTRE pour Continuer ...");
 	getchar();
 	clearScreen();
 	strcpy(nextScreen,"main");
@@ -205,7 +330,8 @@ void show_addProduct(char nextScreen[],stock*st){
 
 	// Success message 
 	_MessageFormat success_msg;
-	success_msg.text = " Product Added Successfully.\nPress ENTER to continue ...";
+	success_msg.text = " Produit Ajoute avec succes.\nAppuyez sur ENTER pour continuer...";
+	//success_msg.text = " Product Added Successfully.\nPress ENTER to continue ...";
 	
 	success_msg.row = 14;
 	success_msg.pre_tab = 42;
@@ -242,11 +368,16 @@ void show_addProduct(char nextScreen[],stock*st){
 	exportStock(st);
 	getchar();
 	//Add operation to history.
-	record temp_record = newRecord(1,temp_stock->value,temp_stock->value.quantity); 
+	record temp_record = newRecord(1,&temp_stock->value,temp_stock->value.quantity); 
 	history * temp_history;
-	temp_history = (history*)malloc(sizeof(temp_record));
+	temp_history = (history*)malloc(sizeof(history));
 	temp_history->next = NULL;
+	temp_history->value.operation_type = -1;
+
+	addRecord(temp_history,temp_record);
+	
 	appendHistory(temp_history);
+
 
 }
 void show_updateProduct(char nextScreen[],stock*st){
@@ -260,8 +391,8 @@ void show_updateProduct(char nextScreen[],stock*st){
 	
 	
 	// Error Message settings
-	char* error1="This ID does not exist please try another one.";
-	char* error2="Please Specify an ID";
+	char* error1="Cet ID n'existe pas, Veuillez en essayer un autre.";
+	char* error2="veuillez spécifier un Identifiant";
 	_MessageFormat error_msg;
 	error_msg.text = error1;//"This ID does exist please try another one.";
 	error_msg.row = 14;
@@ -271,7 +402,7 @@ void show_updateProduct(char nextScreen[],stock*st){
 	// Success message 
 	_MessageFormat success_msg;
 	
-	success_msg.text = " Product Modified Successfully.\nPress ENTER to continue ...";
+	success_msg.text = " Produit Modifie avec succes.\nAppuyez sur ENTER pour continuer...";
 	success_msg.row = 14;
 	success_msg.pre_tab = 42;
 	success_msg.color = GREEN_TXT*10;
@@ -335,7 +466,7 @@ void show_updateProduct(char nextScreen[],stock*st){
 	wipeMessage(input_msg);
 	copyProduct(&temp_stock->value,product_to_edit);
 	
-	record edited_record = newRecord(0,*product_to_edit, product_to_edit->quantity); 
+	record edited_record = newRecord(3,product_to_edit, product_to_edit->quantity); 
 
 	while (1)
 	{
@@ -364,17 +495,18 @@ void show_updateProduct(char nextScreen[],stock*st){
 	getchar();
 
 	//Add operation to history.
-	record temp_record = newRecord(1,temp_stock->value,temp_stock->value.quantity); 
+	record temp_record = newRecord(3,&temp_stock->value,temp_stock->value.quantity); 
 	history * temp_history, * next_history;
 
-	temp_history = (history*)malloc(sizeof(edited_record));
-	next_history = (history*)malloc(sizeof(temp_record));
-	temp_history->value = edited_record;
-	temp_history->next = next_history;
-	next_history->value = temp_record;
-	next_history->next = NULL;
+	temp_history = (history*)malloc(sizeof(history));
+	temp_history->value.operation_type = -1;
+	temp_history->next = NULL;
+	
+	addRecord(temp_history,edited_record);
+	addRecord(temp_history,temp_record);
+	
 	appendHistory(temp_history);
-	appendHistory(next_history);
+
 
 }
 
@@ -402,19 +534,18 @@ void show_MainMenu(char nextScreen[]){
 	
 	while(1)
 	{	
-		sleep_ms(16);//60 fps;
+		sleep_ms(16);
 		hideCursor();
 		char ch = '\0';
 		if(_kbhit() )ch = getch(); 
 		if (ch){
-			if (ch == ENTER_KEY){//13
+			if (ch == ENTER_KEY){
 				break;
 			}
 			else if (ch == ARROW_START){
 				ch = getch();
 				if (ch == ARROW_UP && current_selection>=1){//moveUp
 					current_selection --; if (current_selection == 0) current_selection = NumberOfMainMenuOptions;
-					//showMainMenuSelection(current_selection);	
 					SelectionMenuFormat.current_selection = current_selection-1;
 					printSelectionMenu(SelectionMenuFormat);
 				}
@@ -463,7 +594,7 @@ int input_id(_MessageFormat*input_int_msg,_MessageFormat*error_msg){
 			wipeMessage(*input_int_msg);
 			temp_ch[strlen(temp_ch)-1] = '\0';
 		}else if (ch == ENTER_KEY && strlen(temp_ch)){
-			//wipeMessage(*input_int_msg);
+
 			inp = atoi(temp_ch);
 			return inp;
 		}

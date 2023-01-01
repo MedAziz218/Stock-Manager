@@ -106,7 +106,7 @@ void importStock(stock * st){
 	char temp_str1[400],temp_str2[400],temp_str3[400],temp_str4[400],temp_str5[400];
 	int i=0; int scan_result;
 	do {
-		memset(temp_str5,'\0',sizeof(char)*50);
+		memset(temp_str5,'\0',sizeof(char)*400);
 		scan_result = fscanf(ptr,"%400[^;];%400[^;];%400[^;];%400[^;];%400[^\n]", 
 								temp_str1, temp_str2, temp_str3,temp_str4, temp_str5);
 		ch = fgetc(ptr);
@@ -150,7 +150,7 @@ void exportStock(stock * st){
 // "key" designates the key words or values we re searching for 
 stock* search(stock* st, int choice, char key[]){
 	
-	int range = 14; // range for searching by price.
+	int range = 50; // range for searching by price.
 	stock *aux, *temp_stock;
 	char *temp_key;
 	

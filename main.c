@@ -30,7 +30,6 @@ int main(){
 	}
 	clearScreen() ;
 
-
 	/*______importStock Test ______*/
 	stock *head,*current;
 	head = (stock*)malloc(sizeof(stock));
@@ -40,52 +39,10 @@ int main(){
 	// Importing stock data from STOCK_FILE
 	importStock(head);
 	
-	/*
-	stock* result = search(head,1,"1");
-	result = search(head,2,"Alu");
-	printStock(result);//free(result);
-	exportStock(result);
-	printf("-------- end of search test ---------\n\n");*/
-	/*
-	deleteProduct(head,1);
-	deleteProduct(head,10);
-	deleteProduct(head,17);
-	deleteProduct(head,5);
-	deleteProduct(head,5);
-	deleteProduct(head,500);
-	exportStock(head)
-	//show_update(nextScreen,head);
-	printf("-------- end of deleteProduct test ---------\n\n");;*/
-
-
-	
-	
-	//printf("------------ %s ----------\n",STOCK_FILE);printStock(head);
-	//return 0;
-	/* // Adding product manually (example)
-		product test;
-		test.id = 27;
-		strcpy(test.name,"hola");
-		test.price = 27.5;
-		test.quantity = 1;
-		strcpy(test.description,"nyes");
-		addProduct(head,test);
-	
-	printStock(head);
-	printf("\n--importing data from STOCK_FILE done\n");
-	printf("--Test Completed\n");
-	printf( "--press Enter to proceed to main program ... ");
-	printf("\n");*/
-
-	//getchar();
-	/*______ End of Test_______*/
-
-	
-
 	/*______ Main Program ______*/
 	
 
-	strcpy(nextScreen,"logo"); //set current screen to main Menu
+	strcpy(nextScreen,"main"); //set current screen to main Menu
 	while(1){
 		
 		clearScreen();
@@ -108,6 +65,14 @@ int main(){
 		}
 		else if (strcmp(nextScreen,"search") == 0){
 			show_Search(nextScreen,head);
+		}
+		else if (strcmp(nextScreen,"printhistory") == 0){
+			history*hist;
+			hist = (history*)malloc(sizeof(history));
+			hist->value.operation_type = -1;
+			hist->next = NULL;
+			importHistory(hist);
+			show_printHistory(nextScreen,hist);
 		}
 		else if (strcmp(nextScreen,"main") == 0){
 			show_MainMenu(nextScreen);
