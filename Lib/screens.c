@@ -130,63 +130,69 @@ void show_Search(char nextScreen[],stock*st){
 	readFile(FRAME_FILE,tempFileString);
 	
 	char num[MAX_PRICE_DIGITS*10];
+	stock*search_inp;
+	stock*search_res;
+	product*filter;
 	while (1)
 	{	
-		stock*search_res =(stock*)malloc(sizeof(stock));
+		search_res =(stock*)malloc(sizeof(stock));
 		search_res->value.id = -1;
 		search_res->next = NULL;
-		stock*search_inp = st;
-		product*filter = &temp_stock->value;
+		search_inp = st;
+		filter = &temp_stock->value;
 		clearScreen();
 		printf("%s",tempFileString);
 		moveTo(4,28);setTextColorBright(GREEN_TXT);printf("CHERCHER UN PRODUIT");resetColor();
 		printSelectionMenu(SelectionMenuFormat);
-
+		
 		int res = input_product(temp_stock,&error_msg);
 		if (res == -1) return;
-		//itoa(filter->id,num,10);
+
 		if (filter->id >0){
 			memset(num,'\0',MAX_PRICE_DIGITS*10);
 			itoa(prod->id,num,10);
 			search_res=search(search_inp,1,num);
 			search_inp = search_res;
 		}
+		
+
 		if (strlen(filter->name) != 0){
 			
 			search_res=search(search_inp,2,(char*)filter->name);
 			search_inp = search_res;
 		}
+		
+
 		if (strlen(filter->description) != 0){
 			search_res=search(search_inp,5,(char*)filter->description);
 			search_inp = search_res;
 		}
+		
 		if (filter->price >0){
 			memset(num,'\0',MAX_PRICE_DIGITS*10);
 			itoa(prod->price,num,10);
 			search_res=search(search_inp,3,num);
 			search_inp = search_res;
 		}
+		
 		if (filter->quantity >0){
 			memset(num,'\0',MAX_PRICE_DIGITS*10);
 			itoa(prod->quantity,num,10);
 			search_res=search(search_inp,4,num);
 			search_inp = search_res;
 		}
-		
-		
-		clearScreen();
+		clearScreen();StockTableFormat.row = 4;
 		printStock(search_res);
+		StockTableFormat.row = 9;
 		if (search_res->value.id == -1){
-			printf(" %58s","Aucun valeur trouve");
+			setTextColor(RED_TXT),
+			printf(" %53s","Aucun valeur trouve");
+			resetColor();
 		}
 		printf("\n %58s","Appuyer sur ENTRE pour Continuer ...");
 		getchar();
-		
-		
-			
-		
-		    
-		
+		free(search_res);
+	
 	}
 	
 	

@@ -159,6 +159,7 @@ stock* search(stock* st, int choice, char key[]){
 	
 	temp_stock = (stock*)malloc(sizeof(stock)); // temporary linked list to show the resulting items after the search
 	temp_stock->value.id = -1;
+	temp_stock->next = NULL;
 	// 	Would you like to search by:
 	// 	   "1- id \n"
 	// 	   "2- name \n"
