@@ -5,21 +5,21 @@ Use our user friendly interface to enter and edit your stock data which is then 
 
 The program also keeps track of all operation and conviniently saves it to a csv file in  [Database/history.csv](https://github.com/MedAziz218/Stock-Manager/blob/main/Database/history.csv).
 
-![logo](https://user-images.githubusercontent.com/118969900/210096973-eeb3c40a-58b3-4ead-9fe1-bb84290a3e43.png)
+![logo.gif](preview_gifs/logo.gif)
 
-## Here are a few screenshots :
+## Here is a preview of Stock-Manager:
 
 ## Main Menu Preview
-![image](https://user-images.githubusercontent.com/118969900/210181373-6c310851-a1bc-4838-b2a6-d5da1195deb2.png)
+![main_menu.gif](preview_gifs/main_menu.gif)
 
 ## Adding Product 
 
-![image](https://user-images.githubusercontent.com/118969900/210181469-210db6b3-d430-4047-a899-00a69104edaf.png)
+![add_product.gif](preview_gifs/add_product.gif)
 
 
-## Stock Preview
+## Show Stock
 
-![image](https://user-images.githubusercontent.com/118969900/210181400-919efc5d-68fa-4faa-97b9-2d4e671ba642.png)
+![show_stock.gif](preview_gifs/show_stock.gif)
 
-## History Preview
-![image](https://user-images.githubusercontent.com/118969900/210181426-5f80370d-910b-4de5-9260-a4c169e59b76.png)
+## Show History 
+![show_stock.gif](preview_gifs/show_history.gif)
